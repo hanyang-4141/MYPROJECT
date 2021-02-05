@@ -1,12 +1,12 @@
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{tags+1}}/{{KaoShi.length}}.{{tags<40?'（单选）':((tags>=60)?'（判断）':'（多选）')}}{{KaoShi[tags].title}}</text>
+    <text class="text-black">{{tags+1}}/{{KaoShi.length}}.{{tags<danxuanSum?'（单选）':((tags>=(danxuanSum+duoxuanSum))?'（判断）':'（多选）')}}{{KaoShi[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
 <view wx:for='{{KaoShi[tags].options}}' wx:key='{{item.name}}'>
   <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} box round" bindtap="chooseAnswer">
-    {{tags<60?item.value:(item.value?'1':'2')}}、{{item.name}}
+    {{tags<(danxuanSum+duoxuanSum)?item.value:(item.value?'1':'2')}}、{{item.name}}
   </view>
 </view>
 <!-- <view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ KaoShi[tags].answer:'回答正确'}}</view> -->
@@ -29,5 +29,5 @@
       </view>
     </view>
   </view>
-  <button class="cu-btn round bg-red shadow margin-left-lg" bindtap='afterQuestion'>{{tags<99?'下一题':'交卷'}}</button>
+  <button class="cu-btn round bg-red shadow margin-left-lg" bindtap='afterQuestion'>{{tags==KaoShi.length-1?'交卷':'下一题'}}</button>
 </view>
