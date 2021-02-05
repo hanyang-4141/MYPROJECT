@@ -1,66 +1,79 @@
 // pages/panduan/panduan.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    PanDuan: [],
+    tags: 0,
+    answererror: false,
+    hidden: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var tempArr = []
+    app.globalData.Questions.data[2].PanDuan.forEach(item =>{
+      tempArr.push(item)
+    })    
+    // console.log(tempArr);
+    var newArr = [];
+        while (tempArr.length) {
+          var index = parseInt(Math.random() * tempArr.length);
+          newArr = newArr.concat(tempArr.splice(index, 1)) 
+        }
 
+    this.setData({
+      PanDuan: newArr
+    }) 
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  chooseAnswer(res){    
+    let chooseArr = this.data.PanDuan[this.data.tags].options;
+    let index = res.currentTarget.dataset.index;    
+    chooseArr.forEach(item => {
+      item.checked = false
+    })
+    chooseArr[index].checked = true
+    console.log(chooseArr);
+    if(chooseArr[index].value != this.data.PanDuan[this.data.tags].answer){
+      console.log('error');
+      this.setData({
+        answererror: true
+      })
+    }
+    this.setData({
+      PanDuan: this.data.PanDuan,
+      afterclick: true,
+      hidden: false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  beforeQuestion(){
+    if(this.data.tags < 1){
+      return
+    }    
+    this.setData({
+      afterclick: false,
+      tags: this.data.tags - 1,
+      answererror: false,
+      hidden: true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  afterQuestion(){
+    if (this.data.tags + 2 > this.data.PanDuan.length){
+      return
+    }
+      this.setData({
+        afterclick: false,
+        tags: this.data.tags + 1,
+        answererror: false,
+        hidden: true
+      })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

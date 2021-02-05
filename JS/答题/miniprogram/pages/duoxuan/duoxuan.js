@@ -1,11 +1,13 @@
 // pages/duoxuan/duoxuan.js
-const db = wx.cloud.database();
+
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    DuoXuan: [],
     questions: [],
     tags : 0,
     afterclick: false,
@@ -20,16 +22,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    db.collection('questionBank').get({
-      success: res=> {
-        console.log(res);
-        this.setData({
-          questions: res.data[1].question
-        })
-        
-        
-      }
-  })
+    var tempArr = []
+    app.globalData.Questions.data[1].DuoXuan.forEach(item =>{
+      tempArr.push(item)
+    })    
+    // console.log(tempArr);
+    var newArr = [];
+        while (tempArr.length) {
+          var index = parseInt(Math.random() * tempArr.length);
+          newArr = newArr.concat(tempArr.splice(index, 1)) 
+        }
+    this.setData({
+      DuoXuan: newArr
+    })
+  
   },
   beforeQuestion(){
     if(this.data.tags < 1){
@@ -43,7 +49,7 @@ Page({
     })
   },
   afterQuestion(){
-    if (this.data.tags + 2 > this.data.questions.length){
+    if (this.data.tags + 2 > this.data.DuoXuan.length){
       return
     }
       this.setData({
@@ -55,8 +61,8 @@ Page({
   },
   submitclick(){
     // console.log(this.data.questions[this.data.tags].answer);
-    let chooseArr = this.data.questions[this.data.tags].options;
-    let rightanswer = this.data.questions[this.data.tags].answer
+    let chooseArr = this.data.DuoXuan[this.data.tags].options;
+    let rightanswer = this.data.DuoXuan[this.data.tags].answer
     let tempanswer = ''
     chooseArr.forEach(item =>{
       if(item.checked == true){
@@ -81,25 +87,18 @@ Page({
       console.log(chooseArr);
       this.setData({
         answererror: true,
-        questions:this.data.questions,
+        DuoXuan:this.data.DuoXuan,
         hidden: false
-      })
-      
+      })      
     }
   },
   chooseAnswer(res){
-    let chooseArr = this.data.questions[this.data.tags].options;
+    let chooseArr = this.data.DuoXuan[this.data.tags].options;
     let index = res.currentTarget.dataset.index;        
     chooseArr[index].checked = !chooseArr[index].checked
-
-    // console.log(index);
-    
     this.setData({
-      questions: this.data.questions,
-      // afterclick: true
-    })
-    // console.log('当前选择为:' + chooseArr[index].value);
-    // console.log('正确答案:' + this.data.questions[this.data.tags].answer);
+      DuoXuan: this.data.DuoXuan,     
+    })   
   },
 
 })

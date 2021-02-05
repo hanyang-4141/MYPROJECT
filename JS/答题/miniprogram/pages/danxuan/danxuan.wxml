@@ -1,15 +1,15 @@
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{tags+1}}/{{questions.length}}.{{questions[tags].title}}</text>
+    <text class="text-black">{{tags+1}}/{{DanXuan.length}}.{{DanXuan[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
-<view wx:for='{{questions[tags].options}}' wx:key='{{item.name}}'>
-  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} {{item.value==questions[tags].answer && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
+<view wx:for='{{DanXuan[tags].options}}' wx:key='{{item.name}}'>
+  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} {{item.value==DanXuan[tags].answer && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
     {{item.value}}、{{item.name}}
   </view>
 </view>
-<view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ questions[tags].answer:'回答正确'}}</view>
+<view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ DanXuan[tags].answer:'回答正确'}}</view>
 <view class="flex justify-center padding-bottom-xl padding-top-xl fixed-bottom">
   <button class="cu-btn round bg-blue shadow margin-right-lg" bindtap='beforeQuestion'>上一题</button>
 

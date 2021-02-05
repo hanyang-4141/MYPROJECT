@@ -17,15 +17,13 @@ App({
     const db = wx.cloud.database();
     
     this.globalData = {
-      PanDuanTi: null,
-      DanXuanTi:[],
-      DuoXuanTi:[]
+      Questions: null,     
 
     },
     db.collection('questionBank').get({
       success: res=> {
         // console.log(res);
-        this.globalData.PanDuanTi = res.data[2].PanDuan
+        this.globalData.Questions = res
         // console.log(this.globalData.PanDuanTi);
       }
   })

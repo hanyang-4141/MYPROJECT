@@ -1,2 +1,33 @@
-<!--pages/kaoshi/kaoshi.wxml-->
-<text>pages/kaoshi/kaoshi.wxml</text>
+<view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
+  <view class='action'>
+    <text class="text-black">{{tags+1}}/{{KaoShi.length}}.{{tags<40?'（单选）':((tags>=60)?'（判断）':'（多选）')}}{{KaoShi[tags].title}}</text>
+  </view>
+</view>
+<!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
+<view wx:for='{{KaoShi[tags].options}}' wx:key='{{item.name}}'>
+  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} box round" bindtap="chooseAnswer">
+    {{tags<60?item.value:(item.value?'1':'2')}}、{{item.name}}
+  </view>
+</view>
+<!-- <view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ KaoShi[tags].answer:'回答正确'}}</view> -->
+<view class="flex justify-center padding-bottom-xl padding-top-xl fixed-bottom">
+  <button class="cu-btn round bg-blue shadow margin-right-lg" bindtap='beforeQuestion'>上一题</button>
+
+  <button class="cu-btn bg-green round shadow margin-left-lg margin-right-lg" bindtap="showModal" data-target="bottomModal">
+    答题卡
+  </button>
+
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white">
+        <view class="action text-blue" bindtap="hideModal">收起</view>
+      </view>
+      <view>
+        <view wx:for='{{cardArr}}' wx:key class="margin " style='display:inline-block'>
+          <button class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}' bindtap="cardClick">{{index+1}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="cu-btn round bg-red shadow margin-left-lg" bindtap='afterQuestion'>{{tags<99?'下一题':'交卷'}}</button>
+</view>

@@ -25,7 +25,7 @@ for index,h in enumerate(strlist1):
     mydict = {}
     print(h)
     mydict.setdefault('answer', pd_daan[index])
-    mydict.setdefault('options', [{'checked': False,'name':'正确','value':'A'},{'checked': False,'name':'错误','value':'B'}])
+    mydict.setdefault('options', [{'checked': False, 'name': '正确', 'value': True}, {'checked': False, 'name': '错误', 'value': False}])
     mydict.setdefault('title', h)
 
     Questions.append(mydict)

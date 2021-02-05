@@ -1,5 +1,5 @@
 // miniprogram/pages/dati/dati.js
-const db = wx.cloud.database();
+
 var app = getApp()
 Page({
 
@@ -7,11 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    questions: [],
-    tags : 0,
+    DanXuan: [],
+    // chooseArr: [],    
+    tags : 0,   
     afterclick: false,
     hidden: true,
-    answererror: false
+    answererror: false,
+
+    // questions: [],
   },
 
   /**
@@ -29,7 +32,7 @@ Page({
     })
   },
   afterQuestion(){
-    if (this.data.tags + 2 > this.data.questions.length){
+    if (this.data.tags + 2 > this.data.DanXuan.length){
       return
     }
       this.setData({
@@ -41,40 +44,44 @@ Page({
   },
   chooseAnswer(res){
     
-    let chooseArr = this.data.questions[this.data.tags].options;
+    let chooseArr = this.data.DanXuan[this.data.tags].options;
     let index = res.currentTarget.dataset.index;    
     chooseArr.forEach(item => {
       item.checked = false
     }
     )
     chooseArr[index].checked = true
-    if(chooseArr[index].value != this.data.questions[this.data.tags].answer){
+    if(chooseArr[index].value != this.data.DanXuan[this.data.tags].answer){
       console.log('error');
       this.setData({
         answererror: true
       })
     }
     this.setData({
-      questions: this.data.questions,
+      DanXuan: this.data.DanXuan,
       afterclick: true,
       hidden: false
-    })
-    // console.log('当前选择为:' + chooseArr[index].value);
-    // console.log('正确答案:' + this.data.questions[this.data.tags].answer);
+    })    
   },
   onLoad: function (options) {
-
-    console.log(app.globalData.PanDuanTi);
-    db.collection('questionBank').get({
-        success: res=> {
-          // console.log(res);
-          this.setData({
-            questions: res.data[0].question
-          })
-          
-          
+    var tempArr = []
+    app.globalData.Questions.data[0].DanXuan.forEach(item =>{
+      tempArr.push(item)
+    })    
+    // console.log(tempArr);
+    var newArr = [];
+        while (tempArr.length) {
+          var index = parseInt(Math.random() * tempArr.length);
+          newArr = newArr.concat(tempArr.splice(index, 1)) 
         }
+    this.setData({
+      DanXuan: newArr
     })
+    
+          
+          
+    //     }
+    // })
 
   },
 
