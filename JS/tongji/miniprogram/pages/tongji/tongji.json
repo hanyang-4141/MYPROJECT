@@ -1,0 +1,6 @@
+{
+  "usingComponents": { 
+    "tongji-item":"../../components/tongji-item/tongji-item" ,
+    "myselect":"../../components/myselect/myselect"
+  }
+}

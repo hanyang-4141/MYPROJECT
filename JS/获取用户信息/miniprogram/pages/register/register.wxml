@@ -1,0 +1,38 @@
+
+<view>
+<view class="title">
+  <button type="primary" size="mini">增加</button>
+  <button type="primary" size="mini">删除</button>
+</view>
+<text>今日内容</text>
+<mybox> 123</mybox>
+<modal hidden="{{hidden}}" title="输入内容" confirm-text="确定" bindconfirm="confirm" no-cancel="{{true}}" >
+
+	<view>
+		<text>内容：</text>
+		<input type="text"></input>
+	</view>
+		<view class="select1">
+			<view class="need-member-list">
+				<text>成员：</text>				
+				<view wx:for="{{need_member}}" wx:key="id" class="need-member" data-id="{{index}}" data-name="{{item}}" bindlongpress="handle_del_member">
+					<text>{{item}}</text>
+					<text class="del-member"  >x</text>						
+				</view>
+				<image src="../../images/tianjia.png" class="add-member" bindtap="show_member"></image>
+			</view>
+			
+			<view wx:if="{{showmember}}" class="member-container" >
+				<view class="member" wx:for="{{member}}" bindtap="handle_member" data-id="{{index}}" data-name="{{item}}">	
+					{{item}}
+				</view>
+
+			</view>
+			<!-- <myselect propArray="{{nameArray}}" bind:selectlistTap="selectlistTap_name" class="select-name"></myselect> -->
+		</view>
+		
+
+	</modal>
+
+
+</view>

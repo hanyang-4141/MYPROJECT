@@ -1,0 +1,47 @@
+/**index.wxss**/
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+} 
+.userinfo{
+  /* display: block; */
+  width: 100%;
+  border-bottom: 1px solid gray;
+}
+.user_img {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: skyblue;
+  border-radius: 100rpx ;
+  /* text-align: center; */
+}
+.user_name {
+  display: block;
+  /* background-color: purple; */
+  text-align: center;
+  height: 50rpx;
+}
+.btn {
+  
+  height: 200rpx;
+  
+  border-radius: 50%;
+  background-size: cover;
+  
+  background-color: skyblue;
+}
+.btn[size]{
+  width: 200rpx;
+}
+
+
+#btn2 {
+  margin-top: 5rpx;
+}
+.shuru{
+  margin-top: 5rpx;
+  border: 1rpx solid skyblue;
+}

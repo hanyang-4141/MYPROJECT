@@ -1,0 +1,6 @@
+<!--zujian/x-teacheritem/x-teacheritem.wxml-->
+<view class="teacheritem">
+  <image class="teacher-img" src="/ziyuan/image/jiangshi2.jpg" mode="aspectFill"></image>
+  <view class="teacher-name">王子</view>
+
+</view>

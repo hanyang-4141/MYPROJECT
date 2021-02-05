@@ -1,0 +1,11 @@
+<view class="teachercontainer">
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+  <teacheritem></teacheritem>
+</view>

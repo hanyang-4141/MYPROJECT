@@ -1,0 +1,84 @@
+/* zujian/x-courseitem/x-courseitem.wxss */
+.courseitem {
+  display: flex;
+  height: 80px;
+}
+.courseitem .fm {
+  width: 140px;
+  height: 78px;
+  /* background-color: pink; */
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  display: flex;
+  flex-direction: row;
+}
+.courseitem .fm .course-img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+.courseitem .desc {
+  flex: 1;
+  /* background-color: blue; */
+  /* padding: 10px; */
+  border: 1px solid black;
+  /* justify-content: space-evenly; */
+  
+}
+.courseitem .desc .desc-course {
+  color: blue;
+  border-bottom: 1px solid black;
+  height: 40px;
+  
+}
+.courseitem .desc .desc-teacher {
+  color: gray; 
+  /* border-bottom: 1px solid black; */
+  
+}
+.courseitem .desc .desc-studycount {
+  color: green;
+  /* border-bottom: 1px solid black; */
+}
+.jiangshi-input {
+  background-color: pink;
+  height: 100%;
+}
+.jiangshi-text {
+  background-color: powderblue;
+  width: 70%;
+  padding-top: 30px;
+  border-right: 1px solid black;
+}
+
+.courseitem .desc .date {
+  height: 40px;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+}
+.courseitem .desc .date .date-text {
+  width: 40%;
+  background-color: blanchedalmond;
+  border-right: 1px solid black;
+}
+.courseitem .desc .time {
+  display: flex;
+  flex-direction: row;  
+  
+}
+.courseitem .desc .time .time-text {
+  width: 40%;
+  height: 37px;
+  background-color: blanchedalmond;
+  border-right: 1px solid black;
+}
+.courseitem .desc .date .date-input {
+  background-color: pink;
+  height: 40px;
+}
+.courseitem .desc .time .time-input {
+  background-color: pink;
+  height: 37px;
+}

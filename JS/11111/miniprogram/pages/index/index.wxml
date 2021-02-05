@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    
+    <button class="btn" size="default" style="background-image: url({{img_url}})" open-type="getUserInfo" bindgetuserinfo="GetuserInfo">
+      <!-- <image src="{{img_url}}"  class="user_img" bindtap="_handle_imgtap"></image> -->
+    </button>
+    <text class="user_name">{{username}}</text>  
+  </view>
+  <button class="btn1" type="primary" bindtap="tapfunction1">查询成绩</button>
+  <button id = "btn2" type="primary" bindtap="tapfunction2">插入成绩</button>
+  <input type="text" class="shuru" bindinput="inputfunction1"></input>
+  <input type="text" class="shuru"bindinput="inputfunction2"></input>
+  <input type="text" class="shuru"bindinput="inputfunction3" ></input>
+  <button id = "btn2" type="primary" bindtap="getid">获取OPENID</button>
+  <button id = "btn2" type="primary" bindtap="addfunction">调用云函数</button>
+  <button id = "btn2" type="primary" bindtap="shenqing">申请</button>
+</view>
+

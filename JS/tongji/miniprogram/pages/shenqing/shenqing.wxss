@@ -1,0 +1,60 @@
+/* pages/shenqing/shenqing.wxss */
+.container {
+  height: 1000rpx;
+  background-color: pink;
+}
+
+.content {
+  width: 100%;
+}
+.content-input {
+  background-color: rgb(212, 212, 216);
+  width: 100%;
+  height: 150rpx;
+  
+}
+.operation {
+  width: 100%;
+  font-size: 14px;
+}
+.sqr , .sqpz, .czr, .hfpz, .hfr {
+  width: 100%;
+  margin: 20rpx;
+  border: 1rpx solid black;
+}
+.sqr-text , .sqpz-text, .czr-text, .hfpz-text, .hfr-text {
+  display: inline-block;
+  background-color: blueviolet;
+  width: 25%;
+  height: 40rpx;
+}
+.sqr-date , .sqpz-date, .czr-date, .hfpz-date, .hfr-date {
+  /* float: right; */
+  display: inline-block;
+  width: 45%;
+  background-color: #fff;
+  margin-left: 5rpx;
+  font-size: 14px;
+}
+.sqr-time, .sqpz-time, .czr-time, .hfpz-time, .hfr-time {
+  /* float: right; */
+  display: inline-block;
+
+  width: 27%;
+  background-color: #fff;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+
+}
+
+.sqr-man, .sqpz-man, .czr-man, .hfpz-man, .hfr-man {
+  display: inline-block;
+  background-color: burlywood;
+  height: 40rpx;
+}
+.btn_delitem {
+  display: inline-block;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+}

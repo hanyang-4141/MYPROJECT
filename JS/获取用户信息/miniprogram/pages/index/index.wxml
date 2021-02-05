@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+
+	<!-- 用户 openid -->
+	<view class="userinfo">
+		<button class="userinfo-avatar" style="background-image: url({{avatarUrl}})" size="default"></button>
+		<!-- <view>点击登录</view> -->
+		<view class="userinfo-nickname-wrapper">
+			<button class="userinfo-nickname" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">{{logged? userInfo.nickName:'点击登录' }}</button>
+		</view>
+		<view class="username">{{logged? realname:'default'}}</view>
+	</view>
+	
+	<modal hidden="{{hidden}}" title="输入内容" confirm-text="确定" bindconfirm="confirm" no-cancel="{{true}}" >
+		<view class="select1">
+			<text>姓名：</text>
+			<myselect propArray="{{nameArray}}" bind:selectlistTap="selectlistTap_name" class="select-name"></myselect>
+		</view>
+		<view class="select2">
+			<text>班组：</text>
+			<myselect propArray="{{banzuArray}}" bind:selectlistTap="selectlistTap_banzu" class="select-banzu"></myselect>
+		</view>
+
+	</modal>
+
+
+</view>

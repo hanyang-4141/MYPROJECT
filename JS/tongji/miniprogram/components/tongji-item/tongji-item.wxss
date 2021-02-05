@@ -1,0 +1,38 @@
+/* components/tongji-item/tongji-item.wxss */
+.container {
+  margin-bottom: 20rpx;
+}
+.title {
+  width: 100%;
+}
+.jizu {
+  display: inline-block;
+  width: 25%;
+  background-color: pink;
+}
+.content {
+  display: inline-block;
+  width: 75%;
+  background-color: powderblue;
+}
+.caozuoren, .huifuren {
+  width: 100%;
+  background-color: rgb(238, 224, 226);
+  border-bottom: 1px solid black;
+}
+.caozuoren-1, .huifuren-1 {
+  display: inline-block;
+  width: 25%;
+}
+.caozuoren-2, .huifuren-2  {
+  display: inline-block;
+  width: 25%;
+}
+.caozuoren-3, .huifuren-3  {
+  display: inline-block;
+  width: 35%;
+}
+.caozuoren-4, .huifuren-4  {
+  display: inline-block;
+  width: 15%;
+}

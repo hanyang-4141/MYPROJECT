@@ -1,0 +1,31 @@
+<!-- components/tongji-item/tongji-item.wxml -->
+<view class="container" bindtap="handle_selectitem">
+  <view class="title">
+    <text class="jizu">{{tongjiitems.jizu}}</text>
+    <!-- <view class="content" style={{tongjiitems.hfr == ''}} ? "background-color:red" : "background-color:skyblue">{{tongjiitems.neirong}}</view> -->
+    <view class="content" style="background-color:{{tongjiitems.hfr==''?'red':'skyblue'}}" >{{tongjiitems.neirong}}</view>
+
+  </view>
+  <view class="operation">
+    <view class="caozuoren">
+      <text class="caozuoren-1">操作人：</text>
+      <text class="caozuoren-2">{{tongjiitems.czr}}</text>
+      <text class="caozuoren-3">{{tongjiitems.caozuodate}}</text>
+      <text class="caozuoren-4">{{tongjiitems.caozuotime}}</text>
+    </view>
+    <!-- <view class="pizhun1">
+      <text>批准：</text>
+      <view>{{tongjiitems.shenqingpizhundate}}</view>
+    </view> -->
+    <view class="huifuren">
+      <text class="huifuren-1">恢复人：</text>
+      <text class="huifuren-2">{{tongjiitems.hfr}}</text>
+      <text class="huifuren-3">{{tongjiitems.huifudate}}</text>
+      <text class="huifuren-4">{{tongjiitems.huifutime}}</text>
+    </view>
+    <!-- <view class="pizhun2">
+      <text>批准：</text>
+      <view>{{tongjiitems.huifupizhundate}}</view>
+    </view> -->
+  </view>
+</view>

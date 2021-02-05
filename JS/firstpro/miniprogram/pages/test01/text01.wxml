@@ -1,0 +1,16 @@
+<!--pages/test01/text01.wxml-->
+<button class="btn01" bindtap="_dianji">dianji</button>
+<form bindsubmit="_tabsubmit">
+  <view class="account-info">
+    <text >账户：</text>
+    <input class="account-input" name='account'></input>
+  </view>
+  <view class="password-info">
+    <text>密码：</text>
+    <input class="password-input" name='password'></input>
+  </view>
+  <button class="btn01" form-type="submit">提交</button>
+
+
+</form>
+<button class="btn01" bindtap="getdata">getdata</button>

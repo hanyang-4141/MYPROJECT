@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>943</width>
+    <height>754</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QListWidget" name="list1">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>90</y>
+     <width>91</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>ToolBar</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>TabBar</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>btn</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>文本获取</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListWidget" name="list2">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>90</y>
+     <width>141</width>
+     <height>191</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="com1">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>87</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>工单</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>工作票</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="com2">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>40</y>
+     <width>87</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>130</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>增加</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list3">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>90</y>
+     <width>291</width>
+     <height>191</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn1">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>350</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>开始</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_page_items">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>380</y>
+     <width>121</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>工单</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>工作票</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>装置</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListWidget" name="list_tab_items">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>380</y>
+     <width>141</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_operate_items">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>380</y>
+     <width>111</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>点击</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>写入文本</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>追加文本</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListWidget" name="list_element_toolbar_items">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>380</y>
+     <width>141</width>
+     <height>81</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_finally_items">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>380</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list_element_items">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>460</y>
+     <width>141</width>
+     <height>111</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

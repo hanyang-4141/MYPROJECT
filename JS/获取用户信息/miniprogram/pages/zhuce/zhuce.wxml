@@ -1,0 +1,14 @@
+<view class="task-container">
+  <view class="title">
+    <button type="primary" size="mini">增加</button>
+    <button type="primary" size="mini">删除</button>
+  </view>
+  <modal hidden="{{hidden}}" title="输入内容" confirm-text="确定" bindconfirm="confirm" no-cancel="{{true}}" >
+
+    <view>
+      <text>内容：</text>
+      <textarea type="text" confirm-type="done" class="task-content"></textarea>
+    </view> 
+
+  </modal>
+</view>

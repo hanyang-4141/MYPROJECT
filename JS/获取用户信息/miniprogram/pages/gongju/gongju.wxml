@@ -1,0 +1,38 @@
+<!--pages/gongju/gongju.wxml-->
+<view>
+  <input class="input" type="digit" placeholder="请输入温度" bindinput="inputTap" />
+  <button type="primary" bindtap="TempToMV">计算mv值</button>
+  <input class="input" type="digit" placeholder="请输入MV值" bindinput="inputTap2" />
+  <button type="primary" bindtap="MVToTemp">计算温度值</button>
+  <input class="input" type="digit" placeholder="请输入温度" bindinput="inputTap3" />
+  <button type="primary" bindtap="TempToResist">计算电阻值</button>
+  <input class="input" type="digit" placeholder="请输入电阻值" bindinput="inputTap4" />
+  <button type="primary" bindtap="ResistToTemp">计算温度值</button>
+  <radio-group class="radio" bindchange="updataRadio">
+    <!-- <view wx:for="{{YingYongItems}}">
+    <radio value="{{item.id}}" checked="{{item.checked}}" >{{item.name}}</radio>
+    </view> -->
+    <view class="redianzu">
+      <view>
+        <radio value="1" checked="checked" >热电阻</radio>
+      </view>
+      
+      <view class="redianzu-view">
+        <view class="redianzu-wendu">
+          <text class="text">温度</text>
+          <input class="input" type="text" />
+        </view>
+        <view class="redianzu-dianzu">
+          <text class="text">电阻</text>
+          <input class="input" type="text" />
+        </view>
+        
+      </view>
+    </view>
+
+    <view class="redianou">
+      <radio value="2"  >热电偶</radio>
+    </view>
+    
+  </radio-group>
+</view>

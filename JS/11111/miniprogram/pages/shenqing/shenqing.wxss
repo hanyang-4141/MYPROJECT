@@ -1,0 +1,12 @@
+/* pages/shenqing/shenqing.wxss */
+.container {
+  height: 800rpx;
+  background-color: pink;
+}
+.content {
+  background-color: purple;
+  height: 100rpx;
+  line-height: 100rpx;
+  left: 5rpx;
+  position: fixed;
+}

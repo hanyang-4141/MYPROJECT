@@ -1,0 +1,10 @@
+/* pages/teacherlist/teacherlist.wxss */
+.teachercontainer {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.teacheritem {
+  margin-top: 10px;
+}

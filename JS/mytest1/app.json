@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/teacherlist/teacherlist",
+    "pages/courselist/courselist",
+    "zujian/x-teacheritem/x-teacheritem",
+    "zujian/x-courseitem/x-courseitem"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d4237a",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/teacherlist/teacherlist",
+      "text": "讲师列表",
+      "iconPath": "/ziyuan/png/teacher-no.png",
+      "selectedIconPath": "/ziyuan/png/teacher-yes.png"
+    },{
+      "pagePath": "pages/courselist/courselist",
+      "text": "课程列表",
+      "iconPath": "/ziyuan/png/course-no.png",
+      "selectedIconPath": "/ziyuan/png/course-yes.png"
+    }]
+  }
+}

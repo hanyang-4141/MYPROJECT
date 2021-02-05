@@ -1,0 +1,46 @@
+.title {
+  display: flex;
+  flex-direction: row;
+}
+.add-member {
+  width: 80rpx;
+  height: 80rpx;
+  /* border: 2rpx solid black; */
+  border-radius: 50%;
+  margin-left: 50rpx;
+}
+.member-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.member {
+  /* margin-left: 10rpx;
+  margin-right: 10rpx; */
+  margin: 10rpx;
+  background-color: blanchedalmond;
+}
+.need-member-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.need-member {
+  margin: 20rpx;
+  background-color: burlywood;
+  position: relative;
+}
+.del-member {
+  display: inline-block;
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  right: -15rpx;
+  top: -15rpx;
+  font-size: 14px;
+  border: 2rpx solid  gray;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30rpx;
+  color: gray;
+}

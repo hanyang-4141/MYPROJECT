@@ -1,0 +1,5 @@
+<!--pages/courselist/courselist.wxml-->
+<view class="coursecontainer">
+  <x-courseitem > </x-courseitem>
+  <x-courseitem > </x-courseitem>
+</view>

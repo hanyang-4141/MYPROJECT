@@ -1,0 +1,46 @@
+.gs-box {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid green;
+  margin-bottom: 25rpx;
+}
+.title {
+  /* background-color: gray; */
+  border: 1rpx solid gray;
+}
+.name-list {
+  /* background-color: pink; */
+  /* height: 500rpx; */
+  
+}
+.name-item {
+  display: inline-block;
+  padding-right: 50rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+  /* background-color: yellowgreen; */
+  /* border-bottom: 1rpx solid gray; */
+}
+.name {
+  display: inline-block;
+  line-height: 80rpx;
+  margin-right: 20rpx;
+  background-color: green;
+}
+
+.btn-del {
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+  border: 2rpx solid gray;
+  background-color: paleturquoise;
+  border-radius: 25rpx;
+  
+  
+}
+.gs-date {
+  text-align: right;
+}
+.gs-xuhao {
+  /* margin-right: 50rpx; */
+}

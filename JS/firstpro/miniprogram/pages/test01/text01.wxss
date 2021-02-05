@@ -1,0 +1,13 @@
+/* pages/test01/text01.wxss */
+.btn01 {
+  background-color: burlywood;
+}
+ .password-info,
+.account-info {
+  display: flex;
+  flex-direction: row;
+}
+.password-input,
+.account-input {
+  border-bottom: 1px solid gray;
+}

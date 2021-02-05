@@ -1,0 +1,19 @@
+/* zujian/x-teacheritem/x-teacheritem.wxss */
+.teacheritem {
+  width: 100px;
+  height: 130px;
+  background-color: orange;
+  border-radius: 10px;
+}
+.teacheritem .teacher-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 2px dashed blue;
+  box-sizing: border-box;
+}
+.teacheritem .teacher-name {  
+  width: 100%;
+  text-align: center;
+  color: purple;
+}

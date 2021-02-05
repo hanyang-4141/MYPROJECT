@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "x-courseitem":"/zujian/x-courseitem/x-courseitem"
+  },
+  "navigationBarTitleText": "课程列表"
+}

@@ -1,0 +1,44 @@
+<!--pages/shenqing/shenqing.wxml-->
+<view class="container">
+  <picker class="jizu" mode="selector" value="{{index}}" range="{{array}}" bindchange="change_jizu">当前选择：{{selecteddata.jizu}}</picker>
+  <view class="content">
+    <text class="content-title">操作原因及内容：</text>
+    <button class="btn_delitem" size="mini" type="warn" plain bindtap="delitem">删除</button>
+    <textarea class="content-input" bindinput="change_content" placeholder="输入原因及内容" value="{{selecteddata.neirong}}"></textarea>
+    
+  </view>
+  <view class="operation">
+    <view class="sqr">
+      <text class="sqr-text">申请人：</text>
+      <input class="sqr-man" bindinput="change_sqr" value="{{selecteddata.sqr}}"></input>
+      <picker class="sqr-date" mode="date" value="{{sq_date}}" bindchange="change_sq_date"  >日期：{{selecteddata.shenqingdate}}</picker>
+      <picker class="sqr-time" mode="time" value="{{sq_date}}" bindchange="change_sq_time">时间：{{selecteddata.shenqingtime}}</picker>
+
+    </view>
+    <view class="sqpz">
+      <text class="sqpz-text">申请批准：</text>
+      <input class="sqpz-man" bindinput="change_sqpzr" value="{{selecteddata.sqpzr}}"></input>
+      <picker class="sqpz-date" mode="date" value="{{sqpz_date}}" bindchange="change_sqpz_date">日期：{{selecteddata.shenqingpizhundate}}</picker>
+      <picker class="sqpz-time" mode="time" value="{{sqpz_date}}" bindchange="change_sqpz_time">时间：{{selecteddata.shenqingpizhuntime}}</picker>
+    </view>
+    <view class="czr">
+      <text class="czr-text">操作人：</text>
+      <input class="czr-man" bindinput="change_czr" value="{{selecteddata.czr}}"></input>
+      <picker class="czr-date" mode="date" value="{{czr_date}}" bindchange="change_czr_date">日期：{{selecteddata.caozuodate}}</picker>
+      <picker class="czr-time" mode="time" value="{{czr_date}}" bindchange="change_czr_time">时间：{{selecteddata.caozuotime}}</picker>
+    </view>
+    <view class="hfpz">
+      <text class="hfpz-text">恢复批准：</text>
+      <input class="hfpz-man" bindinput="change_hfpzr" value="{{selecteddata.hfpzr}}"></input>
+      <picker class="hfpz-date" mode="date" value="{{hfpz_date}}" bindchange="change_hfpz_date">日期：{{selecteddata.huifupizhundate}}</picker>
+      <picker class="hfpz-time" mode="time" value="{{hfpz_date}}" bindchange="change_hfpz_time">时间：{{selecteddata.huifupizhuntime}}</picker>
+    </view>
+    <view class="hfr">
+      <text class="hfr-text">恢复人：</text>
+      <input class="hfr-man" bindinput="change_hfr" value="{{selecteddata.hfr}}"></input>
+      <picker class="hfr-date" mode="date" value="{{hfr_date}}" bindchange="change_hfr_date">日期：{{selecteddata.huifudate}}</picker>
+      <picker class="hfr-time" mode="time" value="{{hfr_date}}" bindchange="change_hfr_time">时间：{{selecteddata.huifutime}}</picker>
+    </view>
+  </view>
+  <button type="primary" bindtap="submit">提交</button>
+</view>

@@ -1,0 +1,18 @@
+/* pages/tongji/tongji.wxss */
+.mynavigation {
+  display: flex;
+  position: fixed;
+  background-color: peru;
+  left: 0rpx;
+  right: 0rpx;
+  /* top: 50rpx; */
+}
+.baohulist {
+  /* margin-top: 2rpx; */
+  width: 100%;
+  margin-top: 95rpx;
+}
+
+#select {
+  width: 35%;
+}

@@ -1,0 +1,17 @@
+<!--components/mybox/mybox.wxml-->
+<view class="gs-box">
+  <view class="title">
+    <text class="gs-xuhao">{{index}}、</text>
+    <text class="gs-content">我们一起去焦油</text>
+  </view>
+  <view class="name-list">
+    <block wx:for="{{myarray}}" wx:key="id" >
+      <view class="name-item">
+        <view class="name">{{item.name}}</view>
+        <view class="btn-del">一</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="gs-date">2020-08-18</view>
+</view>

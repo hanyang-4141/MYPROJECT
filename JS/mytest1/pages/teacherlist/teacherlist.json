@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "teacheritem" : "/zujian/x-teacheritem/x-teacheritem"   
+  },
+  "navigationBarTitleText": "讲师列表"
+}

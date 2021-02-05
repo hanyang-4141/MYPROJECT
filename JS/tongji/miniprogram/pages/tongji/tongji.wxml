@@ -1,0 +1,20 @@
+<!--pages/tongji/tongji.wxml-->
+<view class="mynavigation">
+  <!-- <button type="primary" bindtap="tapfun_search">查询</button> -->
+  <myselect id="select" options="{{options}}" key="city_id" text="city_name" bind:change="change"></myselect>
+  <button type="primary" bindtap="tapfun_new" size="mini">新增</button>
+  <switch bindchange="switch_change">未恢复</switch>
+</view>
+
+<!-- <text>{{content[0]._id}}</text> -->
+<!-- <block wx:for ="{{content}}"> -->
+  <!-- <text>{{item._id}}</text> -->
+  <!-- <tongji-item></tongji-item> -->
+<!-- </block> -->
+<!-- <tongji-item tongjiitems="{{content}}"></tongji-item> -->
+<view class="baohulist">
+  <block wx:for="{{content}}" wx:key="id">
+    <!-- <x-teacheritem teacheritem="{{item}}"></x-teacheritem>    -->
+    <tongji-item tongjiitems="{{item}}" binditemselect="handle_select"></tongji-item>
+</block>
+</view> 

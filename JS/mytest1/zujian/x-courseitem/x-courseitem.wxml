@@ -1,0 +1,26 @@
+<!--zujian/x-courseitem/x-courseitem.wxml-->
+<view class="courseitem">
+  <view class="fm">
+    <!-- <image class="course-img" src="/ziyuan/image/jiangshi1.jpg" mode="aspectFill"></image> -->
+    <view class="jiangshi-text">讲师：</view>
+    <input class="jiangshi-input"></input>
+  </view>
+
+  <view class="desc">
+    <view class="date">
+      <view class="date-text">日期：</view>
+      <input class="date-input"></input>
+    </view>
+
+    <view class="time">
+      <view class="time-text">时间：</view>
+      <input class="time-input"></input>  
+    </view>
+
+
+    
+    
+    <!-- <view class="desc-studycount">人数：</view> -->
+  </view>
+
+</view>

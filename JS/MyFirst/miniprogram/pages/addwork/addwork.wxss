@@ -1,0 +1,28 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx;
+}
+.content{
+  display: flex;
+  flex-direction: row;
+}
+.content text{
+  width: 15%;
+}
+.content textarea{
+  border: 1rpx solid gray;
+  height: 200rpx;
+}
+.tap{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.tap text{
+  width: 15%;
+}
+.tap input{
+  border: 1rpx solid gray;
+  flex: 1;
+}

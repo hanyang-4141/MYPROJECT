@@ -1,0 +1,42 @@
+/* pages/gongju/gongju.wxss */
+.input {
+  background-color: pink;
+}
+.redianzu, .redianou {
+  /* display: flex; */
+  height: 200rpx;
+  background-color: pink;
+  border: grey solid 1rpx;
+}
+.redianzu-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+  /* margin-bottom: 0rpx; */
+}
+.redianzu-wendu {
+  display: flex;
+  width: 50%;
+  
+}
+.redianzu-dianzu {
+  display: flex;
+  width: 50%;
+  
+}
+/* .redianzu-wendu .text {
+  width: 15%;
+} */
+.redianzu-wendu .input {
+  width: 45%;
+  background-color: grey;
+}
+/* .redianzu-dianzu .text {
+  width: 15%;
+} */
+.redianzu-dianzu .input {
+  width: 45%;
+  background-color: grey;
+}
+

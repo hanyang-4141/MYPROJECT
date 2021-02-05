@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/redianzu/redianzu",
+    "pages/redianou/redianou",
+    "pages/liangcheng/liangcheng",
+    "pages/worknote/worknote",
+    "pages/addwork/addwork"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d4237a",
+    "navigationBarTitleText": "我的小程序",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/tabbar/index-no.png",
+        "selectedIconPath": "./images/tabbar/index-yes.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./images/tabbar/my-no.png",
+        "selectedIconPath": "./images/tabbar/my-yes.png"
+      }
+    ]
+  }
+}

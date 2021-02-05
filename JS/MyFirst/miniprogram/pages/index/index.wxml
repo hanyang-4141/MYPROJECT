@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="tip">
+    <image class="tip-image" src="../../images/jiangshi.jpg" mode="aspectFill"></image>
+  </view>
+  <view class="content">
+    <view class="content-title">
+    工具：
+    </view>
+    <view class="group">
+      <text class="item orange" bindtap="tap_redianzu">热电阻</text>
+      <text class="item orange" bindtap="tap_redianou">热电偶</text>
+      <text class="item orange" bindtap="tap_liangcheng">量程</text>
+      <text class="item orange">备用</text>
+    </view>
+    <view class="group">
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+    </view>
+    <view class="group">
+      <text class="item orange">备用</text>
+      <text class="item orange">备用</text>
+      <text class="item orange">备用</text>
+      <text class="item orange">备用</text>
+    </view>
+    <view class="group">
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+      <text class="item blue">备用</text>
+    </view>
+    
+  </view>
+
+</view>

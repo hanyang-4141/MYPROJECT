@@ -1,0 +1,18 @@
+<!--pages/redianzu/redianzu.wxml-->
+<view class="selection">
+  <view class="title">类型选择器</view>
+  <picker class="kind-picker" mode="selector" range="{{redianzu_kind}}" bindchange="king_change">当前选择: {{redianzu_kind[kind_index]}}</picker>
+</view>
+<view class="jisuan">
+  <view class="group">
+    <text>温度</text>
+    <input type="digit" value="{{wendu}}" bindinput="input_wendu"/>
+    <button type="primary" bindtap="calc_wendu">计算</button>
+  </view>
+  <view class="group">
+    <text>阻值</text>
+    <input type="digit" value="{{zuzhi}}" bindinput="input_zuzhi"/>
+    <button type="primary" bindtap="calc_zuzhi">计算</button>
+  </view>
+  <button type="primary" bindtap="clearinput">重置</button>
+</view>

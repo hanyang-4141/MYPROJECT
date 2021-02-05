@@ -1,0 +1,66 @@
+<!-- <view >
+    <view class="th-nerirongyuanyin bg-title">内容及原因：</view>
+    <view class="kongbai-neirongyuanyin" > 
+        <input class="bg-kongbai" style="height:100%"></input>
+     </view>
+	<view class="tr">
+		<view class="th th-title  bg-title">申请人：</view>
+		<view class="th">head2</view>
+		<view class="th th-title  bg-title">值长：</view>
+        <view class="th ">head3</view>
+	</view>
+    <view class="tr">
+		<view class="th th-title  bg-title">申请时间：</view>
+		<view class="th">head2</view>
+		<view class="th th-title  bg-title">批准时间：</view>
+        <view class="th ">head3</view>
+	</view>
+    <view class="tr">
+		<view class="th th-title  bg-title">操作人：</view>
+		<view class="th">head2</view>
+		<view class="th th-title  bg-title">恢复人：</view>
+        <view class="th ">head3</view>
+	</view>
+    <view class="tr">
+		<view class="th th-title  bg-title">操作时间：</view>
+		<view class="th">head2</view>
+		<view class="th th-title  bg-title">恢复时间：</view>
+        <view class="th ">head3</view>
+	</view>
+
+	
+</view> -->
+<view>
+    <view class="label bg-qingse">neirong ji yuanyin</view>
+    <view style="height:80px">
+        <input class="bg-gray" style="height:100%"></input>
+    </view>
+    <view class="lie">
+        <view class="hang">
+            <view class="label">申请人：</view>
+            <view class="lie ">
+                <view class="hang" style="font-size: 12px">日期：
+                    <input class="input"></input>
+                </view>
+                <view class="hang" style="font-size: 12px">时间：
+                <input class="input"></input>
+                </view>
+            </view>
+            <view class="label">值长：</view>
+            <view class="lie ">
+                <view class="hang " style="font-size: 12px">日期：
+                    <input class="input"></input>
+                </view>
+                <view class="hang" style="font-size: 12px">时间：
+                    <input class="input"></input>
+                </view>
+            </view>
+
+        </view>
+    
+    
+    
+    </view>
+
+
+</view>

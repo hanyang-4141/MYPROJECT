@@ -1,0 +1,5 @@
+/* pages/courselist/courselist.wxss */
+.coursecontainer {
+  display: flex;
+  flex-direction: column;
+}

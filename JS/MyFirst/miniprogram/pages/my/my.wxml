@@ -1,0 +1,57 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+
+  <view class="userinfo">
+    <button class="userinfo-img"
+      open-type="getUserInfo"
+      bindgetuserinfo="onGetUserInfo"
+      style="background-image: url({{user_img}})"
+      size="default"
+    
+    ></button>
+    <view class="userinfo-text">
+      <text class="userinfo-username">{{username}}</text>
+      <text class="userinfo-nickname" bindtap="onGetOpenid" >{{nickName}}</text>
+      <text class="userinfo-id" bindtap="onGetOpenid" >{{myid}}</text>
+    </view>
+
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>工作记录</text>      
+    </view>    
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>加班统计</text>      
+    </view>    
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>保护投退</text>      
+    </view>    
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>备品备件</text>      
+    </view>    
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>遗留项目</text>      
+    </view>    
+  </view>
+
+  <view class="group">
+    <view class="SQTJ-text" bindtap="SQTJ">
+      <text>重大缺陷</text>      
+    </view>    
+  </view>
+
+
+</view>
