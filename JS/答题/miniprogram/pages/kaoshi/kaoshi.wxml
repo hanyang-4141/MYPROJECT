@@ -1,3 +1,7 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">考试</view>
+</cu-custom>
+
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
     <text class="text-black">{{tags+1}}/{{KaoShi.length}}.{{tags<danxuanSum?'（单选）':((tags>=(danxuanSum+duoxuanSum))?'（判断）':'（多选）')}}{{KaoShi[tags].title}}</text>
@@ -20,11 +24,30 @@
   <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
     <view class="cu-dialog">
       <view class="cu-bar bg-white">
-        <view class="action text-blue" bindtap="hideModal">收起</view>
+        <view class="action text-blue" bindtap="goMain">返回首页</view>
+        <view class="action text-blue" bindtap="hideModal">收起</view>        
       </view>
+
+
+
+    <view wx:if='{{FenShu>= 60}}' class='box-text'>
+    <!-- <image src='../../images/success.gif' mode='center'></image> -->
+    <view class="padding bg-green radius animation-slide-top" style='width:550rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，恭喜通过考试！</view>    
+    
+</view>
+<view wx:else class='box-text'>
+    <!-- <image src='../../images/fail.gif' mode='center'></image> -->
+    <view class="padding bg-red radius animation-slide-bottom" style='width:600rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，很遗憾未能通过考试！</view>    
+</view>
+
+
+
+
+
+
       <view>
-        <view wx:for='{{cardArr}}' wx:key class="margin " style='display:inline-block'>
-          <button class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}' bindtap="cardClick">{{index+1}}</button>
+        <view wx:for='{{DaTiKa}}' wx:key class="margin " style='display:inline-block'>
+          <text class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}' bindtap="cardClick">{{index+1}}</text>
         </view>
       </view>
     </view>

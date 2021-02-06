@@ -29,7 +29,7 @@ for ff in strlist:
             mydict.setdefault('answer', res[0].upper())
             Questions.append(mydict)
             templist = []
-        temptitle = ff
+        temptitle = re.sub(str, '', ff)
         res = re.findall(str, ff)
 
     else:
@@ -39,8 +39,10 @@ for ff in strlist:
         tempdict.setdefault('name', ff[2:])
         templist.append(tempdict)
 
-# print(Questions[100])
+# print(Questions)
+for q in Questions:
+    print(q['title'])
 ddd = {}
-ddd.setdefault('question',Questions)
+ddd.setdefault('DanXuan',Questions)
 myjson = json.dumps(ddd)
 print(myjson)

@@ -40,9 +40,9 @@ Page({
       item.checked = false
     })
     chooseArr[index].checked = true
-    console.log(chooseArr);
+    // console.log(chooseArr);
     if(chooseArr[index].value != this.data.PanDuan[this.data.tags].answer){
-      console.log('error');
+      // console.log('error');
       this.setData({
         answererror: true
       })

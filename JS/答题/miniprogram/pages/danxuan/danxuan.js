@@ -52,7 +52,7 @@ Page({
     )
     chooseArr[index].checked = true
     if(chooseArr[index].value != this.data.DanXuan[this.data.tags].answer){
-      console.log('error');
+      // console.log('error');
       this.setData({
         answererror: true
       })
@@ -64,7 +64,7 @@ Page({
     })    
   },
   onLoad: function (options) {
-    var tempArr = []
+    var tempArr = []    
     app.globalData.Questions.data[0].DanXuan.forEach(item =>{
       tempArr.push(item)
     })    

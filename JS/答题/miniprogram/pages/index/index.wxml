@@ -2,12 +2,11 @@
   <view slot="content">首页</view>
 </cu-custom>
 
-
 <view class="flex padding justify-center margin-top-xl">
-  <view class="cu-avatar round lg" style="background-image:url({{avatarUrl}});">
+  <button class="cu-avatar round lg" style="background-image:url({{avatarUrl}});" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
     <view class="cu-tag badge {{userInfo.gender%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}">
     </view>
-  </view>
+  </button>
 </view>
 
 <view class="flex justify-center padding-bottom-xl">
@@ -16,7 +15,7 @@
       <text>姓名</text>
     </view>
     <view class="cu-tag line-red">
-      {{userName}}
+      {{nickName}}
     </view>
   </view>
 
@@ -25,7 +24,8 @@
       <text>班级</text>
     </view>
     <view class="cu-tag line-blue">
-      {{userClass}}
+      <!-- {{userClass}} -->
+      集散班
     </view>
   </view>
 </view>

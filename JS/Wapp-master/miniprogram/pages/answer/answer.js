@@ -53,7 +53,7 @@ Page({
     questions: [], //题库
     tags: 0, //题目标识
     newArr: [], //随机数数组
-    cardArr: [], //答题卡数组
+    cardArr: [true,false,false,true,false,true,true,false,false,true,false,true], //答题卡数组
     cardIndex: 0, //答题卡序号
     answerArr: [], //正确答案数组
     subTag: false, //设置提交状态，防止提交后继续倒计时
@@ -194,6 +194,7 @@ Page({
   },
 
   showModal(res) { //显示关闭答题卡
+    console.log(this.data.cardArr);
     this.setData({
       modalName: res.currentTarget.dataset.target
     })
@@ -213,7 +214,7 @@ Page({
         // const answerBank = res.data[0].question[0];
         // console.log(answerBank);
         this.setData({
-          questions: res.data[0].question,
+          questions: res.data[0].DanXuan,
         })
         // console.log(this.data.questions);
         var oldArr = [];

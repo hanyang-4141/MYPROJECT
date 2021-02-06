@@ -12,12 +12,12 @@ for ll in l1:
     else:
         pd_daan.append(False)
 print(pd_daan)
-
+import  re
 
 ff = open(r'd:\panduan.txt', 'r',encoding='UTF-8')
 strlist1 = ff.readlines()
 print(strlist1)
-
+str = r"[f]+"
 Questions = []
 print('题目长度',len(strlist1))
 print('答案长度',len(l1))
@@ -26,12 +26,12 @@ for index,h in enumerate(strlist1):
     print(h)
     mydict.setdefault('answer', pd_daan[index])
     mydict.setdefault('options', [{'checked': False, 'name': '正确', 'value': True}, {'checked': False, 'name': '错误', 'value': False}])
-    mydict.setdefault('title', h)
+    mydict.setdefault('title', re.sub(str, '', h))
 
     Questions.append(mydict)
 # print(Questions)
-# for q in Questions:
-#     print(q)
+for q in Questions:
+    print(q['title'])
 import  json
 ddd = {}
 ddd.setdefault('PanDuan',Questions)

@@ -6,13 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    danxuanSum:5,
-    duoxuanSum:2,
-    panduanSum:5,
+    danxuanSum:20,
+    duoxuanSum:10,
+    panduanSum:20,
     KaoShi: null,
     tags: 0,
     DaTiKa: [],
-    FenShu: 100
+    FenShu: 0,
+    modalName: null,    
   },
 
   /**
@@ -23,15 +24,14 @@ Page({
     app.globalData.Questions.data[0].DanXuan.forEach(item =>{
       tempArr.push(item)
       
-    })    
-    // console.log(tempArr);
+    })   
+    
     var newArr = [];
         while (newArr.length < this.data.danxuanSum) {
           var index = parseInt(Math.random() * tempArr.length);
           newArr = newArr.concat(tempArr.splice(index, 1)) 
           this.data.DaTiKa.push(false)
-        }
-    // console.log(newArr);
+        }   
     tempArr = []
     app.globalData.Questions.data[1].DuoXuan.forEach(item =>{
       tempArr.push(item)      
@@ -50,45 +50,40 @@ Page({
       newArr = newArr.concat(tempArr.splice(index, 1)) 
       this.data.DaTiKa.push(false)
     }
-    console.log(newArr);
+    // console.log(newArr);
     this.setData({
       KaoShi: newArr,
       DaTiKa:this.data.DaTiKa
     })
-    console.log(this.data.DaTiKa);
+    // console.log(this.data.DaTiKa);
   },
 
-  chooseAnswer(res){
-    
+  chooseAnswer(res){    
     let chooseArr = this.data.KaoShi[this.data.tags].options;
     let index = res.currentTarget.dataset.index;  
-    
-  
-    
     if(this.data.tags >= this.data.danxuanSum && this.data.tags < (this.data.danxuanSum + this.data.duoxuanSum)){
       //多选
-      console.log('duo xuan');
+      // console.log('duo xuan');
       chooseArr[index].checked = !chooseArr[index].checked
       // console.log(chooseArr);
       var temp = ''
       chooseArr.forEach(item =>{
         if(item.checked == true){
           temp += item.value
-        }
-        
+        }        
       })
-      console.log(temp);
+      // console.log(temp);
       if(this.data.KaoShi[this.data.tags].answer == temp){
         this.data.DaTiKa[this.data.tags] = true
-        console.log('dui');
+        // console.log('dui');
       }else{
         this.data.DaTiKa[this.data.tags] = false
-        console.log('cuo');
+        // console.log('cuo');
       }
 
     }else{
       // 单选题 或 判断
-      console.log('danxuan  huo  panduan');      
+      // console.log('danxuan  huo  panduan');      
       chooseArr.forEach(item => {
         item.checked = false
       })
@@ -108,7 +103,7 @@ Page({
       KaoShi: this.data.KaoShi, 
       DaTiKa: this.data.DaTiKa
     })    
-    console.log(this.data.DaTiKa);
+    // console.log(this.data.DaTiKa);
   },
 
   beforeQuestion(){
@@ -120,22 +115,60 @@ Page({
     })
   },
   afterQuestion(){
-    // var answer = this.data.KaoShi[tags].answer
-
     if (this.data.tags + 2 > this.data.KaoShi.length){
       //交卷
       var sum = this.data.DaTiKa.filter(Boolean).length
       this.setData({
-        FenShu: Math.round(sum * 100 /this.data.KaoShi.length)
+        FenShu: Math.round(sum * 100 /this.data.KaoShi.length),
+        modalName: 'bottomModal',
       })
-      console.log('总分：',this.data.FenShu);
       return
-    }
-    // console.log(this.data.DaTiKa);
+    }   
       this.setData({        
         tags: this.data.tags + 1,        
-      })
-      
+      })      
   },
 
+  showModal(res) { 
+    var sum = this.data.DaTiKa.filter(Boolean).length      
+    this.setData({
+      FenShu: Math.round(sum * 100 /this.data.KaoShi.length),
+      modalName: res.currentTarget.dataset.target,      
+    })
+  },
+
+  hideModal(res) {
+    this.setData({
+      modalName: null
+    })
+  },
+
+  cardClick: function(res) {    
+    var cardIndex = res.currentTarget.dataset.index;   
+    this.setData({
+      tags: cardIndex,
+      modalName: null,
+    })
+  },
+  goMain(res){
+    var cardIndex = res.currentTarget.dataset.index;
+    this.setData({
+      tags: cardIndex,
+      modalName: null,
+    })
+    wx.showModal({
+      title: '提示',
+      content: '是否退出考试？',
+      success (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          wx.reLaunch({
+            url: '../index/index',
+          })
+        } else if (res.cancel) {
+          // console.log('用户点击取消')
+        }
+      }
+    })
+  }
 })

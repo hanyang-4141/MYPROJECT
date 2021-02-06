@@ -1,4 +1,6 @@
-
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">多选题</view>
+</cu-custom>
 
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>

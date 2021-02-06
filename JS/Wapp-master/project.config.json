@@ -45,16 +45,13 @@
   "compileType": "miniprogram",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
@@ -112,6 +109,13 @@
           "id": -1,
           "name": "order",
           "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "result",
+          "pathName": "pages/result/result",
+          "query": "",
           "scene": null
         }
       ]

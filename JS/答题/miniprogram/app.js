@@ -14,19 +14,27 @@ App({
         traceUser: true,
       })
     }
-    const db = wx.cloud.database();
-    
-    this.globalData = {
-      Questions: null,     
+    const db = wx.cloud.database();    
+    // this.globalData = {
+    //   Questions: null,     
 
-    },
-    db.collection('questionBank').get({
-      success: res=> {
-        // console.log(res);
-        this.globalData.Questions = res
-        // console.log(this.globalData.PanDuanTi);
+    // },   
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      }
+    })
+    db.collection('questionBank-noanswer').get({
+      success: res=> {                
+        this.globalData.Questions = res       
       }
   })
-  // console.log(this.globalData.PanDuanTi);
+  },
+  globalData:{
+    Questions: null,   
+      
   }
 })
