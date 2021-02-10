@@ -45,6 +45,7 @@ Page({
           wx.getUserInfo({
             success: res => {
               // console.log(res);
+              getApp().globalData.userInfo = res.userInfo
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo,
@@ -63,6 +64,7 @@ Page({
   onGetUserInfo: function(e) {
     if (!this.data.logged && e.detail.userInfo) {
       // console.log(e);
+      getApp().globalData.userInfo = e.detail.userInfo
       this.setData({
         logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,

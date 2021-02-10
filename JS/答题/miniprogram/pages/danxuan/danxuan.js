@@ -40,7 +40,7 @@ Page({
         tags: this.data.tags + 1,
         answererror: false,
         hidden: true
-      })
+      })     
   },
   chooseAnswer(res){
     
@@ -64,8 +64,10 @@ Page({
     })    
   },
   onLoad: function (options) {
-    var tempArr = []    
-    app.globalData.Questions.data[0].DanXuan.forEach(item =>{
+    let json_str = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    let json_arry = JSON.parse(json_str)    //深拷贝
+    let tempArr = []    
+    json_arry.forEach(item =>{
       tempArr.push(item)
     })    
     // console.log(tempArr);

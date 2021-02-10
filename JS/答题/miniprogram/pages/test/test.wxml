@@ -1,0 +1,8 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">测试</view>
+</cu-custom>
+
+
+<view>
+  <button type="primary" bindtap="test">测试</button>
+</view>

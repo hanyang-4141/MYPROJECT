@@ -22,8 +22,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var tempArr = []
-    app.globalData.Questions.data[1].DuoXuan.forEach(item =>{
+    let json_str = JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
+    let json_arry = JSON.parse(json_str)    //深拷贝
+    let tempArr = []
+    json_arry.forEach(item =>{
       tempArr.push(item)
     })    
     // console.log(tempArr);
@@ -69,22 +71,22 @@ Page({
         tempanswer += item.value
       }
     })
-    console.log(tempanswer,rightanswer);
+    // console.log(tempanswer,rightanswer);
     if(tempanswer === rightanswer){
-      console.log("回答正确");
+      // console.log("回答正确");
       this.setData({
         hidden: false
       })
     }
     else{
-      console.log("回答错误");
+      // console.log("回答错误");
       chooseArr.forEach(item =>{
         item.checked = false
         if(rightanswer.indexOf(item.value) != -1){
           item.checked = true
         }
       })
-      console.log(chooseArr);
+      // console.log(chooseArr);
       this.setData({
         answererror: true,
         DuoXuan:this.data.DuoXuan,

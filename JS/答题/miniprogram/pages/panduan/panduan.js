@@ -16,8 +16,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var tempArr = []
-    app.globalData.Questions.data[2].PanDuan.forEach(item =>{
+    let json_str = JSON.stringify(app.globalData.Questions.data[2].PanDuan)
+    let json_arry = JSON.parse(json_str)    //深拷贝
+    let tempArr = []
+    json_arry.forEach(item =>{
       tempArr.push(item)
     })    
     // console.log(tempArr);

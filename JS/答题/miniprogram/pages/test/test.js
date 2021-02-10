@@ -1,4 +1,4 @@
-// pages/me/me.js
+// pages/test/test.js
 var app = getApp()
 Page({
 
@@ -6,21 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '../../pages/index/user-unlogin.png',
-    userInfo: {},
-    nickName: '',
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  
-  onLoad: function (options) {
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      nickName: app.globalData.userInfo.nickName,
-      avatarUrl: app.globalData.userInfo.avatarUrl
+  test(){
+    
+    var tempstr = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    var temparr = JSON.parse(tempstr)
+    var temp = []
+    temparr.forEach(item=>{
+      temp.push(item)
     })
+    temp[0].options[0].checked = true
+    
+    console.log(temp);
+    console.log(app.globalData.Questions.data[0].DanXuan);
+    
+  },
+  onLoad: function (options) {
+
   },
 
   /**

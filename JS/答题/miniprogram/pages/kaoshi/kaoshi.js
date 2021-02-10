@@ -20,20 +20,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let json_str = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    let json_arry = JSON.parse(json_str)    //深拷贝
     var tempArr = []
-    app.globalData.Questions.data[0].DanXuan.forEach(item =>{
+    json_arry.forEach(item =>{
       tempArr.push(item)
       
-    })   
-    
+    })       
     var newArr = [];
         while (newArr.length < this.data.danxuanSum) {
           var index = parseInt(Math.random() * tempArr.length);
           newArr = newArr.concat(tempArr.splice(index, 1)) 
           this.data.DaTiKa.push(false)
         }   
+    json_str = JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
+    json_arry = JSON.parse(json_str)    //深拷贝
     tempArr = []
-    app.globalData.Questions.data[1].DuoXuan.forEach(item =>{
+    json_arry.forEach(item =>{
       tempArr.push(item)      
     })    
     while (newArr.length < (this.data.danxuanSum + this.data.duoxuanSum)) {
@@ -41,8 +44,11 @@ Page({
       newArr = newArr.concat(tempArr.splice(index, 1)) 
       this.data.DaTiKa.push(false)
     }
+
+    json_str = JSON.stringify(app.globalData.Questions.data[2].PanDuan)
+    json_arry = JSON.parse(json_str)    //深拷贝
     tempArr = []
-    app.globalData.Questions.data[2].PanDuan.forEach(item =>{
+    json_arry.forEach(item =>{
       tempArr.push(item)      
     })    
     while (newArr.length < (this.data.danxuanSum + this.data.duoxuanSum + this.data.panduanSum)) {

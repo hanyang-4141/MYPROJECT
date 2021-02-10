@@ -54,19 +54,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        },
-        {
-          "name": "dati",
-          "pathName": "pages/dati/dati",
-          "query": "",
-          "scene": null
-        },
+      "list": [       
         {
           "name": "pages/duoxuan/duoxuan",
           "pathName": "pages/duoxuan/duoxuan",
