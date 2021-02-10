@@ -27,6 +27,8 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
+
+
     db.collection('questionBank-noanswer').get({
       success: res=> {                
         this.globalData.Questions = res       
@@ -35,6 +37,7 @@ App({
   },
   globalData:{
     Questions: null,   
+    userInfo: {},
       
   }
 })

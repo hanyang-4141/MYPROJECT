@@ -2494,6 +2494,7 @@ button.icon.lg {
 	background-color: #f8f8f8;
 	border-radius: 10rpx;
 	overflow: hidden;
+	padding-top: 800rpx;
 }
 
 .cu-modal.bottom-modal::before {
