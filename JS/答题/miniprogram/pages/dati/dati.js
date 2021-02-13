@@ -1,0 +1,76 @@
+//index.js
+const app = getApp()
+
+Page({
+  data: {
+    nickName: '',
+    avatarUrl: './user-unlogin.png',
+    userInfo: {},
+    logged: false,
+    takeSession: false,
+    requestResult: '',
+    elements:[
+      {
+        title:'单选题',
+        name:'danxuan',
+        icon:'question',
+        color:'blue'
+      },
+      {
+        title: '多选题',
+        name: 'duoxuan',
+        icon: 'like',
+        color: 'red'
+      },
+      {
+        title: '判断题',
+        name: 'panduan',
+        icon: 'copy',
+        color: 'cyan'
+      },
+      {
+        title: '考试',
+        name: 'kaoshi',
+        icon: 'settings',
+        color: 'pink'
+      },
+    ]
+  },
+
+  onLoad: function() {
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              // console.log(res);
+              getApp().globalData.userInfo = res.userInfo
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo,
+                nickName: res.userInfo.nickName
+              })
+            }
+          })
+        }
+      }
+    })
+    // console.log(this.data.nickName);
+
+    
+  },
+  
+  onGetUserInfo: function(e) {
+    if (!this.data.logged && e.detail.userInfo) {
+      // console.log(e);
+      getApp().globalData.userInfo = e.detail.userInfo
+      this.setData({
+        logged: true,
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        userInfo: e.detail.userInfo,
+        nickName: e.detail.userInfo.nickName
+      })
+    }
+  },
+})

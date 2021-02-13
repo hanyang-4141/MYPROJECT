@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '../../pages/index/user-unlogin.png',
+    avatarUrl: '../../pages/login/user-unlogin.png',
     userInfo: {},
     nickName: '',
   },
