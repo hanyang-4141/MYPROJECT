@@ -25,6 +25,18 @@
   font-weight: normal;
   flex-grow: 1;
 }
+.hezi{
+  justify-content: space-between;
+}
 .hehe{
   display: flex;
+}
+.nickname{
+  width: 60%;
+}
+/* .touxiang{
+  width: 30%;
+} */
+.jiantou{
+  width: 10%;
 }

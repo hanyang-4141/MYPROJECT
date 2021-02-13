@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-pink" isBack='{{false}}'>
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
   <view slot="content">首页</view>
 </cu-custom>
 

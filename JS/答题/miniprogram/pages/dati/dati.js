@@ -19,7 +19,7 @@ Page({
       {
         title: '多选题',
         name: 'duoxuan',
-        icon: 'like',
+        icon: 'back',
         color: 'red'
       },
       {
@@ -33,6 +33,18 @@ Page({
         name: 'kaoshi',
         icon: 'settings',
         color: 'pink'
+      },
+      {
+        title: '错题',
+        name: 'cuoti',
+        icon: 'bad',
+        color: 'purple'
+      },
+      {
+        title: '收藏',
+        name: 'shoucang',
+        icon: 'like',
+        color: 'orange'
       },
     ]
   },
@@ -61,16 +73,16 @@ Page({
     
   },
   
-  onGetUserInfo: function(e) {
-    if (!this.data.logged && e.detail.userInfo) {
-      // console.log(e);
-      getApp().globalData.userInfo = e.detail.userInfo
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo,
-        nickName: e.detail.userInfo.nickName
-      })
-    }
-  },
+  // onGetUserInfo: function(e) {
+  //   if (!this.data.logged && e.detail.userInfo) {
+  //     // console.log(e);
+  //     getApp().globalData.userInfo = e.detail.userInfo
+  //     this.setData({
+  //       logged: true,
+  //       avatarUrl: e.detail.userInfo.avatarUrl,
+  //       userInfo: e.detail.userInfo,
+  //       nickName: e.detail.userInfo.nickName
+  //     })
+  //   }
+  // },
 })

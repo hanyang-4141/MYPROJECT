@@ -5,6 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    elements:[
+      {
+        title:'安规题',
+        name:'dati',
+        icon:'question',
+        color:'green'
+      },
+      {
+        title: '热电阻',
+        name: 'resistance',
+        icon: 'like',
+        color: 'yellow'
+      },
+      {
+        title: '热电偶',
+        name: 'Thermocouple',
+        icon: 'copy',
+        color: 'brown'
+      },
+      {
+        title: '量程',
+        name: 'measure',
+        icon: 'settings',
+        color: 'orange'
+      },
+    ]
 
   },
 
