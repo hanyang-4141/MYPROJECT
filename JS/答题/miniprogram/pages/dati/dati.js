@@ -31,7 +31,7 @@ Page({
       {
         title: '考试',
         name: 'kaoshi',
-        icon: 'settings',
+        icon: 'upstage',
         color: 'pink'
       },
       {

@@ -2,9 +2,15 @@
   <view slot="content">单选题</view>
 </cu-custom>
 
+<view class="padding-lg " >
+	<view class="cu-progress round bg-white">
+    <view class="'bg-blue'" style="width:{{(tags+1)*100/DanXuan.length}}%">{{tags+1}}/{{DanXuan.length}}</view>      
+  </view>  
+</view>
+
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{tags+1}}/{{DanXuan.length}}.{{DanXuan[tags].title}}</text>
+    <text class="text-black">{{DanXuan[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->

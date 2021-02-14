@@ -9,7 +9,7 @@ Page({
       {
         title:'安规题',
         name:'dati',
-        icon:'question',
+        icon:'safe',
         color:'green'
       },
       {
@@ -28,7 +28,7 @@ Page({
         title: '量程',
         name: 'measure',
         icon: 'settings',
-        color: 'orange'
+        color: 'mauve'
       },
     ]
 

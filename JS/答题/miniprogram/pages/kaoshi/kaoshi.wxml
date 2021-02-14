@@ -2,9 +2,15 @@
   <view slot="content">考试</view>
 </cu-custom>
 
+<view class="padding-lg " >
+	<view class="cu-progress round bg-white">
+    <view class="'bg-blue'" style="width:{{(tags+1)*100/KaoShi.length}}%">{{tags+1}}/{{KaoShi.length}}</view>      
+  </view>  
+</view>
+
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{tags+1}}/{{KaoShi.length}}.{{tags<danxuanSum?'（单选）':((tags>=(danxuanSum+duoxuanSum))?'（判断）':'（多选）')}}{{KaoShi[tags].title}}</text>
+    <text class="text-black">{{tags<danxuanSum?'(单选)':((tags>=(danxuanSum+duoxuanSum))?'(判断)':'(多选)')}}{{KaoShi[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
