@@ -1,48 +1,10 @@
-// miniprogram/pages/index/index.js
+// pages/jobs/jobs.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    elements:[
-      {
-        title:'安规题',
-        name:'dati',
-        icon:'safe',
-        color:'red'
-      },
-      {
-        title: '工具',
-        name: 'tools',
-        icon: 'like',
-        color: 'orange'
-      },
-      {
-        title:'工作记录',
-        name:'jobs',
-        icon:'safe',
-        color:'yellow'
-      },      
-      {
-        title:'培训记录',
-        name:'train',
-        icon:'safe',
-        color:'olive'
-      },
-      {
-        title:'保护投退',
-        name:'protect',
-        icon:'safe',
-        color:'green'
-      },
-      {
-        title:'加班统计',
-        name:'overtime',
-        icon:'safe',
-        color:'cyan'
-      },
-    ]
+  data: {    
 
   },
 
@@ -100,5 +62,34 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // ListTouch触摸开始
+  ListTouchStart(e) {
+    this.setData({
+      ListTouchStart: e.touches[0].pageX
+    })
+  },
+
+  // ListTouch计算方向
+  ListTouchMove(e) {
+    this.setData({
+      ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
+    })
+  },
+
+  // ListTouch计算滚动
+  ListTouchEnd(e) {
+    if (this.data.ListTouchDirection =='left'){
+      this.setData({
+        modalName: e.currentTarget.dataset.target
+      })
+    } else {
+      this.setData({
+        modalName: null
+      })
+    }
+    this.setData({
+      ListTouchDirection: null
+    })
   }
 })

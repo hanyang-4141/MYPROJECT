@@ -1,0 +1,27 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">工作记录</view>
+</cu-custom>
+
+
+
+<view class="cu-list menu" >
+    <view class="cu-item solids-bottom  {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">    
+     
+      <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
+
+     
+
+      
+        <view class="content">
+          <view class="text-grey">文晓港</view>
+          <view class="text-gray text-sm">
+            <text class="cuIcon-infofill text-red"></text> 消息未送达</view>
+        </view>
+       
+        <view class="move">
+          <view class="bg-grey">置顶</view>
+          <view class="bg-red">删除</view>
+        </view>
+      
+    </view>
+  </view>

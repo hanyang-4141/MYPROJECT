@@ -1,48 +1,10 @@
-// miniprogram/pages/index/index.js
+// pages/train/train.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    elements:[
-      {
-        title:'安规题',
-        name:'dati',
-        icon:'safe',
-        color:'red'
-      },
-      {
-        title: '工具',
-        name: 'tools',
-        icon: 'like',
-        color: 'orange'
-      },
-      {
-        title:'工作记录',
-        name:'jobs',
-        icon:'safe',
-        color:'yellow'
-      },      
-      {
-        title:'培训记录',
-        name:'train',
-        icon:'safe',
-        color:'olive'
-      },
-      {
-        title:'保护投退',
-        name:'protect',
-        icon:'safe',
-        color:'green'
-      },
-      {
-        title:'加班统计',
-        name:'overtime',
-        icon:'safe',
-        color:'cyan'
-      },
-    ]
 
   },
 

@@ -1,46 +1,28 @@
-// miniprogram/pages/index/index.js
+// pages/tools/tools.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    elements:[
+    elements:[            
       {
-        title:'安规题',
-        name:'dati',
-        icon:'safe',
-        color:'red'
-      },
-      {
-        title: '工具',
-        name: 'tools',
+        title: '热电阻',
+        name: 'resistance',
         icon: 'like',
-        color: 'orange'
+        color: 'yellow'
       },
       {
-        title:'工作记录',
-        name:'jobs',
-        icon:'safe',
-        color:'yellow'
-      },      
-      {
-        title:'培训记录',
-        name:'train',
-        icon:'safe',
-        color:'olive'
+        title: '热电偶',
+        name: 'Thermocouple',
+        icon: 'copy',
+        color: 'brown'
       },
       {
-        title:'保护投退',
-        name:'protect',
-        icon:'safe',
-        color:'green'
-      },
-      {
-        title:'加班统计',
-        name:'overtime',
-        icon:'safe',
-        color:'cyan'
+        title: '量程',
+        name: 'measure',
+        icon: 'settings',
+        color: 'mauve'
       },
     ]
 

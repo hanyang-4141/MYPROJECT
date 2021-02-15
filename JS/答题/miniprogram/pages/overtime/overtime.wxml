@@ -1,0 +1,3 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">加班统计</view>
+</cu-custom>
