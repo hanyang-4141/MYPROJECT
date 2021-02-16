@@ -72,9 +72,21 @@ Page({
 
   // ListTouch计算方向
   ListTouchMove(e) {
-    this.setData({
-      ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
-    })
+    console.log(e.touches[0].pageX - this.data.ListTouchStart);
+    // this.setData({
+    //   ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
+    // })
+    if(e.touches[0].pageX - this.data.ListTouchStart < -100){
+      this.setData({
+        ListTouchDirection:'left'
+      })
+    }
+    if(e.touches[0].pageX - this.data.ListTouchStart > 0){
+      this.setData({
+        ListTouchDirection:'right'
+      })
+    }
+    
   },
 
   // ListTouch计算滚动
@@ -90,6 +102,11 @@ Page({
     }
     this.setData({
       ListTouchDirection: null
+    })
+  },
+  to_jobinput(){
+    wx.navigateTo({
+      url: '../jobInput/jobInput',
     })
   }
 })
