@@ -2,7 +2,7 @@ const formatDate = date => {
   const day = date.getDate()
   const year = date.getFullYear()
   const month = date.getMonth()
-  return [year, month, day].map(formatNum).join('-')
+  return [year, month+1, day].map(formatNum).join('-')
 }
 const formatTime = date => {
   const hours = date.getHours()

@@ -6,8 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    picker: ['#1机组', '#2机组', '丰泰公用','#3机组', '#4机组', '科林公用'],    
+    jizuList: ['#1机组', '#2机组', '丰泰公用','#3机组', '#4机组', '科林公用'],    
+    jizu: '',
     jizuIndex: '',
+     
+    content: "",
     startdate: '',
     enddate: '',
     starttime: '',
@@ -56,7 +59,8 @@ Page({
    */
   onLoad: function (options) {
     var d = new Date()
-    console.log(gongju.formatTime(d));
+    // console.log(d.getMonth());
+    // console.log(gongju.formatTime(d));
     this.setData({
       startdate: gongju.formatDate(d),
       enddate: gongju.formatDate(d),
@@ -65,12 +69,13 @@ Page({
     })
 
   },
-  PickerChange(e) {
-    // console.log(e);
+  PickerChange(e) {    
     this.setData({
-      jizuIndex: e.detail.value
+      jizuIndex: e.detail.value,
+      jizu: this.data.jizuList[e.detail.value]
     })
   },
+
   StartTimeChange(e) {
     this.setData({
       starttime: e.detail.value
@@ -91,14 +96,42 @@ Page({
       enddate: e.detail.value
     })
   },
+  textareaBInput(e){
+    this.setData({
+      content: e.detail.value
+    })
+
+  },
   submit(){
-    console.log(this.data.jizuIndex);
-    if(!this.data.jizuIndex){
+    // console.log(this.data.jizuIndex);
+    
+  },
+  formSubmit(e){
+    var tempdata;
+    console.log(e);
+    if(!this.data.jizu){
       wx.showToast({
         title: '请选择机组!',
       })
+      return
     }
-  }
+    tempdata = e.detail.value
+    tempdata['tags'] = [{'jiaban': 0},{'zhongda': 0},{'yiliu': 0},{'xiujiulifei': 0},{'jigai': 0},]
+    console.log(tempdata);
+    wx.cloud.callFunction({
+      name: "insertjobs",
+      data: tempdata
+    }).then(res=>{
+      console.log('jiaru  chenggong');
+      wx.redirectTo({
+        url: '../../pages/jobs/jobs',
+      })
+    })
+
+  },
+  formReset(e){
+
+  },
 
   
 

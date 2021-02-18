@@ -6,23 +6,23 @@
 
 
 
-<form action="gaga">
+<form  catchsubmit="formSubmit" catchreset="formReset">
   <view class="cu-form-group margin-top">
     <view class="title">机组选择</view>
-    <picker bindchange="PickerChange" value="{{jizuIndex}}" range="{{picker}}">
+    <picker name="jizu" bindchange="PickerChange" value="{{jizu}}" range="{{jizuList}}">
       <view class="picker">
-        {{jizuIndex?picker[jizuIndex]:'请选择'}}
+        {{jizuIndex?jizuList[jizuIndex]:'请选择'}}
       </view>
     </picker>
   </view>
   <view class="cu-form-group align-start">
     <view class="title">工作内容</view>
-    <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="多行文本输入框"></textarea>
+    <textarea name="content" value="{{content}}" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="多行文本输入框"></textarea>
   </view>
 
   <view class="cu-form-group">
     <view class="title">开始日期</view>
-    <picker mode="date" value="{{startdate}}" start="2021-01-01" end="2030-01-01" bindchange="StartDateChange">
+    <picker  name="startdate"  mode="date" value="{{startdate}}" start="2021-01-01" end="2030-01-01" bindchange="StartDateChange">
       <view class="picker">
         {{startdate}}
       </view>
@@ -30,7 +30,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">开始时间</view>
-    <picker mode="time" value="{{starttime}}" start="00:00" end="23:59" bindchange="StartTimeChange">
+    <picker name="starttime" mode="time" value="{{starttime}}" start="00:00" end="23:59" bindchange="StartTimeChange">
       <view class="picker">
         {{starttime}}
       </view>
@@ -39,7 +39,7 @@
 
   <view class="cu-form-group">
     <view class="title">结束日期</view>
-    <picker mode="date" value="{{enddate}}" start="2021-01-01" end="2030-01-01" bindchange="EndDateChange">
+    <picker name="enddate" mode="date" value="{{enddate}}" start="2021-01-01" end="2030-01-01" bindchange="EndDateChange">
       <view class="picker">
         {{enddate}}
       </view>
@@ -47,7 +47,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">结束时间</view>
-    <picker mode="time" value="{{endtime}}" start="00:00" end="23:59" bindchange="EndTimeChange">
+    <picker name="endtime" mode="time" value="{{endtime}}" start="00:00" end="23:59" bindchange="EndTimeChange">
       <view class="picker">
         {{endtime}}
       </view>
@@ -64,5 +64,5 @@
       <view class="cu-tag bg-{{item.name}} light">{{item.title}}</view>
     </view>
   </view>
-  <button type="primary" bindtap="submit">提交</button>
+  <button type="primary" form-type="submit">提交</button>
 </form>
