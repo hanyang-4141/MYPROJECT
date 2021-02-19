@@ -6,6 +6,33 @@ Page({
    */
   data: {    
     jobsData:'',
+    is_open: false,
+    selected: [
+      {
+        date: '2018-5-21'
+      }, {
+        date: '2018-5-22'
+      },{
+        date: '2018-5-24'
+      },{
+        date: '2018-5-25'
+      }
+    ]
+
+  },
+  bindselect(e) {
+    console.log(e.detail.ischeck)
+    // this.setData({
+    //   is_open: e.detail.ischeck
+    // })
+
+  },
+  /**
+   * 获取选择日期
+   */
+  bindgetdate(e) {
+    let time = e.detail;
+    console.log(time)
 
   },
 
