@@ -64,5 +64,23 @@
       <view class="cu-tag bg-{{item.name}} light">{{item.title}}</view>
     </view>
   </view>
+
+  
+
+  <view class="flex padding-sm  justify-around">
+    <block wx:for="{{member}}">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-grey ">
+          <text class="content">{{item.name}}</text>
+        </view>
+        <view class="cu-tag line-grey">
+          {{item.score}}
+        </view>
+      </view>
+    </block>
+  </view>
+
+
   <button type="primary" form-type="submit">提交</button>
+  
 </form>

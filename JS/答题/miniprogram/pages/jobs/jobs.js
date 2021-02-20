@@ -28,21 +28,6 @@ Page({
     this.setData({
       selectComplete: !e.detail.ischeck
     })
-    // if(this.data.selectComplete){
-    //   wx.cloud.callFunction({
-    //     name: "getjobs",
-    //     data: {
-    //       selectDay: this.data.selectDay 
-    //     }    
-    //   }).then(res=>{
-    //     console.log(res);
-    //     this.setData({
-    //       jobsData: res.result.data
-    //     })
-    //   })
-
-    // }
-
   },
   /**
    * 获取选择日期

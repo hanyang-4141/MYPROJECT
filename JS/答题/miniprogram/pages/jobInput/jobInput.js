@@ -8,8 +8,7 @@ Page({
   data: {
     jizuList: ['#1机组', '#2机组', '丰泰公用','#3机组', '#4机组', '科林公用'],    
     jizu: '',
-    jizuIndex: '',
-     
+    jizuIndex: '',     
     content: "",
     startdate: '',
     enddate: '',
@@ -50,8 +49,24 @@ Page({
       name: 'blue',
       color: '#0081ff'
     },    
+  ],
+    member: [{
+      name: '张三三',
+      score: 1.5
+    },
+    {
+      name: '李四',
+      score: 2.5
+    },
+    {
+      name: '王五五',
+      score: 3.5
+    },
+    {
+      name: '赵六六',
+      score: 5.5
+    },
   ]
-
   },
 
   /**
