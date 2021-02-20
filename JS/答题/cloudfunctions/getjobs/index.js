@@ -8,8 +8,11 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   // const wxContext = cloud.getWXContext()
+  var day = event.selectDay
   var res = null;
-      res = await db.collection("jobs").get();
+  res = await db.collection("jobs").where({
+    startdate: day
+  }).get();
    
   return res
 }

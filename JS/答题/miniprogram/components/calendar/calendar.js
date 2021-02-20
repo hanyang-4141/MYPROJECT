@@ -119,7 +119,7 @@ Component({
             self.triggerEvent('select', { ischeck: !self.data.calShow })
           })
         }, 300)
-      })
+      })      
     },
     // 返回今天
     backtoday() { this.getWeek(new Date()); },
@@ -136,6 +136,7 @@ Component({
       let year = this.data.canlender.year + "-" + this.data.canlender.month + "-" + this.data.canlender.date
       let _date = this.getDate(year, num, types === 'month' ? "month" : "day");
       this.getWeek(_date);
+      this.triggerEvent('select', { ischeck: true })
     },
     // 获取日历内容
     getWeek(dateData) {

@@ -1,4 +1,5 @@
 // pages/jobs/jobs.js
+const gongju = require('../../utils/tools.js')
 Page({
 
   /**
@@ -6,6 +7,8 @@ Page({
    */
   data: {    
     jobsData:'',
+    selectComplete: true,
+    selectDay: '',
     is_open: false,
     selected: [
       {
@@ -22,9 +25,23 @@ Page({
   },
   bindselect(e) {
     console.log(e.detail.ischeck)
-    // this.setData({
-    //   is_open: e.detail.ischeck
-    // })
+    this.setData({
+      selectComplete: !e.detail.ischeck
+    })
+    // if(this.data.selectComplete){
+    //   wx.cloud.callFunction({
+    //     name: "getjobs",
+    //     data: {
+    //       selectDay: this.data.selectDay 
+    //     }    
+    //   }).then(res=>{
+    //     console.log(res);
+    //     this.setData({
+    //       jobsData: res.result.data
+    //     })
+    //   })
+
+    // }
 
   },
   /**
@@ -32,7 +49,23 @@ Page({
    */
   bindgetdate(e) {
     let time = e.detail;
-    console.log(time)
+    // console.log(time)
+    this.setData({
+      selectDay: time.year + '-' + time.month + '-' + time.date
+    })
+   
+      wx.cloud.callFunction({
+        name: "getjobs",
+        data: {
+          selectDay: this.data.selectDay 
+        }    
+      }).then(res=>{
+        // console.log(res);
+        this.setData({
+          jobsData: res.result.data
+        })
+      })
+    
 
   },
 
@@ -40,11 +73,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let day = ''
+    day = gongju.formatDate(new Date())
     wx.cloud.callFunction({
       name: "getjobs",
-      data: ''      
+        data: {
+          selectDay: day 
+        }         
     }).then(res=>{
-      console.log(res);
+      // console.log(res);
       this.setData({
         jobsData: res.result.data
       })
