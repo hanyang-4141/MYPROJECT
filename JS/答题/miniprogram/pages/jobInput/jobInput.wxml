@@ -55,7 +55,7 @@
   </view>
 
 
-  <view class="padding-sm flex flex-wrap">
+  <!-- <view class="padding-sm flex flex-wrap">
     <view class="padding-xs" wx:for="{{ColorList}}" wx:key wx:if="{{item.name!='gray'}}">
       <view class="cu-tag bg-{{item.name}}">{{item.title}}</view>
     </view>
@@ -63,20 +63,33 @@
       wx:if="{{item.name!='gray' && item.name!='black' && item.name!='white'}}">
       <view class="cu-tag bg-{{item.name}} light">{{item.title}}</view>
     </view>
+  </view> -->
+  <view class="cu-form-group">
+		<view class="title">加班</view>
+		<switch class="red radius sm" ></switch>
   </view>
-
+  <view class="cu-form-group">
+		<view class="title">重大</view>
+		<switch class="red radius sm" ></switch>
+  </view>
+  <view class="cu-form-group">
+		<view class="title">遗留</view>
+		<switch class="red radius sm" ></switch>
+	</view>
   
 
-  <view class="flex padding-sm  justify-around">
+  <view class="cu-list grid col-5 no-border">
     <block wx:for="{{member}}">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-grey ">
-          <text class="content">{{item.name}}</text>
+      
+        <view class="cu-capsule">
+          <view class="cu-tag bg-grey ">
+            <text class="content">{{item.name}}</text>
+          </view>
+          <view class="cu-tag line-grey">
+            {{item.score}}
+          </view>
         </view>
-        <view class="cu-tag line-grey">
-          {{item.score}}
-        </view>
-      </view>
+     
     </block>
   </view>
 

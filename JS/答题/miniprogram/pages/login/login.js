@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+const db = wx.cloud.database()
 var app = getApp()
 Page({
 
@@ -23,6 +24,13 @@ Page({
   bindGetUserInfo(e){
     if(e.detail.errMsg != 'getUserInfo:fail auth deny'){
       app.globalData.userInfo = e.detail.userInfo
+      // console.log(e.detail.userInfo);
+      wx.cloud.callFunction({
+        name: "adduser",
+        data: e.detail.userInfo
+      }).then(res=>{
+        console.log(res);
+      })
       wx.reLaunch({
         url: '/pages/index/index',
       })

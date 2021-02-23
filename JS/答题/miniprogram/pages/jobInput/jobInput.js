@@ -59,11 +59,27 @@ Page({
       score: 2.5
     },
     {
-      name: '王五五',
+      name: '王五',
       score: 3.5
     },
     {
       name: '赵六六',
+      score: 5.5
+    },
+    {
+      name: '张三',
+      score: 1.5
+    },
+    {
+      name: '李四四',
+      score: 2.5
+    },
+    {
+      name: '王五五',
+      score: 3.5
+    },
+    {
+      name: '赵六',
       score: 5.5
     },
   ]
