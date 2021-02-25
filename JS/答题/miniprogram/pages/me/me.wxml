@@ -2,23 +2,33 @@
   <view slot="content">个人中心</view>
 </cu-custom>
 
-<view class="flex solid-bottom padding align-center bg-white margin radius hezi">
-  <view class="cu-avatar round xl touxiang" style="background-image:url({{avatarUrl}});"></view>
-  <!-- 头像框 -->
+<view class="flex solid-bottom padding align-center bg-white margin radius hezi" >
+  <!-- <view class="cu-avatar round xl touxiang" style="background-image:url({{avatarUrl}});"></view> -->
+  <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+      size="default"
+    ></button>
+ 
+
   <view class="flex-right padding-bottom margin-top-xs nickname">
     <view class="margin-left-xl">
-      <text class="txt text-xl ">{{nickName}}</text>
+      <text class="txt text-xl ">{{nickName?nickName:'点击头像登录'}}</text>
     </view>
     <view class="margin-left-xl margin-top-xs">
       <text class="text-xs text-gray">集散班</text>
     </view>
-    <!-- 文本框 -->
+    
   </view>
   <view class='flex justify-end arrow-view jiantou'>
     <view class="arrow"></view>
   </view>
-  <!-- 箭头 -->
+  
 </view>
+
+
 
 <view class="cu-list menu card-menu margin-top-lg  radius">
   
@@ -63,7 +73,7 @@
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">
     <view class='content'>
       <text class="cuIcon-info text-red"></text>
-      <text class='text-gray text-xl'>备用</text>
+      <text class='text-gray text-xl'>版本信息1.0.2</text>
     </view>
   </view>
 

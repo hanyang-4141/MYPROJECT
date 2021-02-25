@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+var app = getApp()
 Page({
 
   /**
@@ -17,7 +18,8 @@ Page({
         name: 'tools',
         icon: 'like',
         color: 'orange'
-      },
+      }],
+    elements2:[
       {
         title:'工作记录',
         name:'jobs',
@@ -42,7 +44,8 @@ Page({
         icon:'safe',
         color:'cyan'
       },
-    ]
+    ],
+    jsmember: false
 
   },
 
@@ -50,7 +53,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    
+    if(!app.globalData.jsmemberCallback || app.globalData.jsmemberCallback == ''){
+        app.jsmemberCallback = jsmember=>{
+          this.setData({
+            jsmember: jsmember
+          })
+        }
+    }
+    // console.log(app.globalData.jsmember);
+    
+    
   },
 
   /**
@@ -64,7 +78,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({jsmember: app.globalData.jsmember})
+    // this.setData({
+    //   jsmember: app.globalData.jsmember
+    // })
   },
 
   /**
@@ -78,6 +95,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    
 
   },
 

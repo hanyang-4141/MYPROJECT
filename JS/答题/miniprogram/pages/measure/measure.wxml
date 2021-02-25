@@ -1,0 +1,63 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">量程</view>
+</cu-custom>
+
+<view class="selection">
+  <view class="title">传输信号选择器</view>
+  <picker class="kind-picker" mode="selector" range="{{chuanshu_kind}}" bindchange="king_change">当前选择: {{chuanshu_kind[kind_index]}}</picker>
+</view>
+<view class="jisuan">
+  <view class="group">
+    <text>{{kind_index < 3?"电流上限":"电压上限"}}</text>
+    <input type="digit" value="{{ma_h}}" bindinput="change_ma_h"/>
+  </view>
+  <view class="group">
+    <text>{{kind_index < 3?"电流下限":"电压下限"}}</text>
+    <input type="digit" value="{{ma_l}}" bindinput="change_ma_l"/>
+  </view>
+  <view class="group">
+    <text>量程上限</text>
+    <input type="text" value="{{liangcheng_h}}" bindinput="change_liangcheng_h"/>    
+  </view>
+  <view class="group">
+    <text>量程下限</text>
+    <input type="text" value="{{liangcheng_l}}" bindinput="change_liangcheng_l"/>    
+  </view>
+  
+  <view class="group">
+    <text>系数K</text>
+    <input type="text" value="{{xishu_k}}" bindinput="change_xishu_k"/>    
+  </view>
+  <view class="group">
+    <text>系数b</text>
+    <input type="text" value="{{xishu_b}}" bindinput="change_xishu_b"/>    
+  </view>
+  
+  <view class="group">
+    <text>当前值</text>
+    <input type="text" value="{{current_value}}" bindinput="change_current_value"/>    
+    <button  type="primary" bindtap="calc_current_ma">计算</button>
+  </view>
+  <view class="group">
+    <text>当前电流</text>
+    <input type="text" value="{{current_ma}}" bindinput="change_current_ma"/>   
+    <button  type="primary" bindtap="calc_current_value">计算</button> 
+  </view>
+  <button  type="primary" bindtap="from_kb">由系数计算上下限</button>
+  <button  type="primary" bindtap="from_hl">由上下限计算系数</button>
+  <button  type="primary" bindtap="from_current">由实际值计算上下限及系数</button>
+  
+</view>
+<!-- <view class="jisuan">
+  <view class="group">
+    <text>温度</text>
+    <input type="digit" value="{{wendu}}" bindinput="input_wendu"/>
+    <button type="primary" bindtap="calc_wendu">计算</button>
+  </view>
+  <view class="group">
+    <text>阻值</text>
+    <input type="digit" value="{{zuzhi}}" bindinput="input_zuzhi"/>
+    <button type="primary" bindtap="calc_zuzhi">计算</button>
+  </view>
+  <button type="primary" bindtap="clearinput">重置</button>
+</view> -->

@@ -12,7 +12,10 @@
     "pages/train/train",
     "pages/protect/protect",
     "pages/overtime/overtime",
-    "pages/jobInput/jobInput"
+    "pages/jobInput/jobInput",
+    "pages/resistance/resistance",
+    "pages/Thermocouple/Thermocouple",
+    "pages/measure/measure"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

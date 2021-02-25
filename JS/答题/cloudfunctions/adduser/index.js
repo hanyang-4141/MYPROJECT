@@ -12,6 +12,7 @@ exports.main = async (event, context) => {
       if(res.data.length == 0){
         db.collection("users").add({
           data:{
+            jsmember: false,
             nickName: event.nickName,
             avatarUrl: event.avatarUrl,
             gender: event.gender,

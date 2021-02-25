@@ -14,7 +14,7 @@ App({
         traceUser: true,
       })
     }
-    //-----------------------------------
+    //-----------更新提示---------------
     if (wx.canIUse('getUpdateManager')) {
       const updateManager = wx.getUpdateManager()
       updateManager.onCheckForUpdate(function (res) {
@@ -42,6 +42,7 @@ App({
     //   Questions: null,     
 
     // },   
+    //-----------自定义标题栏，获取信息---------------
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -50,6 +51,7 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
+    //-----------缓存---------------
     wx.getStorage({
       key: 'myquestions',
       success:res=>{
@@ -67,7 +69,6 @@ App({
             })       
           }
       })
-
       }
     })
     this.isLogin()
@@ -76,50 +77,41 @@ App({
   globalData:{
     Questions: null,   
     userInfo: {},
-    logged: false
+    logged: false,
+    jsmember: false
       
   },
   //---------
   isLogin: function(){
         var that = this;    
         // 查看是否授权    
+    // console.log('123');
         wx.getSetting({    
             success: function(res) {    
               if (res.authSetting['scope.userInfo']) {    
                 wx.getUserInfo({    
                   success: function(res) {    
-                    that.globalData.userInfo = res.userInfo;    
-                    // 根据自己的需求有其他操作再补充    
-                    // 我这里实现的是在用户授权成功后，调用微信的 wx.login 接口，从而获取code   
-        //             console.log('shouquan');
-        //             wx.reLaunch({
-        //               url: '/pages/index/index'    
-        //             })     
-                    wx.login({    
-                      success: res => {    
-                        console.log(res.code);
-    //                     // 获取到用户的 code 之后：res.code    
-    //                     // console.log("用户的code:" + res.code);    
-    //                     // 可以传给后台，再经过解析获取用户的 openid    
-    //                     // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：    
-    //                     // wx.request({    
-    //                     //     // 自行补上自己的 APPID 和 SECRET    
-    //                     //     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=自己的APPID&secret=自己的SECRET&js_code=' + res.code + '&grant_type=authorization_code',    
-    //                     //     success: res => {    
-    //                     //         // 获取到用户的 openid    
-    //                     //         console.log("用户的openid:" + res.data.openid);    
-    //                     //     }    
-    //                     // });    
-                        }    
-                      });    
-                    }    
-                  });    
+                    that.globalData.userInfo = res.userInfo;
+                    that.globalData.logged = true    //                
+                    }                 
+                  });   
+                wx.cloud.callFunction({
+                  name: "judgeuser",      
+                }).then(res=>{
+                  console.log(res);
+                  that.globalData.jsmember = res.result.jsmember  
+                  if(that.jsmemberCallback){
+                    that.jsmemberCallback(that.globalData.jsmember)
+                  }    
+                })            
               } else {    
-                // 用户没有授权    
-                console.log('mei  shouquan');
-                wx.navigateTo({
-                  url: '/pages/login/login'    
-                })    
+                // 用户没有授权  
+                  that.globalData.logged = false
+                  console.log('mei  shouquan');
+
+      //             wx.navigateTo({
+      //               url: '/pages/login/login'    
+      //             })    
               }    
             }    
         })
