@@ -7,14 +7,14 @@
 <view class="container">
   <view class='nav-list {{jsmember?"margin-top-xl":"mymargin"}}'>
     <navigator open-type="navigate" url="/pages/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}"
-      wx:for="{{elements}}" wx:key>
+      wx:for="{{elements}}" wx:key='id'>
       <view class="nav-title margin">{{item.title}}</view>
       <view class="nav-name margin">{{item.name}}</view>
       <text class='cuIcon-{{item.icon}} margin'></text>
     </navigator>
 
     <navigator open-type="navigate" url="/pages/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}"
-      wx:for="{{elements2}}" wx:key wx:if="{{jsmember}}">
+      wx:for="{{elements2}}" wx:key='id' wx:if="{{jsmember}}">
       <view class="nav-title margin">{{item.title}}</view>
       <view class="nav-name margin">{{item.name}}</view>
       <text class='cuIcon-{{item.icon}} margin'></text>

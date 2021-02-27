@@ -147,7 +147,7 @@
   display: flex;
 }
 
-.calendar-header view {
+.calendar-header .theweek {
   width: 100%;
   text-align: center;
   line-height: 80rpx;

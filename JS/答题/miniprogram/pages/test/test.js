@@ -12,6 +12,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  ArryRandom(arr){
+    arr.sort(function(){
+        return Math.random()-0.5;
+    });    
+},
+
   test(){
     
     var tempstr = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
@@ -20,10 +26,19 @@ Page({
     temparr.forEach(item=>{
       temp.push(item)
     })
-    temp[0].options[0].checked = true
+    // var hehe = [0,1,2,3,4,5,6,7]
+    // this.method3(hehe)
+    temparr.forEach(item=>{
+      this.ArryRandom(item.options)
+    })
+    // console.log(temparr);
+    var gaga = ['B','D','C','A']
+    var heihei = gaga.sort()
+  console.log(heihei);
+  var str = heihei.join('')
+  console.log(str);
     
-    console.log(temp);
-    console.log(app.globalData.Questions.data[0].DanXuan);
+
     
   },
   onLoad: function (options) {

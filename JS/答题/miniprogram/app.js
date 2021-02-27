@@ -22,7 +22,13 @@ App({
         // 请求完新版本信息的回调
         if (res.hasUpdate) {
           console.log('res.hasUpdate====')
+          wx.clearStorage({
+            success: (res) => {
+              // console.log('clearStorage');
+            },
+          })
           updateManager.onUpdateReady(function () {
+            
             updateManager.applyUpdate()          
           })
           updateManager.onUpdateFailed(function () {
@@ -78,7 +84,10 @@ App({
     Questions: null,   
     userInfo: {},
     logged: false,
-    jsmember: false
+    jsmember: false,
+    danxuanSum: 35,
+    duoxuanSum: 30,
+    panduanSum: 35,
       
   },
   //---------

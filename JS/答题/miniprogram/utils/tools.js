@@ -15,7 +15,22 @@ const formatNum = num => {
   num = num.toString()
   return num[1]?num : '0'+num
 }
+//洗牌算法，随机排序
+const shuffle = arr=> {
+  let m = arr.length;
+  while (m){
+      let index = Math.floor(Math.random() * m--);
+      let cur = arr[m];
+      arr[m] = arr[index];
+      arr[index] = cur;
+  }
+  return arr;
+}
+
+
+
 module.exports = {
   formatTime: formatTime,
-  formatDate: formatDate
+  formatDate: formatDate,
+  shuffle:shuffle
 }

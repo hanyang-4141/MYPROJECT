@@ -1,0 +1,30 @@
+/* pages/setting/setting.wxss */
+.wenzi{
+  text-align: left;
+}
+
+
+.arrow-view{
+  width: 50%;
+}
+.feedback{  
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;  
+  font-weight: normal;
+  flex-grow: 1;
+}
+.hezi{
+  justify-content: space-between;
+}
+.hehe{
+  display: flex;
+}
+
+
+

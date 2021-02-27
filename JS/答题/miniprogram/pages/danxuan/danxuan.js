@@ -1,5 +1,5 @@
 // miniprogram/pages/dati/dati.js
-
+const gongju = require('../../utils/tools')
 var app = getApp()
 Page({
 
@@ -66,73 +66,33 @@ Page({
   onLoad: function (options) {
     let json_str = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
     let json_arry = JSON.parse(json_str)    //深拷贝
-    let tempArr = []    
-    json_arry.forEach(item =>{
-      tempArr.push(item)
-    })    
-    // console.log(tempArr);
-    var newArr = [];
-        while (tempArr.length) {
-          var index = parseInt(Math.random() * tempArr.length);
-          newArr = newArr.concat(tempArr.splice(index, 1)) 
-        }
+    //------------------------------------------
+    // let tempArr = []    
+    // json_arry.forEach(item =>{
+    //   tempArr.push(item)
+    // })    
+    // // console.log(tempArr);
+    // var newArr = [];
+    //     while (tempArr.length) {
+    //       var index = parseInt(Math.random() * tempArr.length);
+    //       newArr = newArr.concat(tempArr.splice(index, 1)) 
+    //     }
+      
+    //------------------------------------------
+    var newArr = gongju.shuffle(json_arry)
+    //选项随机排列
+    newArr.forEach(item=>{
+      // this.ArryRandom(item.options)
+      gongju.shuffle(item.options)
+    })
     this.setData({
       DanXuan: newArr
     })
-    
-          
-          
-    //     }
-    // })
-
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+//   ArryRandom(arr){
+//     arr.sort(function(){
+//         return Math.random()-0.5;
+//     });    
+// },
+  
 })

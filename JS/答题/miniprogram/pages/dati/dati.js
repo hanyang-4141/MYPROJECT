@@ -50,25 +50,42 @@ Page({
   },
 
   onLoad: function() {
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // console.log(res);
-              getApp().globalData.userInfo = res.userInfo
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo,
-                nickName: res.userInfo.nickName
-              })
-            }
+    if(app.globalData.logged == false){
+      wx.showModal({
+        title: '提示',
+        content: '请先登录！',
+        showCancel: false,
+        success (res) {
+          wx.reLaunch({
+            url: '../me/me',
           })
         }
-      }
+      })      
+    }
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      nickName:app.globalData.userInfo.nickName,
+      avatarUrl:app.globalData.userInfo.avatarUrl
     })
-    // console.log(this.data.nickName);
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           // console.log(res);
+    //           getApp().globalData.userInfo = res.userInfo
+    //           this.setData({
+    //             avatarUrl: res.userInfo.avatarUrl,
+    //             userInfo: res.userInfo,
+    //             nickName: res.userInfo.nickName
+    //           })
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    // // console.log(this.data.nickName);
 
     
   },

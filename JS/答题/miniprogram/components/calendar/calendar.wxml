@@ -32,13 +32,13 @@
       </view>
     </view>
     <view class="calendar-header">
-      <view>日</view>
-      <view>一</view>
-      <view>二</view>
-      <view>三</view>
-      <view>四</view>
-      <view>五</view>
-      <view>六</view>
+      <view class="theweek">日</view>
+      <view class="theweek">一</view>
+      <view class="theweek">二</view>
+      <view class="theweek">三</view>
+      <view class="theweek">四</view>
+      <view class="theweek">五</view>
+      <view class="theweek">六</view>
     </view>
     <view class="calendar-body">
       <block wx:for="{{canlender.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">

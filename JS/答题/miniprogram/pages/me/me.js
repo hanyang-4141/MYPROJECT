@@ -27,6 +27,7 @@ Page({
     
     if(e.detail.errMsg != 'getUserInfo:fail auth deny'){
       app.globalData.userInfo = e.detail.userInfo
+      app.globalData.logged = true
       this.setData({
         userInfo: e.detail.userInfo,
         nickName: e.detail.userInfo.nickName,
@@ -45,9 +46,12 @@ Page({
         app.globalData.jsmember = res.result.jsmember   
         console.log(app.globalData.jsmember);        
       })    
-    }   
-    
-    
+    } 
+  },
+  onSetting(){
+    wx.navigateTo({
+      url: '../../pages/setting/setting',
+    })
   },
   
   

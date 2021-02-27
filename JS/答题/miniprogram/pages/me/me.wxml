@@ -71,22 +71,21 @@
   </view>
 
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">
-    <view class='content'>
+    <navigator class='content' hover-class="none" url="../setting/setting">
       <text class="cuIcon-info text-red"></text>
-      <text class='text-gray text-xl'>版本信息1.0.2</text>
-    </view>
+      <text class='text-gray text-xl'>设置</text>
+    </navigator>
   </view>
 
-  <view class='cu-item animation-slide-left' style="animation-delay: 0.5s;">
+  <!-- <view class='cu-item animation-slide-left' style="animation-delay: 0.5s;">
     <view class='content hehe'>
       <text class="cuIcon-creativefill text-red"></text>
       <view>
         <button class="text-gray text-xl feedback" open-type="feedback">意见反馈</button>
       </view>
     </view>
-  </view>
- <view class='cu-item'>
-  </view>
+  </view> -->
+ 
 
   
 </view>

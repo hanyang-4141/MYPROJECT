@@ -1,4 +1,5 @@
 // pages/panduan/panduan.js
+const gongju = require('../../utils/tools')
 var app = getApp()
 Page({
 
@@ -17,22 +18,15 @@ Page({
    */
   onLoad: function (options) {
     let json_str = JSON.stringify(app.globalData.Questions.data[2].PanDuan)
-    let json_arry = JSON.parse(json_str)    //深拷贝
-    let tempArr = []
-    json_arry.forEach(item =>{
-      tempArr.push(item)
-    })    
-    // console.log(tempArr);
-    var newArr = [];
-        while (tempArr.length) {
-          var index = parseInt(Math.random() * tempArr.length);
-          newArr = newArr.concat(tempArr.splice(index, 1)) 
-        }
-
+    let json_arry = JSON.parse(json_str)    //深拷贝    
+    var newArr = gongju.shuffle(json_arry)
+    //选项随机排列
+    newArr.forEach(item=>{
+      gongju.shuffle(item.options)
+    })
     this.setData({
       PanDuan: newArr
-    }) 
-    
+    })     
   },
 
   chooseAnswer(res){    
@@ -77,5 +71,10 @@ Page({
         hidden: true
       })
   },
+  ArryRandom(arr){
+    arr.sort(function(){
+        return Math.random()-0.5;
+    });    
+},
   
 })

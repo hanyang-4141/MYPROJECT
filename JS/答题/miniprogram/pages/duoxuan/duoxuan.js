@@ -1,5 +1,5 @@
 // pages/duoxuan/duoxuan.js
-
+const gongju = require('../../utils/tools')
 var app = getApp()
 Page({
 
@@ -24,16 +24,23 @@ Page({
   onLoad: function (options) {
     let json_str = JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
     let json_arry = JSON.parse(json_str)    //深拷贝
-    let tempArr = []
-    json_arry.forEach(item =>{
-      tempArr.push(item)
-    })    
-    // console.log(tempArr);
-    var newArr = [];
-        while (tempArr.length) {
-          var index = parseInt(Math.random() * tempArr.length);
-          newArr = newArr.concat(tempArr.splice(index, 1)) 
-        }
+    // let tempArr = []
+    // json_arry.forEach(item =>{
+    //   tempArr.push(item)
+    // })    
+    // // console.log(tempArr);
+    // var newArr = [];
+    //     while (tempArr.length) {
+    //       var index = parseInt(Math.random() * tempArr.length);
+    //       newArr = newArr.concat(tempArr.splice(index, 1)) 
+    //     }
+    
+    var newArr = gongju.shuffle(json_arry)
+    //选项随机排列
+    newArr.forEach(item=>{
+      // this.ArryRandom(item.options)
+      gongju.shuffle(item.options)
+    })
     this.setData({
       DuoXuan: newArr
     })
@@ -65,21 +72,19 @@ Page({
     // console.log(this.data.questions[this.data.tags].answer);
     let chooseArr = this.data.DuoXuan[this.data.tags].options;
     let rightanswer = this.data.DuoXuan[this.data.tags].answer
-    let tempanswer = ''
+    let tempanswer_list = []
     chooseArr.forEach(item =>{
       if(item.checked == true){
-        tempanswer += item.value
+        tempanswer_list.push(item.value)
       }
     })
-    // console.log(tempanswer,rightanswer);
-    if(tempanswer === rightanswer){
-      // console.log("回答正确");
+    var tempanswer_str = tempanswer_list.sort().join('')    
+    if(tempanswer_str === rightanswer){ 
       this.setData({
         hidden: false
       })
     }
     else{
-      // console.log("回答错误");
       chooseArr.forEach(item =>{
         item.checked = false
         if(rightanswer.indexOf(item.value) != -1){
@@ -102,5 +107,10 @@ Page({
       DuoXuan: this.data.DuoXuan,     
     })   
   },
+//   ArryRandom(arr){
+//     arr.sort(function(){
+//         return Math.random()-0.5;
+//     });    
+// },
 
 })

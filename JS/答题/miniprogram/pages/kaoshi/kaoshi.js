@@ -1,4 +1,5 @@
 // pages/kaoshi/kaoshi.js
+const gongju = require('../../utils/tools')
 var app = getApp()
 Page({
 
@@ -6,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    danxuanSum:20,
-    duoxuanSum:10,
-    panduanSum:20,
+    danxuanSum:35,
+    duoxuanSum:30,
+    panduanSum:35,
     KaoShi: null,
     tags: 0,
     DaTiKa: [],
@@ -20,73 +21,75 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.danxuanSum = app.globalData.danxuanSum
+    this.data.duoxuanSum = app.globalData.duoxuanSum
+    this.data.panduanSum = app.globalData.panduanSum
     let json_str = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
     let json_arry = JSON.parse(json_str)    //深拷贝
-    var tempArr = []
-    json_arry.forEach(item =>{
-      tempArr.push(item)
+    var newArr = []
+    var tempArr = gongju.shuffle(json_arry)
+    // newArr.push(tempArr.slice(0, this.data.danxuanSum))
+    newArr = newArr.concat(tempArr.slice(0, this.data.danxuanSum))
+    // var tempArr = []
+    // json_arry.forEach(item =>{
+    //   tempArr.push(item)
       
-    })       
-    var newArr = [];
-        while (newArr.length < this.data.danxuanSum) {
-          var index = parseInt(Math.random() * tempArr.length);
-          newArr = newArr.concat(tempArr.splice(index, 1)) 
-          this.data.DaTiKa.push(false)
-        }   
+    // })       
+    // var newArr = [];
+    //     while (newArr.length < this.data.danxuanSum) {
+    //       var index = parseInt(Math.random() * tempArr.length);
+    //       newArr = newArr.concat(tempArr.splice(index, 1)) 
+    //       this.data.DaTiKa.push(false)
+    //     }   
     json_str = JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
     json_arry = JSON.parse(json_str)    //深拷贝
-    tempArr = []
-    json_arry.forEach(item =>{
-      tempArr.push(item)      
-    })    
-    while (newArr.length < (this.data.danxuanSum + this.data.duoxuanSum)) {
-      var index = parseInt(Math.random() * tempArr.length);
-      newArr = newArr.concat(tempArr.splice(index, 1)) 
-      this.data.DaTiKa.push(false)
-    }
-
+    tempArr = gongju.shuffle(json_arry)    
+    newArr = newArr.concat(tempArr.slice(0, this.data.duoxuanSum))
     json_str = JSON.stringify(app.globalData.Questions.data[2].PanDuan)
     json_arry = JSON.parse(json_str)    //深拷贝
-    tempArr = []
-    json_arry.forEach(item =>{
-      tempArr.push(item)      
-    })    
-    while (newArr.length < (this.data.danxuanSum + this.data.duoxuanSum + this.data.panduanSum)) {
-      var index = parseInt(Math.random() * tempArr.length);
-      newArr = newArr.concat(tempArr.splice(index, 1)) 
-      this.data.DaTiKa.push(false)
+    tempArr = gongju.shuffle(json_arry)
+    newArr = newArr.concat(tempArr.slice(0, this.data.panduanSum))
+    gongju.shuffle(newArr)
+    //选项随机排列
+    newArr.forEach(item=>{
+      let pos = item.title.indexOf('、')
+      item.title = item.title.substr(pos + 1)
+      gongju.shuffle(item.options)
+    })
+    let sum = this.data.danxuanSum + this.data.duoxuanSum + this.data.panduanSum
+    let tempDaTiKa = []
+    for(let i=0; i < sum; i++){
+      tempDaTiKa.push(false)
     }
-    // console.log(newArr);
     this.setData({
       KaoShi: newArr,
-      DaTiKa:this.data.DaTiKa
+      DaTiKa:tempDaTiKa
     })
     // console.log(this.data.DaTiKa);
+    // console.log(this.data.KaoShi);
   },
 
   chooseAnswer(res){    
     let chooseArr = this.data.KaoShi[this.data.tags].options;
     let index = res.currentTarget.dataset.index;  
-    if(this.data.tags >= this.data.danxuanSum && this.data.tags < (this.data.danxuanSum + this.data.duoxuanSum)){
-      //多选
-      // console.log('duo xuan');
-      chooseArr[index].checked = !chooseArr[index].checked
-      // console.log(chooseArr);
-      var temp = ''
+    if(this.data.KaoShi[this.data.tags].type == 'DuoXuan'){
+      //多选   
+      chooseArr[index].checked = !chooseArr[index].checked 
+      let tempanswer_list = []
       chooseArr.forEach(item =>{
-        if(item.checked == true){
-          temp += item.value
-        }        
-      })
+      if(item.checked == true){
+        tempanswer_list.push(item.value)
+      }
+    })
+    var tempanswer_str = tempanswer_list.sort().join('')
       // console.log(temp);
-      if(this.data.KaoShi[this.data.tags].answer == temp){
+      if(this.data.KaoShi[this.data.tags].answer == tempanswer_str){
         this.data.DaTiKa[this.data.tags] = true
         // console.log('dui');
       }else{
         this.data.DaTiKa[this.data.tags] = false
         // console.log('cuo');
       }
-
     }else{
       // 单选题 或 判断
       // console.log('danxuan  huo  panduan');      
@@ -101,10 +104,7 @@ Page({
         // console.log('cuowu');
         this.data.DaTiKa[this.data.tags] = false
       }
-    }
-    // temptitle = this.data.KaoShi[this.data.tags].title
-    // i = temptitle.indexOf('、')
-    // title = temptitle.substring(i)
+    }   
     this.setData({
       KaoShi: this.data.KaoShi, 
       DaTiKa: this.data.DaTiKa
@@ -176,5 +176,10 @@ Page({
         }
       }
     })
-  }
+  },
+  ArryRandom(arr){
+    arr.sort(function(){
+        return Math.random()-0.5;
+    });    
+},
 })

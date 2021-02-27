@@ -16,12 +16,20 @@
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
 <view wx:for='{{DanXuan[tags].options}}' wx:key='{{item.name}}'>
   <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} {{item.value==DanXuan[tags].answer && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
-    {{item.value}}、{{item.name}}
+    <!-- {{index}}、{{item.name}} -->
+    <block wx:if="{{index==0}}">A、{{item.name}}</block>
+    <block wx:if="{{index==1}}">B、{{item.name}}</block>
+    <block wx:if="{{index==2}}">C、{{item.name}}</block>
+    <block wx:if="{{index==3}}">D、{{item.name}}</block>
+
   </view>
 </view>
-<view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ DanXuan[tags].answer:'回答正确'}}</view>
+
+<!-- <view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ DanXuan[tags].answer:'回答正确'}}</view> -->
+<view hidden="{{hidden}}">{{answererror==true?'回答错误':'回答正确'}}</view>
+
 <view class="flex justify-center padding-bottom-xl padding-top-xl fixed-bottom">
-  <button class="cu-btn round bg-blue shadow margin-right-lg" bindtap='beforeQuestion'>上一题</button>
+  <button class="cu-btn round bg-blue shadow margin-right-lg lg" bindtap='beforeQuestion'>上一题</button>
 
   <button hidden="{{true}}" class="cu-btn bg-green round shadow margin-left-lg margin-right-lg" bindtap="showModal" data-target="bottomModal">
     答题卡
@@ -39,5 +47,5 @@
       </view>
     </view>
   </view>
-  <button class="cu-btn round bg-red shadow margin-left-lg" bindtap='afterQuestion'>下一题</button>
+  <button class="cu-btn round bg-red shadow margin-left-lg lg" bindtap='afterQuestion'>下一题</button>
 </view>

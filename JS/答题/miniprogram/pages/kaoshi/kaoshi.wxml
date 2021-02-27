@@ -2,28 +2,37 @@
   <view slot="content">考试</view>
 </cu-custom>
 
-<view class="padding-lg " >
-	<view class="cu-progress round bg-white">
-    <view class="'bg-blue'" style="width:{{(tags+1)*100/KaoShi.length}}%">{{tags+1}}/{{KaoShi.length}}</view>      
-  </view>  
+<view class="padding-lg ">
+  <view class="cu-progress round bg-white">
+    <view class="'bg-blue'" style="width:{{(tags+1)*100/KaoShi.length}}%">{{tags+1}}/{{KaoShi.length}}</view>
+  </view>
 </view>
 
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{tags<danxuanSum?'(单选)':((tags>=(danxuanSum+duoxuanSum))?'(判断)':'(多选)')}}{{KaoShi[tags].title}}</text>
+    <text
+      class="text-black">{{KaoShi[tags].type=='DanXuan'?'(单选)':((KaoShi[tags].type=='DuoXuan')?'(多选)':'(判断)')}}{{tags+1}}、{{KaoShi[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
-<view wx:for='{{KaoShi[tags].options}}' wx:key='{{item.name}}'>
-  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} box round" bindtap="chooseAnswer">
-    {{tags<(danxuanSum+duoxuanSum)?item.value:(item.value?'1':'2')}}、{{item.name}}
+<view wx:for='{{KaoShi[tags].options}}' wx:key='id'>
+  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}"
+    class="{{item.checked==true?'checked':'bg-white'}} box round" bindtap="chooseAnswer">
+    <!-- {{tags<(danxuanSum+duoxuanSum)?item.value:(item.value?'1':'2')}}、{{item.name}} -->
+    <block wx:if="{{index==0}}">A、{{item.name}}</block>
+    <block wx:if="{{index==1}}">B、{{item.name}}</block>
+    <block wx:if="{{index==2}}">C、{{item.name}}</block>
+    <block wx:if="{{index==3}}">D、{{item.name}}</block>
+    <block wx:if="{{index==4}}">E、{{item.name}}</block>
+
   </view>
 </view>
 <!-- <view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ KaoShi[tags].answer:'回答正确'}}</view> -->
 <view class="flex justify-center padding-bottom-xl padding-top-xl fixed-bottom">
-  <button class="cu-btn round bg-blue shadow margin-right-lg" bindtap='beforeQuestion'>上一题</button>
+  <button class="cu-btn round bg-blue shadow margin-right-lg lg" bindtap='beforeQuestion'>上一题</button>
 
-  <button class="cu-btn bg-green round shadow margin-left-lg margin-right-lg" bindtap="showModal" data-target="bottomModal">
+  <button class="cu-btn bg-green round shadow margin-left-lg margin-right-lg lg" bindtap="showModal"
+    data-target="bottomModal">
     答题卡
   </button>
 
@@ -31,20 +40,22 @@
     <view class="cu-dialog">
       <view class="cu-bar bg-white">
         <view class="action text-blue" bindtap="goMain">返回首页</view>
-        <view class="action text-blue" bindtap="hideModal">收起</view>        
+        <view class="action text-blue" bindtap="hideModal">收起</view>
       </view>
 
 
 
-    <view wx:if='{{FenShu>= 60}}' class='box-text'>
-    <!-- <image src='../../images/success.gif' mode='center'></image> -->
-    <view class="padding bg-green radius animation-slide-top" style='width:550rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，恭喜通过考试！</view>    
-    
-</view>
-<view wx:else class='box-text'>
-    <!-- <image src='../../images/fail.gif' mode='center'></image> -->
-    <view class="padding bg-red radius animation-slide-bottom" style='width:600rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，很遗憾未能通过考试！</view>    
-</view>
+      <view wx:if='{{FenShu>= 80}}' class='box-text'>
+        <!-- <image src='../../images/success.gif' mode='center'></image> -->
+        <view class="padding bg-green radius animation-slide-top"
+          style='width:550rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，恭喜通过考试！</view>
+
+      </view>
+      <view wx:else class='box-text'>
+        <!-- <image src='../../images/fail.gif' mode='center'></image> -->
+        <view class="padding bg-red radius animation-slide-bottom"
+          style='width:600rpx;margin:0 auto;animation-delay: 0.5s;'>您的分数为：{{FenShu}}分，很遗憾未能通过考试！</view>
+      </view>
 
 
 
@@ -52,11 +63,13 @@
 
 
       <view>
-        <view wx:for='{{DaTiKa}}' wx:key class="margin " style='display:inline-block'>
-          <text class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}' bindtap="cardClick">{{index+1}}</text>
+        <view wx:for='{{DaTiKa}}' wx:key='id' class="margin " style='display:inline-block'>
+          <text class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}'
+            bindtap="cardClick">{{index+1}}</text>
         </view>
       </view>
     </view>
   </view>
-  <button class="cu-btn round bg-red shadow margin-left-lg" bindtap='afterQuestion'>{{tags==KaoShi.length-1?'交卷':'下一题'}}</button>
+  <button class="cu-btn round bg-red shadow margin-left-lg lg"
+    bindtap='afterQuestion'>{{tags==KaoShi.length-1?'交卷':'下一题'}}</button>
 </view>
