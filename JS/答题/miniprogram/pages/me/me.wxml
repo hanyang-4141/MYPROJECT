@@ -64,10 +64,10 @@
   </view>
 
   <view class='cu-item animation-slide-left' style="animation-delay: 0.5s;">
-    <view class='content'>
+    <navigator class='content' hover-class="none" url="../usermanage/usermanage">
       <text class="cuIcon-similar text-cyan"></text>
-      <text class='text-gray text-xl'>备用</text>
-    </view>
+      <text class='text-gray text-xl'>用户管理</text>
+    </navigator>
   </view>
 
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">

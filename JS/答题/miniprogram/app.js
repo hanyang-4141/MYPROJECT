@@ -78,6 +78,12 @@ App({
       }
     })
     this.isLogin()
+    wx.cloud.callFunction({
+      name: 'getshoucang'
+    }).then(res=>{
+      console.log('获取收藏', res);
+      this.globalData.shoucang = res.result.res.data[0]
+    })
   },
   
   globalData:{
@@ -88,6 +94,9 @@ App({
     danxuanSum: 35,
     duoxuanSum: 30,
     panduanSum: 35,
+    questionsXipai: true,
+    optionsXipai: true,
+    shoucang:[]
       
   },
   //---------

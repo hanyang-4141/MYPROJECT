@@ -103,6 +103,14 @@
           <view class="title">判断题数量</view>
           <input placeholder="判断题数量" type="number" bindinput="panduanInput" value="{{panduanSum}}"></input>
         </view>
+        <view class="cu-form-group">
+          <view class="title">试题洗牌</view>
+          <switch class="orange radius sm" checked="{{questionsXipai}}" bindchange="questionsXipaiChange"></switch>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">选项洗牌</view>
+          <switch class="orange radius sm" checked="{{optionsXipai}}" bindchange="optionsXipaiChange"></switch>
+        </view>
         <view class="cu-bar bg-white justify-end">
           <view class="action">
             <button class="cu-btn line-green text-green " bindtap="hideModal">取消</button>

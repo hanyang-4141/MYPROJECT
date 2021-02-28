@@ -23,26 +23,18 @@ Page({
    */
   onLoad: function (options) {
     let json_str = JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
-    let json_arry = JSON.parse(json_str)    //深拷贝
-    // let tempArr = []
-    // json_arry.forEach(item =>{
-    //   tempArr.push(item)
-    // })    
-    // // console.log(tempArr);
-    // var newArr = [];
-    //     while (tempArr.length) {
-    //       var index = parseInt(Math.random() * tempArr.length);
-    //       newArr = newArr.concat(tempArr.splice(index, 1)) 
-    //     }
-    
-    var newArr = gongju.shuffle(json_arry)
+    let json_arry = JSON.parse(json_str)    //深拷贝    
+    if(app.globalData.questionsXipai){
+      gongju.shuffle(json_arry)
+    }    
     //选项随机排列
-    newArr.forEach(item=>{
-      // this.ArryRandom(item.options)
-      gongju.shuffle(item.options)
-    })
+    if(app.globalData.optionsXipai){
+      json_arry.forEach(item=>{        
+        gongju.shuffle(item.options)
+      })
+    }    
     this.setData({
-      DuoXuan: newArr
+      DuoXuan: json_arry
     })
   
   },
@@ -98,6 +90,7 @@ Page({
         hidden: false
       })      
     }
+    setTimeout(this.afterQuestion, 500)
   },
   chooseAnswer(res){
     let chooseArr = this.data.DuoXuan[this.data.tags].options;
@@ -106,11 +99,7 @@ Page({
     this.setData({
       DuoXuan: this.data.DuoXuan,     
     })   
+   
   },
-//   ArryRandom(arr){
-//     arr.sort(function(){
-//         return Math.random()-0.5;
-//     });    
-// },
 
 })

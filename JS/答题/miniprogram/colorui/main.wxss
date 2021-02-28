@@ -957,8 +957,8 @@ button.icon.lg {
 }
 
 .cu-avatar.lg {
-	width: 160rpx;
-	height: 160rpx;
+	width: 96rpx;
+	height: 96rpx;
 	font-size: 2em;
 }
 
@@ -2494,7 +2494,6 @@ button.icon.lg {
 	background-color: #f8f8f8;
 	border-radius: 10rpx;
 	overflow: hidden;
-	/* padding-top: 800rpx; */
 }
 
 .cu-modal.bottom-modal::before {

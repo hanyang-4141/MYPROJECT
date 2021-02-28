@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    elements:[
+    elements1:[
       {
         title:'安规题',
         name:'dati',
@@ -19,7 +19,7 @@ Page({
         icon: 'like',
         color: 'orange'
       }],
-    elements2:[
+    elements:[      
       {
         title:'工作记录',
         name:'jobs',
@@ -43,6 +43,18 @@ Page({
         name:'overtime',
         icon:'safe',
         color:'cyan'
+      },
+      {
+        title:'安规题',
+        name:'dati',
+        icon:'safe',
+        color:'red'
+      },
+      {
+        title: '工具',
+        name: 'tools',
+        icon: 'like',
+        color: 'orange'
       },
     ],
     jsmember: false

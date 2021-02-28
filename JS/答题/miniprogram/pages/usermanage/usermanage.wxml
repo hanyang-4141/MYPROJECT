@@ -1,0 +1,28 @@
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot="content">用户管理</view>
+</cu-custom>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 集散班成员管理
+    </view>
+  </view>
+
+<view class="cu-list menu-avatar">
+  <block wx:for="{{userGroup}}" wx:key='id'>
+    <view class="cu-item">
+      <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});">
+        <view class="cu-tag badge {{item.gender%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+      </view>
+      <view class="content padding-left">
+        <view class="text-grey">{{item.nickName}}</view>        
+      </view>
+      <view >
+        <view class="cu-form-group">
+          <!-- <view class="title">方形开关</view> -->
+          <switch class="orange radius sm" checked="{{item.jsmember}}" data-index="{{index}}" data-id="{{item._id}}" bindchange="MemberChange"></switch>
+        </view>
+      </view>
+    </view>
+  </block>
+  </view>

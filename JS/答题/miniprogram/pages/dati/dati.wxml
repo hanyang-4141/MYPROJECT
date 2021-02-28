@@ -3,10 +3,10 @@
 </cu-custom>
 
 <view class="flex padding justify-center margin-top-xl">
-  <button class="cu-avatar round lg" style="background-image:url({{avatarUrl}});" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+  <view class="cu-avatar round lg" style="background-image:url({{avatarUrl}});" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
     <view class="cu-tag badge {{userInfo.gender%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}">
     </view>
-  </button>
+  </view>
 </view>
 
 <view class="flex justify-center padding-bottom-xl">

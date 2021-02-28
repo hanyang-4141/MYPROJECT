@@ -101,6 +101,12 @@
           "pathName": "pages/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/danxuan/danxuan",
+          "pathName": "pages/danxuan/danxuan",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -41,4 +41,4 @@
 
 <view class="margin-tb text-center mynavigation" bindtap="to_jobinput">
     <view class="cu-tag lg  round  add text-xxl">+</view>
-  </view>
+</view>

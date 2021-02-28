@@ -19,13 +19,17 @@ Page({
   onLoad: function (options) {
     let json_str = JSON.stringify(app.globalData.Questions.data[2].PanDuan)
     let json_arry = JSON.parse(json_str)    //深拷贝    
-    var newArr = gongju.shuffle(json_arry)
+    if(app.globalData.questionsXipai){
+      gongju.shuffle(json_arry)
+    }    
     //选项随机排列
-    newArr.forEach(item=>{
-      gongju.shuffle(item.options)
-    })
+    if(app.globalData.optionsXipai){
+      json_arry.forEach(item=>{
+        gongju.shuffle(item.options)
+      })
+    }    
     this.setData({
-      PanDuan: newArr
+      PanDuan: json_arry
     })     
   },
 
@@ -48,6 +52,7 @@ Page({
       afterclick: true,
       hidden: false
     })
+    setTimeout(this.afterQuestion, 500)
   },
   beforeQuestion(){
     if(this.data.tags < 1){

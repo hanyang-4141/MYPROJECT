@@ -2,11 +2,21 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init()
-
+const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
- 
+  await db.collection("users").where({
+    _id: event.id
+  }).update({
+    data:{
+      jsmember: event.jsmember
+    }
+  }).then(res=>{
+    return {
+      res
+    }
+  })
   return {
     event,
     openid: wxContext.OPENID,

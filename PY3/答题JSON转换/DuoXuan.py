@@ -86,7 +86,7 @@ for i, titleIndex in enumerate(titleIndex_list):
     mydict = {}
     temptitle = strlist[titleIndex]
     if (i + 1) == len(titleIndex_list):
-        OptionsSum = len(strlist) - 1 -titleIndex_list[i]
+        OptionsSum = len(strlist) - titleIndex_list[i]
     else:
         OptionsSum = titleIndex_list[i + 1] - titleIndex_list[i]
 
@@ -103,6 +103,7 @@ for i, titleIndex in enumerate(titleIndex_list):
     DanXuan.append(mydict)
     tempOptions = []
     temptitle = ''
+print(DanXuan)
 import json
 ddd = {}
 ddd.setdefault('DuoXuan',DanXuan)

@@ -14,7 +14,7 @@
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
-<view wx:for='{{DanXuan[tags].options}}' wx:key='{{item.name}}'>
+<view wx:for='{{DanXuan[tags].options}}' wx:key='id'>
   <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} {{item.value==DanXuan[tags].answer && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
     <!-- {{index}}、{{item.name}} -->
     <block wx:if="{{index==0}}">A、{{item.name}}</block>
@@ -41,11 +41,19 @@
         <view class="action text-blue" bindtap="hideModal">收起</view>
       </view>
       <view>
-        <view wx:for='{{cardArr}}' wx:key class="margin " style='display:inline-block'>
+        <view wx:for='{{cardArr}}' wx:key='id' class="margin " style='display:inline-block'>
           <button class="cu-btn round bg-{{item?'green':'red'}}" data-index='{{index}}' bindtap="cardClick">{{index+1}}</button>
         </view>
       </view>
     </view>
   </view>
   <button class="cu-btn round bg-red shadow margin-left-lg lg" bindtap='afterQuestion'>下一题</button>
+</view>
+
+
+
+<view class="margin-tb text-center mynavigation" bindtap="ShouCang">
+    <view class="content  round">     
+      <text class="{{shoucang[shijiIndex-1]?'cuIcon-likefill text-red':'cuIcon-like text-gray'}} lg  text-xsl shoucang">收藏</text> 
+    </view>
 </view>
