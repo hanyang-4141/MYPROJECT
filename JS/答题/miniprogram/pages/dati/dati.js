@@ -67,25 +67,30 @@ Page({
       nickName:app.globalData.userInfo.nickName,
       avatarUrl:app.globalData.userInfo.avatarUrl
     })
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // console.log(res);
-    //           getApp().globalData.userInfo = res.userInfo
-    //           this.setData({
-    //             avatarUrl: res.userInfo.avatarUrl,
-    //             userInfo: res.userInfo,
-    //             nickName: res.userInfo.nickName
-    //           })
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-    // // console.log(this.data.nickName);
+    var isexist_shoucang = false
+    wx.cloud.callFunction({
+      name: 'updateshoucang',
+      data:{
+        type: 'init',
+      }
+    }).then(res=>{
+      // console.log(res);
+      if(res.result.shoucang.data.length > 0){
+        app.globalData.shoucang = res.result.shoucang.data[0]
+        isexist_shoucang = true
+        
+      }
+    })
+    if(!isexist_shoucang){
+      wx.cloud.callFunction({
+        name: 'getshoucang'
+      }).then(res=>{
+        console.log('获取收藏', res);
+        app.globalData.shoucang = res.result.res.data[0]
+      })
+    }
+    console.log(app.globalData.shoucang);
+    
 
     
   },

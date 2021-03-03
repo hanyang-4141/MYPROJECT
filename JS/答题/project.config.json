@@ -38,7 +38,7 @@
   },
   "appid": "wxca27785125cd796e",
   "projectname": "dati",
-  "libVersion": "2.14.1",
+  "libVersion": "2.15.0",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",

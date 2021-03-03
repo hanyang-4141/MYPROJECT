@@ -123,17 +123,17 @@ Page({
   },
   ShouCang(){
     
-    this.data.shoucang[this.data.shijiIndex-1] = !this.data.shoucang[this.data.shijiIndex-1]
+    this.data.shoucang.DanXuan[this.data.shijiIndex-1] = !this.data.shoucang.DanXuan[this.data.shijiIndex-1]
     this.setData({
       shoucang: this.data.shoucang,      
     }) 
-    wx.cloud.callFunction({
-      name: 'updateshoucang',
-      data:{
-        Type: 'DanXuan',
-        shoucang: this.data.shoucang
-      }
-    })
+    // wx.cloud.callFunction({
+    //   name: 'updateshoucang',
+    //   data:{
+    //     Type: 'DanXuan',
+    //     shoucang: this.data.shoucang
+    //   }
+    // })
   },
   
 })

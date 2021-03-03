@@ -6,72 +6,123 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  // var res = await db.collection("shoucang").get().then(hehe=>{
-  //   return hehe
-  // }).catch(hehe=>{
-  //   return hehe
-  // })
-  //不存在记录
-  // if(res.data.length == 0){
-  //   await db.collection("shoucang").add({
-  //     data:{
-  //       DanXuan: event.shoucang
-  //     }
-
-  //   })
-  // }else{
-    // var hehe
-    // await db.collection("shoucang").update({
-    //   data:{
-    //     DanXuan: event.shoucang
-    //   }
-    // }).then(res=>{
-    //   console.log('success', res);
-    //   hehe = res
-     
-    // }).catch(res=>{
-    //   console.log('fail',res);
-    //   hehe = res
-    //   db.collection("shoucang").add({
-    //     data:{
-    //       DanXuan: event.shoucang
-    //     }
-    //   }).then(res=>{
-        
-    //   })
-
-    // })
+  
+  // var exist = true
+  var shoucang 
+  if (event.type == 'init') {
+    var temparr = []
+    for (let i = 0; i < 300; i++) {
+      temparr.push(false)
+    }
     await db.collection("shoucang").where({
       _openid: wxContext.OPENID
-    }).get().then(res=>{
-        if(res.data.length == 0){
-          db.collection("shoucang").add({
-            data:{
-              DanXuan: event.shoucang,
-              _openid: wxContext.OPENID
-            }
-          })
-        }else{
-          db.collection("shoucang").where({
+    }).get().then(res => {      
+      if (res.data.length == 0) {
+        // exist = false
+        db.collection("shoucang").add({
+          data: {
+            danxuan: temparr,
+            duoxuan: temparr,
+            panduan: temparr,
             _openid: wxContext.OPENID
-          }).update({
-            data:{
-              DanXuan: event.shoucang,
-            }
-          })
-        }
+          }
+        })
+      }
     })
-  return{
-    event
-  }
+  } else if (event.type == 'danxuan') {
+    await db.collection("shoucang").where({
+      _openid: wxContext.OPENID
+    }).get().then(res => {
+      if (res.data.length == 0) {
+        db.collection("shoucang").add({
+          data: {
+            danxuan: event.shoucang,
+            _openid: wxContext.OPENID
+          }
+        })
+      } else {
+        db.collection("shoucang").where({
+          _openid: wxContext.OPENID
+        }).update({
+          data: {
+            danxuan: event.shoucang,
+          }
+        })
+      }
+    })
+  } else if (event.type == 'duoxuan') {
+    await db.collection("shoucang").where({
+      _openid: wxContext.OPENID
+    }).get().then(res => {
+      if (res.data.length == 0) {
+        db.collection("shoucang").add({
+          data: {
+            duoxuan: event.shoucang,
+            _openid: wxContext.OPENID
+          }
+        })
+      } else {
+        db.collection("shoucang").where({
+          _openid: wxContext.OPENID
+        }).update({
+          data: {
+            duoxuan: event.shoucang,
+          }
+        })
+      }
+    })
 
-
-
-  // return {
-  //   res,
-  //   event,
-  //   openid: wxContext.OPENID,
-  //   appid: wxContext.APPID,
-  //   unionid: wxContext.UNIONID,
+  } else if (event.type == 'panduan') {
+    await db.collection("shoucang").where({
+      _openid: wxContext.OPENID
+    }).get().then(res => {
+      if (res.data.length == 0) {
+        db.collection("shoucang").add({
+          data: {
+            panduan: event.shoucang,
+            _openid: wxContext.OPENID
+          }
+        })
+      } else {
+        db.collection("shoucang").where({
+          _openid: wxContext.OPENID
+        }).update({
+          data: {
+            panduan: event.shoucang,
+          }
+        })
+      }
+    })
+  }else if(event.type == 'test'){
+    
+      
+      var heihei = await db.collection("shoucang")
+      var test = heihei.where({
+        _openid: wxContext.OPENID
+      }).get()
+      if(test.data.length == 0){
+        
+        gaga = await heihei.add({
+          data:{
+            test:1111
+          }
+        })
+      }
+    }
+  // return{
+  //   event
   // }
+
+
+  shoucang = await  db.collection('shoucang').get()
+  return {
+    // gaga,
+    // test,
+    shoucang,
+    event,
+    openid: wxContext.OPENID,
+    appid: wxContext.APPID,
+    unionid: wxContext.UNIONID,
+    // shoucang: await db.collection("shoucang").get()
+  }
 }
