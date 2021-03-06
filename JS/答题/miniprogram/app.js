@@ -74,24 +74,48 @@ App({
               key: 'myquestions',
             })       
           }
-      })
+      })     
       }
     })
+
+    wx.getStorage({
+      key: 'myquestions-dianqi',
+      success:res=>{
+        // console.log('缓存存在');
+        this.globalData.Questions_dianqi = res.data
+      },
+      fail:res=>{       
+      db.collection('questionBank-dianqi').get({
+        success: res1=> {                
+          this.globalData.Questions_dianqi = res1    
+          wx.setStorage({
+            data: res1,
+            key: 'myquestions-dianqi',
+          })                   
+        }
+    })
+      }
+    })
+
     this.isLogin()
     
   },
   
   globalData:{
     Questions: null,   
+    Questions_dianqi: null,
     userInfo: {},
     logged: false,
     jsmember: false,
     danxuanSum: 35,
     duoxuanSum: 30,
     panduanSum: 35,
-    questionsXipai: false,
+    switch_time: 500,
+    questionsXipai: true,
     optionsXipai: true,
-    shoucang:[]
+    autoNext: false,
+    shoucang:[],
+    // dianqi_selected: false
       
   },
   //---------

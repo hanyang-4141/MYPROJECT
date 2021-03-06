@@ -10,8 +10,10 @@ Page({
     danxuanSum: '',
     duoxuanSum: '',
     panduanSum: '',
+    switch_time: '',
     questionsXipai: true,
-    optionsXipai: true
+    optionsXipai: true,
+    autoNext:false
 
 
   },
@@ -24,6 +26,7 @@ Page({
       danxuanSum:app.globalData.danxuanSum,
       duoxuanSum:app.globalData.duoxuanSum,
       panduanSum:app.globalData.panduanSum,
+      switch_time:app.globalData.switch_time,
       questionsXipai: app.globalData.questionsXipai,
       optionsXipai: app.globalData.optionsXipai
     })
@@ -43,6 +46,7 @@ Page({
       if(this.data.panduanSum == ''){app.globalData.panduanSum = 35}else{app.globalData.panduanSum = this.data.panduanSum}
       app.globalData.questionsXipai = this.data.questionsXipai
       app.globalData.optionsXipai = this.data.optionsXipai
+      app.globalData.autoNext = this.data.autoNext
     }
     this.setData({
       modalName: null
@@ -92,6 +96,12 @@ Page({
     
 
   },
+  switch_timeInput(e){
+    this.setData({
+      switch_time: e.detail.value
+    })
+    app.globalData.switch_time = this.data.switch_time
+  },
   logout() {
     // wx.removeStorageSync('cookie');
     wx.clearStorage({
@@ -121,6 +131,11 @@ Page({
       })
       
 
+    },
+    autoNextChange(e){
+      this.setData({
+        autoNext: !this.data.autoNext
+      })
     },
     
   

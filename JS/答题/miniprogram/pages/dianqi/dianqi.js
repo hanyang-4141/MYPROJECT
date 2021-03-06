@@ -1,11 +1,14 @@
-//index.js
-const app = getApp()
-
+// pages//dianqi/dianqi.js
+var app = getApp()
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    exist: true,
+    // dianqi:true,
     nickName: '',
-    avatarUrl: './user-unlogin.png',
+    avatarUrl: '../dati/user-unlogin.png',
     userInfo: {},
     logged: false,
     takeSession: false,
@@ -48,9 +51,14 @@ Page({
         color: 'orange'
       },
     ]
+
   },
 
-  onLoad: function() {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // console.log(options);
     if(app.globalData.logged == false){
       wx.showModal({
         title: '提示',
@@ -68,48 +76,55 @@ Page({
       nickName:app.globalData.userInfo.nickName,
       avatarUrl:app.globalData.userInfo.avatarUrl
     })
-    var isexist_shoucang = false
-    // wx.cloud.callFunction({
-    //   name: 'updateshoucang',
-    //   data:{
-    //     type: 'init',
-    //   }
-    // }).then(res=>{
-    //   console.log(res);
-    //   if(res.result.shoucang.data.length > 0){
-    //     app.globalData.shoucang = res.result.shoucang.data[0]
-    //     isexist_shoucang = true
-        
-    //   }
-    // })
-    
-      wx.cloud.callFunction({
-        name: 'getshoucang'
-      }).then(res=>{
-        if(res.result.res.data.length > 0){
-          console.log('获取收藏', res);
-          app.globalData.shoucang = res.result.res.data[0]
-        }else{
-          var temparr = []
-          for (let i = 0; i < 300; i++) {
-          temparr.push(false)
-          }
-          var temp ={}
-          temp.danxuan = temparr
-          temp.duoxuan = temparr
-          temp.panduan = temparr
-          console.log(temp);
-          app.globalData.shoucang = temp
-          this.setData({
-            exist: false
-          })
-          
-        }
-        
-        // console.log(app.globalData.shoucang);
-      })
-    
-    // console.log(app.globalData.shoucang);  
-    
+
   },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

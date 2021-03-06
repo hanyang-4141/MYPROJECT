@@ -52,8 +52,8 @@
 
 
 
-<view class="margin-tb text-center mynavigation" bindtap="ShouCang">
+<view hidden="{{!jsmember}}" class="margin-tb text-center mynavigation" bindtap="ShouCang">
     <view class="content  round">     
-      <text class="{{shoucang.DanXuan[shijiIndex-1]?'cuIcon-likefill text-red':'cuIcon-like text-gray'}} lg  text-xsl shoucang">收藏</text> 
+      <text class="{{shoucang.danxuan[shijiIndex-1]?'cuIcon-likefill text-red':'cuIcon-like text-gray'}} lg  text-xsl shoucang">收藏</text> 
     </view>
 </view>

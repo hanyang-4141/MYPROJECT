@@ -1,12 +1,17 @@
 // miniprogram/pages/dati/dati.js
 const gongju = require('../../utils/tools')
+const db = wx.cloud.database()
+var myshoucang = db.collection('shoucang')
 var app = getApp()
+// const db = cloud.database()
+// myshoucang = db.collection("shoucang")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    exist: true,
     DanXuan: [],
     shoucang: [],
     shijiIndex: 0,
@@ -15,6 +20,7 @@ Page({
     afterclick: false,
     hidden: true,
     answererror: false,
+    jsmember: false
 
     // questions: [],
   },
@@ -87,16 +93,14 @@ Page({
       hidden: false
     })   
     
-    setTimeout(this.afterQuestion, 500)
+    if(app.globalData.autoNext){
+      setTimeout(this.afterQuestion, app.globalData.switch_time)
+    }
   },
-  onLoad: function (options) {
-    let json_str = JSON.stringify(app.globalData.Questions.data[0].DanXuan)
-    let json_arry = JSON.parse(json_str)    //深拷贝  
-    // for(let i=0; i<json_arry.length; i++){
-    //   this.data.shoucang.push(false)
-    // }
-    // console.log(app.globalData.questionsXipai);
-    if(app.globalData.optionsXipai){
+  onLoad: function (options) { 
+    let json_str = options.dianqi=='true'?JSON.stringify(app.globalData.Questions_dianqi.data[0].DanXuan):JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    let json_arry = JSON.parse(json_str)    //深拷贝      
+    if(app.globalData.questionsXipai){
       gongju.shuffle(json_arry)
     }
     // var newArr = gongju.shuffle(json_arry)
@@ -108,7 +112,9 @@ Page({
     }    
     this.setData({
       DanXuan: json_arry,
-      shoucang: app.globalData.shoucang
+      shoucang: app.globalData.shoucang,
+      exist: options.exist,
+      jsmember: app.globalData.jsmember
     })
 
     var item = this.data.DanXuan[this.data.tags]   
@@ -121,19 +127,41 @@ Page({
 
 
   },
-  ShouCang(){
-    
-    this.data.shoucang.DanXuan[this.data.shijiIndex-1] = !this.data.shoucang.DanXuan[this.data.shijiIndex-1]
+  ShouCang(){    
+    this.data.shoucang.danxuan[this.data.shijiIndex-1] = !this.data.shoucang.danxuan[this.data.shijiIndex-1]
     this.setData({
       shoucang: this.data.shoucang,      
     }) 
+    console.log(this.data.shoucang);
     // wx.cloud.callFunction({
     //   name: 'updateshoucang',
     //   data:{
-    //     Type: 'DanXuan',
+    //     exist: this.data.exist,
+    //     type: 'danxuan',
     //     shoucang: this.data.shoucang
     //   }
+    // }).then(res=>{
+    //   console.log(res);
     // })
+    if(this.data.exist){
+      myshoucang.where({}).update({
+        // type: 'danxuan',
+        data:{
+          shoucang: this.data.shoucang
+        }
+      })
+    }else{
+      console.log('tianjia');
+      myshoucang.add({
+        data:{
+          shoucang: app.globalData.shoucang
+        }
+      }).then(res=>{
+        console.log(res);
+      }).catch(res=>{
+        console.log(res);
+      })
+    }
   },
   
 })

@@ -49,7 +49,7 @@
   <view class="cu-item arrow">
     <view class="content">
       <text class="cuIcon-circlefill text-grey"></text>
-      <text class="text-grey">版本信息1.0.3</text>
+      <text class="text-grey">版本信息1.0.4</text>
     </view>
   </view>
 
@@ -102,6 +102,14 @@
         <view class="cu-form-group">
           <view class="title">判断题数量</view>
           <input placeholder="判断题数量" type="number" bindinput="panduanInput" value="{{panduanSum}}"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">切换毫秒数</view>
+          <input placeholder="切换毫秒数" type="number" bindinput="switch_timeInput" value="{{switch_time}}"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">自动下一题</view>
+          <switch class="orange radius sm" checked="{{autoNext}}" bindchange="autoNextChange"></switch>
         </view>
         <view class="cu-form-group">
           <view class="title">试题洗牌</view>

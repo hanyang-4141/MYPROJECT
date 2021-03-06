@@ -3,66 +3,45 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 const db = cloud.database()
+var myshoucang = db.collection("shoucang")
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   
   // var exist = true
   var shoucang 
+  var back
   if (event.type == 'init') {
-    var temparr = []
-    for (let i = 0; i < 300; i++) {
-      temparr.push(false)
-    }
-    await db.collection("shoucang").where({
-      _openid: wxContext.OPENID
-    }).get().then(res => {      
-      if (res.data.length == 0) {
-        // exist = false
-        db.collection("shoucang").add({
-          data: {
-            danxuan: temparr,
-            duoxuan: temparr,
-            panduan: temparr,
-            _openid: wxContext.OPENID
-          }
-        })
-      }
-    })
+    
   } else if (event.type == 'danxuan') {
-    await db.collection("shoucang").where({
-      _openid: wxContext.OPENID
-    }).get().then(res => {
-      if (res.data.length == 0) {
-        db.collection("shoucang").add({
-          data: {
-            danxuan: event.shoucang,
-            _openid: wxContext.OPENID
-          }
-        })
-      } else {
-        db.collection("shoucang").where({
-          _openid: wxContext.OPENID
-        }).update({
-          data: {
-            danxuan: event.shoucang,
-          }
-        })
-      }
-    })
+    if(event.exist){
+      await myshoucang.where({
+        _openid: wxContext.OPENID
+      }).update({
+        data:{
+          danxuan: event.shoucang,
+        }
+      })
+    }else{
+      await myshoucang.add({
+        data:{
+          danxuan: event.shoucang,
+        }
+      })
+    }  
   } else if (event.type == 'duoxuan') {
-    await db.collection("shoucang").where({
+    await myshoucang.where({
       _openid: wxContext.OPENID
     }).get().then(res => {
       if (res.data.length == 0) {
-        db.collection("shoucang").add({
+        myshoucang.add({
           data: {
             duoxuan: event.shoucang,
             _openid: wxContext.OPENID
           }
         })
       } else {
-        db.collection("shoucang").where({
+        myshoucang.where({
           _openid: wxContext.OPENID
         }).update({
           data: {
@@ -109,9 +88,9 @@ exports.main = async (event, context) => {
         })
       }
     }
-  // return{
-  //   event
-  // }
+  return{
+    event
+  }
 
 
   shoucang = await  db.collection('shoucang').get()

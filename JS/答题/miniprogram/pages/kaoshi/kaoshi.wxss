@@ -21,3 +21,6 @@ justify-content: space-between;
   background-color: rgba(252, 5, 5, 0.774);
 }
 
+.datika {
+  padding-top: 500rpx;
+}

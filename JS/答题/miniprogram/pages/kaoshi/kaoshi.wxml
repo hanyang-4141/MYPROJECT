@@ -36,7 +36,7 @@
     答题卡
   </button>
 
-  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}} datika">
     <view class="cu-dialog">
       <view class="cu-bar bg-white">
         <view class="action text-blue" bindtap="goMain">返回首页</view>

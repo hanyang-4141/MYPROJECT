@@ -45,17 +45,23 @@ Page({
         color:'cyan'
       },
       {
-        title:'安规题',
+        title:'热机安规',
         name:'dati',
         icon:'safe',
         color:'red'
+      },     
+      {
+        title: '电气安规',
+        name: 'dianqi',
+        icon: 'like',
+        color: 'pink'
       },
       {
         title: '工具',
         name: 'tools',
         icon: 'like',
         color: 'orange'
-      },
+      }, 
     ],
     jsmember: false
 
