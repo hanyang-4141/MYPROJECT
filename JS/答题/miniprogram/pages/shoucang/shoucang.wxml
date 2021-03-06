@@ -1,0 +1,43 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="content">收藏</view>
+</cu-custom>
+
+
+<view class="padding-lg ">
+  <view class="cu-progress round bg-white">
+    <view class="'bg-blue'" style="width:{{(tags+1)*100/KaoShi.length}}%">{{tags+1}}/{{KaoShi.length}}</view>
+  </view>
+</view>
+
+<view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
+  <view class='action'>
+    <text
+      class="text-black">{{KaoShi[tags].type=='DanXuan'?'(单选)':((KaoShi[tags].type=='DuoXuan')?'(多选)':'(判断)')}}{{tags+1}}、{{KaoShi[tags].title}}</text>
+  </view>
+</view>
+<!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
+<view wx:for='{{KaoShi[tags].options}}' wx:key='id'>
+  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}"
+    class="{{item.checked==true?'checked':'bg-white'}} {{item.value==KaoShi[tags].answer && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
+    <!-- {{tags<(danxuanSum+duoxuanSum)?item.value:(item.value?'1':'2')}}、{{item.name}} -->
+    <block wx:if="{{index==0}}">A、{{item.name}}</block>
+    <block wx:if="{{index==1}}">B、{{item.name}}</block>
+    <block wx:if="{{index==2}}">C、{{item.name}}</block>
+    <block wx:if="{{index==3}}">D、{{item.name}}</block>
+    <block wx:if="{{index==4}}">E、{{item.name}}</block>
+
+  </view>
+</view>
+<!-- <view hidden="{{hidden}}">{{answererror==true?'回答错误':'回答正确'}}</view> -->
+<view hidden="{{hidden}}">{{answererror==true?'回答错误，答案为:'+ KaoShi[tags].answer:'回答正确'}}</view>
+<view class="flex justify-center padding-bottom-xl padding-top-xl fixed-bottom">
+  <button class="cu-btn round bg-blue shadow margin-right-lg lg" bindtap='beforeQuestion'>上一题</button>
+
+  <button hidden="{{KaoShi[tags].type != 'DuoXuan'}}" class="cu-btn bg-green round shadow margin-left-lg margin-right-lg lg" bindtap="submitclick" data-target="bottomModal">
+    确定
+  </button>
+  
+  
+  <button class="cu-btn round bg-red shadow margin-left-lg lg"
+    bindtap='afterQuestion'>下一题</button>
+</view>

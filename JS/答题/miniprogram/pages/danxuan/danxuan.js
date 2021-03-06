@@ -13,14 +13,15 @@ Page({
   data: {
     exist: true,
     DanXuan: [],
-    shoucang: [],
+    shoucang: '',
     shijiIndex: 0,
     // chooseArr: [],    
     tags : 0,   
     afterclick: false,
     hidden: true,
     answererror: false,
-    jsmember: false
+    jsmember: false,
+    questionIndex: 0
 
     // questions: [],
   },
@@ -32,11 +33,6 @@ Page({
     if(this.data.tags < 1){
       return
     }    
-
-    
-      
-
-
     this.setData({
       afterclick: false,
       tags: this.data.tags - 1,
@@ -98,7 +94,8 @@ Page({
     }
   },
   onLoad: function (options) { 
-    let json_str = options.dianqi=='true'?JSON.stringify(app.globalData.Questions_dianqi.data[0].DanXuan):JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    console.log(options);
+    let json_str = options.questionIndex=='1'?JSON.stringify(app.globalData.Questions_dianqi.data[0].DanXuan):JSON.stringify(app.globalData.Questions.data[0].DanXuan)
     let json_arry = JSON.parse(json_str)    //深拷贝      
     if(app.globalData.questionsXipai){
       gongju.shuffle(json_arry)
@@ -112,9 +109,9 @@ Page({
     }    
     this.setData({
       DanXuan: json_arry,
-      shoucang: app.globalData.shoucang,
-      exist: options.exist,
-      jsmember: app.globalData.jsmember
+      shoucang: app.globalData.shoucang,     
+      jsmember: app.globalData.jsmember,
+      questionIndex: options.questionIndex
     })
 
     var item = this.data.DanXuan[this.data.tags]   
@@ -127,41 +124,24 @@ Page({
 
 
   },
-  ShouCang(){    
+  ShouCang(){ 
     this.data.shoucang.danxuan[this.data.shijiIndex-1] = !this.data.shoucang.danxuan[this.data.shijiIndex-1]
+    console.log('实际INDEX', this.data.shijiIndex);
     this.setData({
       shoucang: this.data.shoucang,      
     }) 
     console.log(this.data.shoucang);
-    // wx.cloud.callFunction({
-    //   name: 'updateshoucang',
-    //   data:{
-    //     exist: this.data.exist,
-    //     type: 'danxuan',
-    //     shoucang: this.data.shoucang
-    //   }
-    // }).then(res=>{
-    //   console.log(res);
-    // })
-    if(this.data.exist){
-      myshoucang.where({}).update({
-        // type: 'danxuan',
-        data:{
-          shoucang: this.data.shoucang
-        }
-      })
-    }else{
-      console.log('tianjia');
-      myshoucang.add({
-        data:{
-          shoucang: app.globalData.shoucang
-        }
-      }).then(res=>{
-        console.log(res);
-      }).catch(res=>{
-        console.log(res);
-      })
-    }
-  },
+    app.globalData.shoucang = this.data.shoucang
+    wx.cloud.callFunction({
+      name: 'updateshoucang',
+      data:{   
+        questionIndex: this.data.questionIndex,     
+        type: 'danxuan',
+        shoucang: this.data.shoucang
+      }
+    }).then(res=>{
+      console.log(res);
+    })
+  }
   
 })

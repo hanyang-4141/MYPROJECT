@@ -44,10 +44,7 @@ App({
     }
     //----------------------------------
     const db = wx.cloud.database();    
-    // this.globalData = {
-    //   Questions: null,     
-
-    // },   
+    
     //-----------自定义标题栏，获取信息---------------
     wx.getSystemInfo({
       success: e => {
@@ -105,18 +102,19 @@ App({
     Questions: null,   
     Questions_dianqi: null,
     userInfo: {},
+    openid:'',
+    unionid:'',
     logged: false,
     jsmember: false,
     danxuanSum: 35,
     duoxuanSum: 30,
     panduanSum: 35,
     switch_time: 500,
-    questionsXipai: true,
+    questionsXipai: false,
     optionsXipai: true,
     autoNext: false,
-    shoucang:[],
-    // dianqi_selected: false
-      
+    shoucang:'', 
+    questionIndex: 0    //题库  0=热机  1=电气
   },
   //---------
   isLogin: function(){
@@ -133,9 +131,16 @@ App({
                     }                 
                   });   
                 wx.cloud.callFunction({
+                  name: 'login'
+                }).then(res=>{
+                  // console.log(res);
+                  that.globalData.openid = res.result.openid
+                  // console.log(that.globalData.openid);
+                })
+                wx.cloud.callFunction({
                   name: "judgeuser",      
                 }).then(res=>{
-                  console.log(res);
+                  // console.log(res);
                   that.globalData.jsmember = res.result.jsmember  
                   if(that.jsmemberCallback){
                     that.jsmemberCallback(that.globalData.jsmember)
@@ -145,10 +150,6 @@ App({
                 // 用户没有授权  
                   that.globalData.logged = false
                   console.log('mei  shouquan');
-
-      //             wx.navigateTo({
-      //               url: '/pages/login/login'    
-      //             })    
               }    
             }    
         })

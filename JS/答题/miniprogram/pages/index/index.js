@@ -52,7 +52,7 @@ Page({
       },     
       {
         title: '电气安规',
-        name: 'dianqi',
+        name: 'dati',
         icon: 'like',
         color: 'pink'
       },

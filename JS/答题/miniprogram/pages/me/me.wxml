@@ -8,14 +8,14 @@
       open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo"
       class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
+      style="background-image: url({{userInfo.avatarUrl?userInfo.avatarUrl:'../login/user-unlogin.png'}})"
       size="default"
     ></button>
  
 
   <view class="flex-right padding-bottom margin-top-xs nickname">
     <view class="margin-left-xl">
-      <text class="txt text-xl ">{{nickName?nickName:'点击头像登录'}}</text>
+      <text class="txt text-xl ">{{userInfo.nickName?userInfo.nickName:'点击头像登录'}}</text>
     </view>
     <view class="margin-left-xl margin-top-xs">
       <text class="text-xs text-gray">集散班</text>

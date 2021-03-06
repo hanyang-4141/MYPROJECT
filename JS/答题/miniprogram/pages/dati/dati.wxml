@@ -3,7 +3,7 @@
 </cu-custom>
 
 <view class="flex padding justify-center margin-top-xl">
-  <view class="cu-avatar round lg" style="background-image:url({{avatarUrl}});" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+  <view class="cu-avatar round lg" style="background-image:url({{userInfo.avatarUrl?userInfo.avatarUrl:'./user-unlogin.png'}});" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
     <view class="cu-tag badge {{userInfo.gender%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}">
     </view>
   </view>
@@ -15,7 +15,7 @@
       <text>姓名</text>
     </view>
     <view class="cu-tag line-red">
-      {{nickName}}
+      {{userInfo.nickName}}
     </view>
   </view>
 
@@ -31,7 +31,7 @@
 </view>
 
  <view class='nav-list margin-top-xl'>
-    <navigator open-type="navigate"  url="/pages/{{item.name}}/{{item.name}}?dianqi={{false}}&exist={{exist}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key='id'>
+    <navigator open-type="navigate"  url="/pages/{{item.name}}/{{item.name}}?questionIndex={{questionIndex}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key='id'>
       <view class="nav-title margin">{{item.title}}</view>
       <view class="nav-name margin">{{item.name}}</view>
       <text class='cuIcon-{{item.icon}} margin'></text>

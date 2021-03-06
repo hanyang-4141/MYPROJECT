@@ -16,7 +16,8 @@
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->
 <view wx:for='{{DuoXuan[tags].options}}' wx:key='{{item.name}}'>
-  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" class="{{item.checked==true?'checked':'bg-white'}} {{item.checked==true && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
+  <view data-index="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}"
+   class="{{item.checked==true?'checked':'bg-white'}} {{item.checked==true && answererror?'rightchecked':'bg-white'}} box round" bindtap="chooseAnswer">
     <block wx:if="{{index==0}}">A、{{item.name}}</block>
     <block wx:if="{{index==1}}">B、{{item.name}}</block>
     <block wx:if="{{index==2}}">C、{{item.name}}</block>

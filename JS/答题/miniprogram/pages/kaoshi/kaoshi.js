@@ -24,16 +24,16 @@ Page({
     this.data.danxuanSum = app.globalData.danxuanSum
     this.data.duoxuanSum = app.globalData.duoxuanSum
     this.data.panduanSum = app.globalData.panduanSum
-    let json_str = options.dianqi?JSON.stringify(app.globalData.Questions_dianqi.data[0].DanXuan): JSON.stringify(app.globalData.Questions.data[0].DanXuan)
+    let json_str = options.questionIndex=='1'?JSON.stringify(app.globalData.Questions_dianqi.data[0].DanXuan): JSON.stringify(app.globalData.Questions.data[0].DanXuan)
     let json_arry = JSON.parse(json_str)    //深拷贝
     var newArr = []
     var tempArr = gongju.shuffle(json_arry)    
     newArr = newArr.concat(tempArr.slice(0, this.data.danxuanSum))      
-    json_str = options.dianqi?JSON.stringify(app.globalData.Questions_dianqi.data[1].DuoXuan):JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
+    json_str = options.questionIndex=='1'?JSON.stringify(app.globalData.Questions_dianqi.data[1].DuoXuan):JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
     json_arry = JSON.parse(json_str)    //深拷贝
     tempArr = gongju.shuffle(json_arry)    
     newArr = newArr.concat(tempArr.slice(0, this.data.duoxuanSum))
-    json_str = options.dianqi?JSON.stringify(app.globalData.Questions_dianqi.data[2].PanDuan):JSON.stringify(app.globalData.Questions.data[2].PanDuan)
+    json_str = options.questionIndex=='1'?JSON.stringify(app.globalData.Questions_dianqi.data[2].PanDuan):JSON.stringify(app.globalData.Questions.data[2].PanDuan)
     json_arry = JSON.parse(json_str)    //深拷贝
     tempArr = gongju.shuffle(json_arry)
     newArr = newArr.concat(tempArr.slice(0, this.data.panduanSum))

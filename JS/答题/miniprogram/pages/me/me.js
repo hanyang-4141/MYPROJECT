@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '../../pages/login/user-unlogin.png',
+    // avatarUrl: '../../pages/login/user-unlogin.png',
     userInfo: {},
-    nickName: '',
+    // nickName: '',
   },
 
   /**
@@ -18,8 +18,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       userInfo: app.globalData.userInfo,
-      nickName: app.globalData.userInfo.nickName,
-      avatarUrl: app.globalData.userInfo.avatarUrl
+      // nickName: app.globalData.userInfo.nickName,
+      // avatarUrl: app.globalData.userInfo.avatarUrl
     })
   },
   onGetUserInfo(e){
@@ -30,8 +30,8 @@ Page({
       app.globalData.logged = true
       this.setData({
         userInfo: e.detail.userInfo,
-        nickName: e.detail.userInfo.nickName,
-        avatarUrl: e.detail.userInfo.avatarUrl
+        // nickName: e.detail.userInfo.nickName,
+        // avatarUrl: e.detail.userInfo.avatarUrl
       })
       wx.cloud.callFunction({
         name: "adduser",
@@ -39,6 +39,15 @@ Page({
       }).then(res=>{
         console.log(res);
       })   
+     
+      wx.cloud.callFunction({
+        name: 'login'
+      }).then(res=>{
+        // console.log(res);
+        app.globalData.openid = res.result.openid
+        console.log(app.globalData.openid);
+      })
+
       wx.cloud.callFunction({
         name: "judgeuser",      
       }).then(res=>{

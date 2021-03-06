@@ -28,27 +28,7 @@ exports.main = async (event, context) => {
     }
 
   })
-
-  // var temparr = []
-  // for (let i = 0; i < 300; i++) {
-  //   temparr.push(false)
-  // }
-  // db.collection("shoucang").where({
-  //   _openid: wxContext.OPENID
-  // }).get(res => {
-  //   if (res.data.length == 0) {
-  //     db.collection("shoucang").add({
-  //       data: {
-  //         DanXuan: temparr,
-  //         DuoXuan: temparr,
-  //         PanDuan: temparr,
-  //         _openid: wxContext.OPENID
-  //       }
-  //     })
-  //   }
-  // })
-
-
+  
   return {
     hehe,
     event,
