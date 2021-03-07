@@ -7,7 +7,7 @@ var myshoucang = db.collection("shoucang")
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext() 
-  if(event.questionIndex == '0'){
+  if(event.questionIndex == '0'){      //热机
     myshoucang.where({
       _openid:  wxContext.OPENID
     }).update({
@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
         热机安规: event.shoucang
       }
     })
-  }else if(event.questionIndex == '1'){
+  }else if(event.questionIndex == '1'){     //dianqi
     myshoucang.where({
       _openid:  wxContext.OPENID
     }).update({
@@ -24,19 +24,6 @@ exports.main = async (event, context) => {
       }
     })
   }
-  // if (event.type == 'danxuan') {
-    
-    
-  // } else if (event.type == 'duoxuan') {
-    
-
-  // } else if (event.type == 'panduan') {
-    
-  // }
-  
-
-
- 
   return {
     event,
     openid: wxContext.OPENID,

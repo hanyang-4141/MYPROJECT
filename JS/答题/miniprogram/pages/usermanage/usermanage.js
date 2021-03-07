@@ -1,4 +1,5 @@
 // pages/usermanage/usermanage.js
+var app = getApp()
 Page({
 
   /**
@@ -30,7 +31,8 @@ Page({
   },
 
   MemberChange(e){
-    console.log(e);
+    // console.log(e);
+    app.globalData.jsmember = e.detail.value
     wx.cloud.callFunction({
       name: 'updateuser',
       data:{

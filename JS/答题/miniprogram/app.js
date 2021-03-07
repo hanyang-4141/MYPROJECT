@@ -124,7 +124,7 @@ App({
         wx.getSetting({    
             success: function(res) {    
               if (res.authSetting['scope.userInfo']) {    
-                wx.getUserInfo({    
+                wx.getUserInfo({                                  //得到用户信息，即将废弃
                   success: function(res) {    
                     that.globalData.userInfo = res.userInfo;
                     that.globalData.logged = true    //                
@@ -132,13 +132,11 @@ App({
                   });   
                 wx.cloud.callFunction({
                   name: 'login'
-                }).then(res=>{
-                  // console.log(res);
-                  that.globalData.openid = res.result.openid
-                  // console.log(that.globalData.openid);
+                }).then(res=>{                  
+                  that.globalData.openid = res.result.openid          //得到OPENID                  
                 })
                 wx.cloud.callFunction({
-                  name: "judgeuser",      
+                  name: "judgeuser",                                    //是否时集散班成员
                 }).then(res=>{
                   // console.log(res);
                   that.globalData.jsmember = res.result.jsmember  

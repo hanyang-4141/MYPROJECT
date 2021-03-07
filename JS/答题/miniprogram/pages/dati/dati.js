@@ -91,19 +91,20 @@ Page({
           dq.panduan = temparr
           temp.rj = rj
           temp.dq = dq
-          console.log(temp);
+          
           app.globalData.shoucang = options.questionTitle == "热机安规"?temp.rj:temp.dq
-        myshoucang.add({
-          data:{
-            _openid: app.globalData._openid, 
-            热机安规: rj,
-            电气安规: dq
-          }         
-        })
+          console.log('收藏记录不存在，准备新建！', app.globalData.shoucang);
+          myshoucang.add({
+            data:{
+              _openid: app.globalData._openid, 
+              热机安规: rj,
+              电气安规: dq
+            }         
+          })
       }else{
         app.globalData.shoucang = app.globalData.shoucang = options.questionTitle == "热机安规"?res.data[0].热机安规:res.data[0].电气安规
         // res.data[0]
-        console.log(app.globalData.shoucang);
+        console.log('收藏记录存在！', app.globalData.shoucang);
       }
     })
 

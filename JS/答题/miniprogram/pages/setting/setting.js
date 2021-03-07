@@ -28,7 +28,8 @@ Page({
       panduanSum:app.globalData.panduanSum,
       switch_time:app.globalData.switch_time,
       questionsXipai: app.globalData.questionsXipai,
-      optionsXipai: app.globalData.optionsXipai
+      optionsXipai: app.globalData.optionsXipai,
+      autoNext: app.globalData.autoNext
     })
 
   },

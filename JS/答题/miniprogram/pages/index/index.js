@@ -80,7 +80,7 @@ Page({
           })
         }
     }
-    // console.log(app.globalData.jsmember);
+   
     
     
   },
@@ -97,9 +97,8 @@ Page({
    */
   onShow: function () {
     this.setData({jsmember: app.globalData.jsmember})
-    // this.setData({
-    //   jsmember: app.globalData.jsmember
-    // })
+    console.log(app.globalData.jsmember);
+    
   },
 
   /**

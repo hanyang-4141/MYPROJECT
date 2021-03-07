@@ -9,11 +9,14 @@ Page({
   data: {
     DuoXuan: [],
     questions: [],
+    shoucang: '',
+    shijiIndex: 0,
     tags : 0,
     afterclick: false,
     currentanswer: null,
     answererror: false,
-    hidden: true
+    hidden: true,
+    questionIndex: 0
     
 
   },
@@ -33,8 +36,18 @@ Page({
         gongju.shuffle(item.options)
       })
     }    
+
+    
     this.setData({
-      DuoXuan: json_arry
+      DuoXuan: json_arry,
+      shoucang: app.globalData.shoucang,
+      questionIndex: options.questionIndex
+    })
+    var item = this.data.DuoXuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
     })
   
   },
@@ -48,6 +61,12 @@ Page({
       answererror: false,
       hidden:true
     })
+    var item = this.data.DuoXuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
+    })
   },
   afterQuestion(){
     if (this.data.tags + 2 > this.data.DuoXuan.length){
@@ -59,6 +78,12 @@ Page({
         answererror: false,
         hidden:true
       })
+      var item = this.data.DuoXuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
+    })
   },
   submitclick(){
     // console.log(this.data.questions[this.data.tags].answer);
@@ -101,5 +126,30 @@ Page({
     })   
    
   },
+
+  ShouCang(){ 
+    this.data.shoucang.duoxuan[this.data.shijiIndex-1] = !this.data.shoucang.duoxuan[this.data.shijiIndex-1]
+    console.log('实际INDEX', this.data.shijiIndex);
+    wx.showToast({
+      title: this.data.shoucang.duoxuan[this.data.shijiIndex-1]?'加入收藏':'取消收藏',
+    })
+    this.setData({
+      shoucang: this.data.shoucang,      
+    }) 
+    console.log(this.data.shoucang);
+    app.globalData.shoucang = this.data.shoucang
+    wx.cloud.callFunction({
+      name: 'updateshoucang',
+      data:{   
+        questionIndex: this.data.questionIndex,     
+        type: 'duoxuan',
+        shoucang: this.data.shoucang
+      }
+    }).then(res=>{
+      console.log(res);
+    })
+  }
+  
+
 
 })

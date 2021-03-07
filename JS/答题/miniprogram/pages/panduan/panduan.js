@@ -29,8 +29,17 @@ Page({
       })
     }    
     this.setData({
-      PanDuan: json_arry
+      PanDuan: json_arry,      
+      shoucang: app.globalData.shoucang,
+      questionIndex: options.questionIndex
     })     
+
+    var item = this.data.PanDuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
+    })
   },
 
   chooseAnswer(res){    
@@ -66,6 +75,12 @@ Page({
       answererror: false,
       hidden: true
     })
+    var item = this.data.PanDuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
+    })
   },
   afterQuestion(){
     if (this.data.tags + 2 > this.data.PanDuan.length){
@@ -77,11 +92,35 @@ Page({
         answererror: false,
         hidden: true
       })
-  },
-  ArryRandom(arr){
-    arr.sort(function(){
-        return Math.random()-0.5;
-    });    
-},
+      var item = this.data.PanDuan[this.data.tags]   
+    let pos = item.title.indexOf('、')
+    var itemIndex = item.title.substring(0,pos)
+    this.setData({      
+      shijiIndex: itemIndex
+    })
+  }, 
+
+ShouCang(){ 
+  this.data.shoucang.panduan[this.data.shijiIndex-1] = !this.data.shoucang.panduan[this.data.shijiIndex-1]
+  console.log('实际INDEX', this.data.shijiIndex);
+  wx.showToast({
+    title: this.data.shoucang.panduan[this.data.shijiIndex-1]?'加入收藏':'取消收藏',
+  })
+  this.setData({
+    shoucang: this.data.shoucang,      
+  }) 
+  console.log(this.data.shoucang);
+  app.globalData.shoucang = this.data.shoucang
+  wx.cloud.callFunction({
+    name: 'updateshoucang',
+    data:{   
+      questionIndex: this.data.questionIndex,     
+      type: 'panduan',
+      shoucang: this.data.shoucang
+    }
+  }).then(res=>{
+    console.log(res);
+  })
+}
   
 })

@@ -109,8 +109,7 @@ Page({
     }    
     this.setData({
       DanXuan: json_arry,
-      shoucang: app.globalData.shoucang,     
-      jsmember: app.globalData.jsmember,
+      shoucang: app.globalData.shoucang, 
       questionIndex: options.questionIndex
     })
 
@@ -126,7 +125,10 @@ Page({
   },
   ShouCang(){ 
     this.data.shoucang.danxuan[this.data.shijiIndex-1] = !this.data.shoucang.danxuan[this.data.shijiIndex-1]
-    console.log('实际INDEX', this.data.shijiIndex);
+    // console.log('实际INDEX', this.data.shijiIndex);
+    wx.showToast({
+      title: this.data.shoucang.danxuan[this.data.shijiIndex-1]?'加入收藏':'取消收藏',
+    })
     this.setData({
       shoucang: this.data.shoucang,      
     }) 

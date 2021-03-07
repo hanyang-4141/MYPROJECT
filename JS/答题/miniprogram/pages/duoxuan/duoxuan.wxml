@@ -48,3 +48,10 @@
   </view>
   <button class="cu-btn round bg-red shadow margin-left-lg lg" bindtap='afterQuestion'>下一题</button>
 </view>
+
+
+<view  class="margin-tb text-center mynavigation" bindtap="ShouCang">
+    <view class="content  round">     
+      <text class="{{shoucang.duoxuan[shijiIndex-1]?'cuIcon-likefill text-red':'cuIcon-like text-gray'}} lg  text-xsl shoucang"></text> 
+    </view>
+</view>

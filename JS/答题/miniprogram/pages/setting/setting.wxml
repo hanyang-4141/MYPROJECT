@@ -68,19 +68,6 @@
 </view>
 
 
-
-
-
-
-<!-- <view class="cu-bar bg-white margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange "></text> 考试题目
-  </view>
-  <view class="action">
-    <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="DialogModal1">设置</button>
-  </view>
-</view> -->
-
 <view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
