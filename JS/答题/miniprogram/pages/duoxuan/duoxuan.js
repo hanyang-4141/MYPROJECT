@@ -17,8 +17,6 @@ Page({
     answererror: false,
     hidden: true,
     questionIndex: 0
-    
-
   },
 
   /**
@@ -35,21 +33,13 @@ Page({
       json_arry.forEach(item=>{        
         gongju.shuffle(item.options)
       })
-    }    
-
-    
+    }
     this.setData({
       DuoXuan: json_arry,
       shoucang: app.globalData.shoucang,
-      questionIndex: options.questionIndex
-    })
-    var item = this.data.DuoXuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
-    })
-  
+      questionIndex: options.questionIndex,
+      shijiIndex: json_arry[this.data.tags].index
+    })  
   },
   beforeQuestion(){
     if(this.data.tags < 1){
@@ -59,14 +49,9 @@ Page({
       afterclick: false,
       tags: this.data.tags - 1,
       answererror: false,
-      hidden:true
-    })
-    var item = this.data.DuoXuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
-    })
+      hidden:true,
+      shijiIndex: this.data.DuoXuan[this.data.tags-1].index
+    })   
   },
   afterQuestion(){
     if (this.data.tags + 2 > this.data.DuoXuan.length){
@@ -76,14 +61,9 @@ Page({
         afterclick: false,
         tags: this.data.tags + 1,
         answererror: false,
-        hidden:true
+        hidden:true,
+        shijiIndex: this.data.DuoXuan[this.data.tags+1].index
       })
-      var item = this.data.DuoXuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
-    })
   },
   submitclick(){
     // console.log(this.data.questions[this.data.tags].answer);
@@ -115,28 +95,26 @@ Page({
         hidden: false
       })      
     }
-    setTimeout(this.afterQuestion, 500)
+    setTimeout(this.afterQuestion, app.globalData.switch_time)
   },
+
   chooseAnswer(res){
     let chooseArr = this.data.DuoXuan[this.data.tags].options;
     let index = res.currentTarget.dataset.index;        
     chooseArr[index].checked = !chooseArr[index].checked
     this.setData({
       DuoXuan: this.data.DuoXuan,     
-    })   
-   
+    })      
   },
 
   ShouCang(){ 
-    this.data.shoucang.duoxuan[this.data.shijiIndex-1] = !this.data.shoucang.duoxuan[this.data.shijiIndex-1]
-    console.log('实际INDEX', this.data.shijiIndex);
+    this.data.shoucang.duoxuan[this.data.shijiIndex-1] = !this.data.shoucang.duoxuan[this.data.shijiIndex-1]    
     wx.showToast({
       title: this.data.shoucang.duoxuan[this.data.shijiIndex-1]?'加入收藏':'取消收藏',
     })
     this.setData({
       shoucang: this.data.shoucang,      
-    }) 
-    console.log(this.data.shoucang);
+    })     
     app.globalData.shoucang = this.data.shoucang
     wx.cloud.callFunction({
       name: 'updateshoucang',
@@ -145,11 +123,6 @@ Page({
         type: 'duoxuan',
         shoucang: this.data.shoucang
       }
-    }).then(res=>{
-      console.log(res);
     })
   }
-  
-
-
 })

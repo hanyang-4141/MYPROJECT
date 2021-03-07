@@ -1,6 +1,6 @@
-f = open(r'c:\dati\DanXuan.txt', 'r',encoding='UTF-8')
+f = open(r'D:\MyProject\txt\rj\DanXuan.txt', 'r',encoding='UTF-8')
 strlist = f.readlines()
-daan = open(r'c:\dati\DanXuan-answer.txt', 'r',encoding='UTF-8')
+daan = open(r'D:\MyProject\txt\rj\DanXuan-answer.txt', 'r',encoding='UTF-8')
 daanstr = daan.readline()
 print(type(daanstr))
 daan_list = daanstr.split('；')[0:-1]
@@ -30,7 +30,10 @@ print(titleIndex_list)
 
 for i, titleIndex in enumerate(titleIndex_list):
     mydict = {}
-    temptitle = strlist[titleIndex]
+    temptitle = strlist[titleIndex]             #标题
+    index = temptitle[:temptitle.find('、')]
+    temptitle = temptitle[temptitle.find('、')+1:]
+
     if (i + 1) == len(titleIndex_list):
         OptionsSum = len(strlist) - titleIndex_list[i]
     else:
@@ -43,12 +46,16 @@ for i, titleIndex in enumerate(titleIndex_list):
         tempDict.setdefault('checked', False)
         tempOptions.append(tempDict)
     mydict.setdefault('type', 'DanXuan')
+    mydict.setdefault('index', index)
     mydict.setdefault('answer', MyDaAn[i])
     mydict.setdefault('title', temptitle)
     mydict.setdefault('options', tempOptions)
     DanXuan.append(mydict)
     tempOptions = []
     temptitle = ''
+
+for xx in DanXuan:
+    print(xx['index'],  xx['title'])
 print(DanXuan)
 import json
 ddd = {}

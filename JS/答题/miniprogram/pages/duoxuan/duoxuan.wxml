@@ -11,7 +11,7 @@
 
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{DuoXuan[tags].title}}</text>
+    <text class="text-black">{{DuoXuan[tags].index}}、{{DuoXuan[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->

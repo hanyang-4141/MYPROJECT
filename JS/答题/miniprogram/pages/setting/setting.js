@@ -1,5 +1,6 @@
 // pages/setting/setting.js
 var app = getApp()
+// const db = wx.cloud.database();  
 Page({
 
   /**
@@ -106,11 +107,15 @@ Page({
   logout() {
     // wx.removeStorageSync('cookie');
     wx.clearStorage({
-      success: (res) => {},
+      success: (res) => {
+        console.log(123);
+        app.getstorage()
+      },
     })
     app.globalData.logged = false;
     app.globalData.userInfo = {};
     app.globalData.jsmember = false
+    
     wx.reLaunch({
       url: '../me/me',
     })

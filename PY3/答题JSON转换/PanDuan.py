@@ -1,49 +1,7 @@
-# f = open(r'd:\panduandaan.txt', 'r',encoding='UTF-8')
-# strlist = f.read()
-# # print(strlist)
-# l1 = strlist.split('；')
-# pd_daan = []
-# print(l1)
-# for ll in l1:
-#     ll = ll[-1:]
-#     if ll == '√':
-#
-#         pd_daan.append(True)
-#     else:
-#         pd_daan.append(False)
-# print(pd_daan)
-# import  re
-#
-# ff = open(r'd:\panduan.txt', 'r',encoding='UTF-8')
-# strlist1 = ff.readlines()
-# print(strlist1)
-# str = r"[f]+"
-# Questions = []
-# print('题目长度',len(strlist1))
-# print('答案长度',len(l1))
-# for index,h in enumerate(strlist1):
-#     mydict = {}
-#     print(h)
-#     mydict.setdefault('answer', pd_daan[index])
-#     mydict.setdefault('options', [{'checked': False, 'name': '正确', 'value': True}, {'checked': False, 'name': '错误', 'value': False}])
-#     mydict.setdefault('title', re.sub(str, '', h))
-#
-#     Questions.append(mydict)
-# # print(Questions)
-# for q in Questions:
-#     print(q['title'])
-# import  json
-# ddd = {}
-# ddd.setdefault('PanDuan',Questions)
-# print(ddd)
-# myjson = json.dumps(ddd)
-# print(myjson)
-
 PD = True
-
-f = open(r'c:\dati\PanDuan.txt', 'r',encoding='UTF-8')
+f = open(r'D:\MyProject\txt\rj\PanDuan.txt', 'r',encoding='UTF-8')
 strlist = f.readlines()
-daan = open(r'c:\dati\PanDuan-answer.txt', 'r',encoding='UTF-8')
+daan = open(r'D:\MyProject\txt\rj\PanDuan-answer.txt', 'r',encoding='UTF-8')
 daanstr = daan.readline()
 print(type(daanstr))
 daan_list = daanstr.split('；')[0:-1]
@@ -77,6 +35,8 @@ for hehe in titleIndex_list:
 for i, titleIndex in enumerate(titleIndex_list):
     mydict = {}
     temptitle = strlist[titleIndex]
+    index = temptitle[:temptitle.find('、')]
+    temptitle = temptitle[temptitle.find('、') + 1:]
     if (i + 1) == len(titleIndex_list):
         OptionsSum = len(strlist) - titleIndex_list[i]
     else:
@@ -89,6 +49,7 @@ for i, titleIndex in enumerate(titleIndex_list):
         tempDict.setdefault('checked', False)
         tempOptions.append(tempDict)
     mydict.setdefault('type', 'PanDuan')
+    mydict.setdefault('index', index)
     mydict.setdefault('answer', MyDaAn[i])
     mydict.setdefault('title', temptitle)
     if PD:

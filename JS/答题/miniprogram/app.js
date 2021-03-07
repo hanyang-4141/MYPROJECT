@@ -43,7 +43,7 @@ App({
       })
     }
     //----------------------------------
-    const db = wx.cloud.database();    
+     
     
     //-----------自定义标题栏，获取信息---------------
     wx.getSystemInfo({
@@ -55,45 +55,8 @@ App({
       }
     })
     //-----------缓存---------------
-    wx.getStorage({
-      key: 'myquestions',
-      success:res=>{
-        // console.log('缓存存在');
-        this.globalData.Questions = res.data
-      },
-      fail:res=>{
-        // console.log('缓存不存在');
-        db.collection('questionBank-noanswer').get({
-          success: res1=> {                
-            this.globalData.Questions = res1
-            wx.setStorage({
-              data: res1,
-              key: 'myquestions',
-            })       
-          }
-      })     
-      }
-    })
-
-    wx.getStorage({
-      key: 'myquestions-dianqi',
-      success:res=>{
-        // console.log('缓存存在');
-        this.globalData.Questions_dianqi = res.data
-      },
-      fail:res=>{       
-      db.collection('questionBank-dianqi').get({
-        success: res1=> {                
-          this.globalData.Questions_dianqi = res1    
-          wx.setStorage({
-            data: res1,
-            key: 'myquestions-dianqi',
-          })                   
-        }
-    })
-      }
-    })
-
+   
+    this.getstorage()
     this.isLogin()
     
   },
@@ -151,6 +114,48 @@ App({
               }    
             }    
         })
+  },
+
+  getstorage(){
+    const db = wx.cloud.database();  
+    wx.getStorage({
+      key: 'myquestions',
+      success:res=>{
+        // console.log('缓存存在');
+        this.globalData.Questions = res.data
+      },
+      fail:res=>{
+        // console.log('缓存不存在');
+        db.collection('questionBank-noanswer').get({
+          success: res1=> {                
+            this.globalData.Questions = res1
+            wx.setStorage({
+              data: res1,
+              key: 'myquestions',
+            })       
+          }
+      })     
+      }
+    })
+
+    wx.getStorage({
+      key: 'myquestions-dianqi',
+      success:res=>{
+        // console.log('缓存存在');
+        this.globalData.Questions_dianqi = res.data
+      },
+      fail:res=>{       
+      db.collection('questionBank-dianqi').get({
+        success: res1=> {                
+          this.globalData.Questions_dianqi = res1    
+          wx.setStorage({
+            data: res1,
+            key: 'myquestions-dianqi',
+          })                   
+        }
+    })
+      }
+    })
   }
   //-----------
 })

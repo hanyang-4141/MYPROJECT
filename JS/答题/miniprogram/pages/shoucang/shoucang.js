@@ -6,11 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    KaoShi:'',
+    ShouCang:'',
     tags: 0,
     answererror: '',
-    hidden: true
-
+    hidden: true,    
+    tempshoucangList: [],
+    shijiIndex:''
   },
 
   /**
@@ -26,7 +27,7 @@ Page({
         newArr.push(json_arry[index])
       }
     })
-    console.log(newArr);
+    // console.log(newArr);
     json_str = options.questionIndex=='1'?JSON.stringify(app.globalData.Questions_dianqi.data[1].DuoXuan):JSON.stringify(app.globalData.Questions.data[1].DuoXuan)
     json_arry = JSON.parse(json_str)
     app.globalData.shoucang.duoxuan.forEach((item, index)=>{
@@ -41,20 +42,26 @@ Page({
         newArr.push(json_arry[index])
       }
     })
-
+    
+    for(let i=0; i<newArr.length; i++){
+      this.data.tempshoucangList.push(true)
+    }
     this.setData({
-      KaoShi: newArr,      
+      ShouCang: newArr,    
+      tempshoucangList: this.data.tempshoucangList,
+      questionIndex: options.questionIndex,      
     })
+    // console.log(this.data.ShouCang);
 
   },
   chooseAnswer(res){    
-    let chooseArr = this.data.KaoShi[this.data.tags].options;
+    let chooseArr = this.data.ShouCang[this.data.tags].options;
     let index = res.currentTarget.dataset.index;  
-    if(this.data.KaoShi[this.data.tags].type == 'DuoXuan'){
+    if(this.data.ShouCang[this.data.tags].type == 'DuoXuan'){
       //多选   
       chooseArr[index].checked = !chooseArr[index].checked 
       this.setData({
-        KaoShi: this.data.KaoShi
+        ShouCang: this.data.ShouCang
       })
     }else{
           
@@ -62,24 +69,23 @@ Page({
         item.checked = false
       })
       chooseArr[index].checked = true      
-      if(chooseArr[index].value != this.data.KaoShi[this.data.tags].answer){
+      if(chooseArr[index].value != this.data.ShouCang[this.data.tags].answer){
         // console.log('error');
         this.setData({
           answererror: true,
           hidden: false
         })
       }
-    }   
-    
+    }       
     this.setData({
-      KaoShi: this.data.KaoShi,       
+      ShouCang: this.data.ShouCang,       
     })        
   },
 
   submitclick(){
     // console.log(this.data.questions[this.data.tags].answer);
-    let chooseArr = this.data.KaoShi[this.data.tags].options;
-    let rightanswer = this.data.KaoShi[this.data.tags].answer
+    let chooseArr = this.data.ShouCang[this.data.tags].options;
+    let rightanswer = this.data.ShouCang[this.data.tags].answer
     let tempanswer_list = []
     chooseArr.forEach(item =>{
       if(item.checked == true){
@@ -102,7 +108,7 @@ Page({
      
       this.setData({
         answererror: true,
-        KaoShi:this.data.KaoShi,
+        ShouCang:this.data.ShouCang,
         hidden: false
       })      
     }
@@ -120,7 +126,7 @@ Page({
     })
   },
   afterQuestion(){
-    if (this.data.tags + 2 > this.data.KaoShi.length){
+    if (this.data.tags + 2 > this.data.ShouCang.length){
       //交卷
       return      
     }   
@@ -129,8 +135,38 @@ Page({
         answererror: false,    
         hidden: true
       })      
-  },
-
- 
+  }, 
+  ShouCang() {
+    this.data.tempshoucangList[this.data.tags] = !this.data.tempshoucangList[this.data.tags]
+    console.log(this.data.ShouCang[this.data.tags]);
+    wx.showToast({
+      title: this.data.tempshoucangList[this.data.tags]?'加入收藏' : '取消收藏',
+    })
+    let type = this.data.ShouCang[this.data.tags].type
+    let shijiIndex = this.data.ShouCang[this.data.tags].index
+    // console.log(app.globalData.shoucang);
+    console.log(type);
+    if(type == "DanXuan"){
+      console.log('单选',shijiIndex);
+      app.globalData.shoucang.danxuan[shijiIndex-1] = !app.globalData.shoucang.danxuan[shijiIndex-1]
+    }else if(type == "DuoXuan"){
+      console.log('多选',shijiIndex);
+      app.globalData.shoucang.duoxuan[shijiIndex-1] = !app.globalData.shoucang.duoxuan[shijiIndex-1]
+    }else if(type == "PanDuan"){
+      console.log('判断',shijiIndex);
+      app.globalData.shoucang.panduan[shijiIndex-1] = !app.globalData.shoucang.panduan[shijiIndex-1]
+    }
+    console.log(app.globalData.shoucang);
+    this.setData({
+      tempshoucangList: this.data.tempshoucangList,      
+    })
+    wx.cloud.callFunction({
+      name: 'updateshoucang',
+      data: {
+        questionIndex: this.data.questionIndex,        
+        shoucang: app.globalData.shoucang
+      }
+    })    
+  }
   
 })

@@ -10,7 +10,7 @@
 
 <view class="cu-bar bg-white solid-bottom margin-lg padding-lg shadow">
   <view class='action'>
-    <text class="text-black">{{DanXuan[tags].title}}</text>
+    <text class="text-black">{{DanXuan[tags].index}}、{{DanXuan[tags].title}}</text>
   </view>
 </view>
 <!-- (item.value==questions[tags].answer?'rightchecked':'checked') -->

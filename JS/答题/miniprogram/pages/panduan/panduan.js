@@ -31,15 +31,9 @@ Page({
     this.setData({
       PanDuan: json_arry,      
       shoucang: app.globalData.shoucang,
-      questionIndex: options.questionIndex
-    })     
-
-    var item = this.data.PanDuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
-    })
+      questionIndex: options.questionIndex,
+      shijiIndex: json_arry[this.data.tags].index
+    })   
   },
 
   chooseAnswer(res){    
@@ -73,13 +67,8 @@ Page({
       afterclick: false,
       tags: this.data.tags - 1,
       answererror: false,
-      hidden: true
-    })
-    var item = this.data.PanDuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
+      hidden: true,
+      shijiIndex: this.data.PanDuan[this.data.tags-1].index
     })
   },
   afterQuestion(){
@@ -90,26 +79,19 @@ Page({
         afterclick: false,
         tags: this.data.tags + 1,
         answererror: false,
-        hidden: true
-      })
-      var item = this.data.PanDuan[this.data.tags]   
-    let pos = item.title.indexOf('、')
-    var itemIndex = item.title.substring(0,pos)
-    this.setData({      
-      shijiIndex: itemIndex
-    })
+        hidden: true,
+        shijiIndex: this.data.PanDuan[this.data.tags+1].index
+      })     
   }, 
 
 ShouCang(){ 
-  this.data.shoucang.panduan[this.data.shijiIndex-1] = !this.data.shoucang.panduan[this.data.shijiIndex-1]
-  console.log('实际INDEX', this.data.shijiIndex);
+  this.data.shoucang.panduan[this.data.shijiIndex-1] = !this.data.shoucang.panduan[this.data.shijiIndex-1]  
   wx.showToast({
     title: this.data.shoucang.panduan[this.data.shijiIndex-1]?'加入收藏':'取消收藏',
   })
   this.setData({
     shoucang: this.data.shoucang,      
-  }) 
-  console.log(this.data.shoucang);
+  })   
   app.globalData.shoucang = this.data.shoucang
   wx.cloud.callFunction({
     name: 'updateshoucang',
@@ -118,9 +100,6 @@ ShouCang(){
       type: 'panduan',
       shoucang: this.data.shoucang
     }
-  }).then(res=>{
-    console.log(res);
   })
-}
-  
+}  
 })
