@@ -2,17 +2,60 @@
   <view slot="content">首页</view>
 </cu-custom>
 
+<swiper class="card-swiper {{true?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 考试答题
+    </view>   
+</view>
+
+<view class="cu-list grid col-3">
+    <view class="cu-item" wx:for="{{questions}}" wx:key >
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">        
+      </view>
+      <text>{{item.title}}</text>
+    </view>
+</view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text>工具
+    </view>   
+</view>
+
+<view class="cu-list grid col-3">
+    <view class="cu-item" wx:for="{{tools}}" wx:key >
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">        
+      </view>
+      <text>{{item.title}}</text>
+    </view>
+</view>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text>班组记录
+    </view>   
+</view>
+
+<view class="cu-list grid col-3">
+    <view class="cu-item" wx:for="{{banzurecord}}" wx:key >
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">        
+      </view>
+      <text>{{item.title}}</text>
+    </view>
+</view>
 
 
 <view class="container">
-  <view class='nav-list margin-top-xl'>
-    <!-- <navigator open-type="navigate" url="/pages/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}"
-      wx:for="{{elements}}" wx:key='id'>
-      <view class="nav-title margin">{{item.title}}</view>
-      <view class="nav-name margin">{{item.name}}</view>
-      <text class='cuIcon-{{item.icon}} margin'></text>
-    </navigator> -->
-
+  <view class='nav-list margin-top-xl'>  
     <block wx:for="{{elements}}" wx:key='id'>
       <block wx:if="{{index<4}}">
         <navigator hidden="{{!jsmember}}" open-type="navigate" url="{{jsmember?'/pages/' + item.name + '/' + item.name + '?id=' + item.name:''}}" class="nav-li bg-{{item.color}}" >

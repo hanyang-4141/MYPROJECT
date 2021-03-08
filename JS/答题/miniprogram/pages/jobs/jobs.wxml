@@ -2,26 +2,13 @@
   <view slot="content">工作记录</view>
 </cu-custom>
 
-<!-- <view class="cu-list  card-menu" >
-    <view class="cu-item solids-bottom   {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">         
-      <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
-      <view class="flex flex-wrap">
-        <view>heheheheh</view>
-        <view>hahahahah</view>
-        <view>heiheiheiheihei</view>
-      </view> 
-        <view class="move">          
-          <view class="bg-red">删除</view>
-        </view>      
-    </view>
-  </view> -->
 
   <calendar selected="{{selected}}" bindselect="bindselect" bindgetdate="bindgetdate" is-open="{{false}}"></calendar>
   
 
 <view class="cu-list">
   <view class="cu-item menu card-menu flex  flex-wrap align-center solid-bottom padding bg-white radius {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{jobsData}}" wx:key='id' bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-    <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
+    <view class="cu-avatar round " style="background-image:url('../dati/user-unlogin.png');"></view>
     <view class="hehe">
       <view class="flex justify-end">
         <view class='cu-tag bg-cyan sm'>天青</view>				
@@ -39,6 +26,6 @@
   </view>
 </view>
 
-<view class="margin-tb text-center mynavigation" bindtap="to_jobinput">
-    <view class="cu-tag lg  round  add text-xxl">+</view>
+<view class="margin text-center mynavigation" bindtap="to_jobinput">
+    <view class="cu-tag   round  my-text-size  cuIcon-roundadd"></view>
 </view>
