@@ -41,7 +41,7 @@
     "color": "#909090",
     "list": [
       {
-        "text": "答题",
+        "text": "首页",
         "iconPath": "images/answer.png",
         "selectedIconPath": "images/answer-select.png",
         "pagePath": "pages/index/index"

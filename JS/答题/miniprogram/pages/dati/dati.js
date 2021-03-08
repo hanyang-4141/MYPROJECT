@@ -50,6 +50,7 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log(options.questionTitle);
     if(options.questionTitle == "热机安规"){
       app.globalData.questionIndex = 0
     }else if(options.questionTitle == "电气安规"){
