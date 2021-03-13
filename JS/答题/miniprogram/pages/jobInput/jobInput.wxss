@@ -1,1 +1,49 @@
 /* pages/jobInput/jobInput.wxss */
+.mycontent{
+  display: inline-block;
+  width: 100rpx;
+  height: 40rpx;
+  text-align: justify;
+  text-align-last: justify;
+  border: 1rpx solid blue;
+  font-size: 30rpx;
+  background-color: blue;
+  color: white;  
+  line-height: 40rpx;
+  padding: 0rpx 10rpx;
+}
+.mycontent-not{
+  display: inline-block;
+  width: 100rpx;
+  height: 40rpx;
+  text-align: justify;
+  text-align-last: justify;
+  border: 1rpx solid wheat;
+  font-size: 30rpx;
+  background-color: white;
+  color: black;  
+  line-height: 40rpx;
+  padding: 0rpx 10rpx;
+}
+.myscore{
+  display: inline-block;
+  width: 50rpx;
+  height: 40rpx;
+  background-color: white;
+  color: blue;
+  text-align: center;
+  font-size: 26rpx;
+  border: 1rpx solid blue;
+  line-height: 40rpx;
+}
+.myscore-not{
+  display: inline-block;
+  width: 50rpx;
+  height: 40rpx;
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-size: 26rpx;
+  border: 1rpx solid wheat;
+  line-height: 40rpx;
+}

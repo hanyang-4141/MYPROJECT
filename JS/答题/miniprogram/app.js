@@ -73,7 +73,7 @@ App({
     duoxuanSum: 30,
     panduanSum: 35,
     switch_time: 500,
-    questionsXipai: false,
+    questionsXipai: true,
     optionsXipai: true,
     autoNext: false,
     shoucang:'', 

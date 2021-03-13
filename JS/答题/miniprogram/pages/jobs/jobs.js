@@ -1,5 +1,7 @@
 // pages/jobs/jobs.js
 const gongju = require('../../utils/tools.js')
+const db = wx.cloud.database()
+const myjobs = db.collection('jobs')
 Page({
 
   /**
@@ -38,19 +40,27 @@ Page({
     this.setData({
       selectDay: time.year + '-' + time.month + '-' + time.date
     })
-   
-      wx.cloud.callFunction({
-        name: "getjobs",
-        data: {
-          selectDay: this.data.selectDay 
-        }    
-      }).then(res=>{
-        // console.log(res);
-        this.setData({
-          jobsData: res.result.data
-        })
+    console.log(this.data.selectDay);
+    myjobs.where({
+      startdate: this.data.selectDay 
+    }).get().then(res=>{
+      console.log(res);
+      this.setData({
+        jobsData: res.data
       })
-    
+      // console.log(this.data.jobsData[1].MemberScore.keys);
+    })   
+      // wx.cloud.callFunction({
+      //   name: "getjobs",
+      //   data: {
+      //     selectDay: this.data.selectDay 
+      //   }    
+      // }).then(res=>{
+      //   // console.log(res);
+      //   this.setData({
+      //     jobsData: res.result.data
+      //   })
+      // })   
 
   },
 
@@ -58,19 +68,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let day = ''
     day = gongju.formatDate(new Date())
-    wx.cloud.callFunction({
-      name: "getjobs",
-        data: {
-          selectDay: day 
-        }         
-    }).then(res=>{
-      // console.log(res);
+    myjobs.where({
+      startdate: day
+    }).get().then(res=>{
+      console.log(res);
       this.setData({
-        jobsData: res.result.data
+        jobsData: res.data
       })
+      
     })
+
+    // wx.cloud.callFunction({
+    //   name: "getjobs",
+    //     data: {
+    //       selectDay: day 
+    //     }         
+    // }).then(res=>{
+    //   // console.log(res);
+    //   this.setData({
+    //     jobsData: res.result.data
+    //   })
+    // })
 
   },
 
@@ -131,7 +152,7 @@ Page({
 
   // ListTouch计算方向
   ListTouchMove(e) {
-    console.log(e.touches[0].pageX - this.data.ListTouchStart);
+    // console.log(e.touches[0].pageX - this.data.ListTouchStart);
     // this.setData({
     //   ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
     // })
@@ -167,5 +188,14 @@ Page({
     wx.navigateTo({
       url: '../jobInput/jobInput',
     })
+  },
+  del(e){
+    let id = e.currentTarget.dataset.id
+    myjobs.where({
+      _id: id
+    }).remove().then(res=>{
+      console.log(res);
+    })
+    
   }
 })

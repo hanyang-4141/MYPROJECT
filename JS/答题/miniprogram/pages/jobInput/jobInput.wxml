@@ -66,34 +66,60 @@
   </view> -->
   <view class="cu-form-group">
 		<view class="title">加班</view>
-		<switch class="red radius sm" ></switch>
+		<switch name='JiaBan' class="red radius sm" bindchange="JiaBanChange"></switch>
   </view>
   <view class="cu-form-group">
 		<view class="title">重大</view>
-		<switch class="red radius sm" ></switch>
+		<switch name='ZhongDa' class="red radius sm" bindchange="ZhongDaChange"></switch>
   </view>
   <view class="cu-form-group">
 		<view class="title">遗留</view>
-		<switch class="red radius sm" ></switch>
-	</view>
+		<switch name='YiLiu' class="red radius sm" bindchange="YiLiuChange"></switch>
+  </view>  
   
 
-  <view class="cu-list grid col-5 no-border">
-    <block wx:for="{{member}}">
-      
-        <view class="cu-capsule">
-          <view class="cu-tag bg-grey ">
-            <text class="content">{{item.name}}</text>
-          </view>
-          <view class="cu-tag line-grey">
-            {{item.score}}
-          </view>
+  <view class="cu-list">
+    <!-- <block wx:for="{{member}}">
+  
+      <view class="cu-capsule">
+        <view class="cu-tag bg-grey ">
+          <text class="content">{{item.name}}</text>
         </view>
-     
-    </block>
-  </view>
+        <view class="cu-tag line-grey">
+          {{item.score}}
+        </view>
+      </view>
+  
+    </block> -->
+    <view class="padding-sm flex flex-wrap solid-bottom padding  justify-between">
+      <view class="cu-item" wx:for="{{member}}" wx:key='id'>
+        <view class="padding-sm flex" bindtap="showModal" data-target="ScoreModal" data-index="{{index}}">
+          <text class="{{item.checked?'mycontent':'mycontent-not'}}">{{item.name}}</text>
+          <text class="{{item.checked?'myscore':'myscore-not'}}">{{item.score}}</text>
+        </view>
+      </view>
+    </view>
+    </view>
+    
 
 
   <button type="primary" form-type="submit">提交</button>
   
 </form>
+
+
+<view class="cu-modal {{modalName=='ScoreModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <!-- <view class="cu-bar bg-white">
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+      <view class="action text-green" bindtap="hideModal">确定</view>
+    </view> -->
+    <view class="grid col-4 padding-sm">
+      <view wx:for="{{checkbox}}" class="padding-xs" wx:key="id">
+        <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"  data-index="{{index}}"> {{item.value}}
+          <!-- <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}" wx:if="{{item.hot}}">HOT</view> -->
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
