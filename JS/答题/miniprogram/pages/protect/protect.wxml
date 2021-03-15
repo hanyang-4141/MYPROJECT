@@ -1,3 +1,27 @@
 <cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
   <view slot="content">保护投退</view>
 </cu-custom>
+
+<view class="cu-list ">
+  <view
+    class="cu-item menu card-menu flex  flex-wrap align-center solid-bottom padding bg-white radius {{modalName=='move-box-'+ index?'move-cur':''}}"
+    wx:for="{{ProtectData}}" wx:key='id' bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove"
+    bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" data-id="{{item._id}}" bindtap="listTap">
+    <view class="cu-avatar round " style="background-image:url('../dati/user-unlogin.png');"></view>
+    <view class="hehe">      
+      <view class="bg-{{item.isRecovery?'pink':'grey'}} text-center">{{item.isRecovery?'已恢复':'未恢复'}}</view>  
+      <view class="padding-sm ">{{item.content}}</view>
+      <view class="flex justify-between">
+        <view class='cu-tag bg-purple sm'>退出时间：{{item.exitdate}} {{item.exittime}}</view>
+        <view class='cu-tag bg-purple sm'>投入时间：{{item.recoverydate}} {{item.recoverytime}}{{}}</view>
+      </view>
+    </view>
+    <view class="move">
+      <view class="bg-red" bindtap="del" data-id="{{item._id}}">删除</view>
+    </view>
+  </view>
+</view>
+
+<view class="margin text-center mynavigation" bindtap="to_protectinput">
+  <view class="cu-tag   round  my-text-size  cuIcon-roundadd"></view>
+</view>

@@ -37,29 +37,29 @@
 
   <view class='cu-item animation-slide-left' style="animation-delay: 0.5s;">
     <view class='content'>
-      <text class='cuIcon-formfill text-green'></text>
-      <text class='text-gray text-xl'>工作记录</text>
+      <text class='cuIcon-favorfill text-green'></text>
+      <text class='text-gray text-xl'>GitHub</text>
     </view>
   </view>
 
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">
     <view class='content'>
       <text class='cuIcon-phone text-blue'></text>
-      <text class='text-gray text-xl'>加班统计</text>
+      <text class='text-gray text-xl'>关于集散班</text>
     </view>
   </view>
 
    <view class='cu-item animation-slide-left' style="animation-delay: 0.5s;">
     <view class='content'>
-      <text class="cuIcon-writefill text-cyan"></text>
-      <text class='text-gray text-xl'>保护投退</text>
+      <text class="cuIcon-text text-cyan"></text>
+      <text class='text-gray text-xl'>日志</text>
     </view>
   </view>
 
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">
     <view class='content'>
       <text class="cuIcon-appreciatefill text-red"></text>
-      <text class='text-gray text-xl'>培训记录</text>
+      <text class='text-gray text-xl'>赞赏支持</text>
     </view>
   </view>
 
@@ -72,7 +72,7 @@
 
   <view class='cu-item animation-slide-right' style="animation-delay: 0.5s;">
     <navigator class='content' hover-class="none" url="../setting/setting">
-      <text class="cuIcon-info text-red"></text>
+      <text class="cuIcon-settings text-red"></text>
       <text class='text-gray text-xl'>设置</text>
     </navigator>
   </view>

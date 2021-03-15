@@ -18,7 +18,9 @@
     "pages/measure/measure",
     "pages/setting/setting",
     "pages/usermanage/usermanage",
-    "pages/shoucang/shoucang"
+    "pages/shoucang/shoucang",
+    "pages/trainInput/trainInput",
+    "pages/protectInput/protectInput"
     
     
     

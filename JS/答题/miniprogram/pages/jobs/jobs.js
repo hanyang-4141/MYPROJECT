@@ -189,12 +189,25 @@ Page({
       url: '../jobInput/jobInput',
     })
   },
-  del(e){
-    let id = e.currentTarget.dataset.id
-    myjobs.where({
-      _id: id
-    }).remove().then(res=>{
-      console.log(res);
+  del(e){    
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否删除？',
+      success (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          let id = e.currentTarget.dataset.id
+          myjobs.where({
+            _id: id
+          }).remove().then(res=>{
+            console.log(res);
+            that.onLoad()
+          })          
+        } else if (res.cancel) {
+          // console.log('用户点击取消')
+        }
+      }
     })
     
   }

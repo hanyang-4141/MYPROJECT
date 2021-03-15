@@ -39,13 +39,13 @@ Page({
       {
         title:'热机安规',
         name:'dati',
-        icon:'safe',
+        icon:'repairfill',
         color:'red'
       },     
       {
         title: '电气安规',
         name: 'dati',
-        icon: 'like',
+        icon: 'lightfill',
         color: 'pink'
       }],
     elements:[      
@@ -96,19 +96,19 @@ Page({
       {
         title: '热电阻',
         name: 'resistance',
-        icon: 'like',
-        color: 'yellow'
+        icon: 'creativefill',
+        color: 'blue'
       },
       {
         title: '热电偶',
         name: 'Thermocouple',
-        icon: 'copy',
+        icon: 'creative',
         color: 'brown'
       },
       {
         title: '量程',
         name: 'measure',
-        icon: 'settings',
+        icon: 'writefill',
         color: 'mauve'
       },
     ],
@@ -116,13 +116,13 @@ Page({
       {
         title:'工作记录',
         name:'jobs',
-        icon:'safe',
+        icon:'writefill',
         color:'yellow'
       },      
       {
         title:'培训记录',
         name:'train',
-        icon:'safe',
+        icon:'tag',
         color:'olive'
       },
       {
@@ -134,7 +134,7 @@ Page({
       {
         title:'加班统计',
         name:'overtime',
-        icon:'safe',
+        icon:'text',
         color:'cyan'
       }],
     jsmember: false

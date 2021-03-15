@@ -49,7 +49,7 @@
   <view class="cu-item arrow">
     <view class="content">
       <text class="cuIcon-circlefill text-grey"></text>
-      <text class="text-grey">版本信息1.0.4</text>
+      <text class="text-grey">版本信息1.0.5</text>
     </view>
   </view>
 

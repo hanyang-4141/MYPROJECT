@@ -1,3 +1,38 @@
 <cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
   <view slot="content">培训记录</view>
 </cu-custom>
+
+
+<view class="cu-list ">
+  <view
+    class="cu-item menu card-menu flex  flex-wrap align-center solid-bottom padding bg-white radius {{modalName=='move-box-'+ index?'move-cur':''}}"
+    wx:for="{{TrainData}}" wx:key='id' bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove"
+    
+    bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
+    <view class="cu-avatar round " style="background-image:url('../dati/user-unlogin.png');"></view>
+    <view class="hehe">
+      <view class="flex justify-between">
+        <view>
+          <text class="text-black text-bold">{{item.startdate}}</text>
+          <text class="text-red text-bold"> 课时：{{2}}</text>
+        </view>
+        <!-- <view class='cu-tag bg-blue sm text-xl'>{{item.startdate}} {{item.starttime}} 至 {{item.enddate}} {{item.endtime}} 时长：{{item.overtimelong}}</view>  -->
+        <view class='cu-tag bg-pink sm'>地点：{{item.addr}}</view>       
+      </view>
+      
+      <view class="padding-sm ">{{item.content}}</view>
+      <view class="flex justify-end">       
+        <!-- <block wx:for="{{item.MemberScore}}" wx:for-index="key" wx:for-item="value" wx:key="id"> -->
+          <view class='cu-tag bg-purple sm'>讲师：{{item.teacher}}</view>
+        <!-- </block> -->
+      </view>
+    </view>
+    <view class="move">
+      <view class="bg-red" bindtap="del" data-id="{{item._id}}">删除</view>
+    </view>
+  </view>
+</view>
+
+<view class="margin text-center mynavigation" bindtap="to_traininput">
+  <view class="cu-tag   round  my-text-size  cuIcon-roundadd"></view>
+</view>

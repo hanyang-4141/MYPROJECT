@@ -16,11 +16,11 @@
         <view class='cu-tag bg-yellow sm' wx:if="{{item.YiLiu}}">遗留</view>
       </view>
       
-      <view class="padding-left ">{{item.content}}</view>
+      <view class="padding-sm ">{{item.content}}</view>
       <view class="flex justify-end">
         <!-- <view class="cu-tag bg-red sm">嫣红</view>
         <view class='cu-tag bg-orange sm'>桔橙</view>				 -->
-        <block wx:for="{{item.MemberScore}}" wx:for-index="key" wx:for-item="value">
+        <block wx:for="{{item.MemberScore}}" wx:for-index="key" wx:for-item="value" wx:key='id'>
           <view class='cu-tag bg-purple sm'>{{key}}</view>
         </block>
       </view>

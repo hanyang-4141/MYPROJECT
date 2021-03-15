@@ -39,6 +39,12 @@
         {
           "name": "pages/jobInput/jobInput",
           "pathName": "pages/jobInput/jobInput",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/protectInput/protectInput",
+          "pathName": "pages/protectInput/protectInput",
           "scene": null
         }
       ]

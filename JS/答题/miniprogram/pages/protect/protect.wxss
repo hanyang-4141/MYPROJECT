@@ -1,1 +1,39 @@
-/* pages/protect/protect.wxss */
+.page {
+  height: 100Vh;
+  width: 100vw;
+}
+
+.page.show {
+  overflow: hidden;
+}
+
+.switch-sex::after {
+  content: "\e716";
+}
+
+.switch-sex::before {
+  content: "\e7a9";
+}
+
+.switch-music::after {
+  content: "\e66a";
+}
+
+.switch-music::before {
+  content: "\e6db";
+}
+
+.hehe{
+  flex: 1;
+}
+
+.mynavigation {
+  position:fixed;
+  right:0;
+  bottom:200rpx;  
+}
+
+
+.my-text-size{
+  font-size: 60rpx;
+}

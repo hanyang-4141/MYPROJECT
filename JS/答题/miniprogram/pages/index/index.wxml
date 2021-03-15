@@ -12,10 +12,12 @@
     </view>
   </swiper-item>
 </swiper> -->
-<swiper class="screen-swiper {{false?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:key>
+<swiper class="screen-swiper {{false?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true"
+  interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key='id'>
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"
+      wx:if="{{item.type=='video'}}"></video>
   </swiper-item>
 </swiper>
 
@@ -26,7 +28,7 @@
 </view>
 
 <view class="cu-list grid col-3">
-  <view class="cu-item" wx:for="{{questions}}" wx:key>
+  <view class="cu-item" wx:for="{{questions}}" wx:key='id'>
     <navigator open-type="navigate" url="/pages/{{item.name}}/{{item.name}}?questionTitle={{item.title}}">
       <view class="cuIcon-{{item.icon}} text-{{item.color}}">
       </view>
@@ -42,7 +44,7 @@
 </view>
 
 <view class="cu-list grid col-3">
-  <view class="cu-item" wx:for="{{tools}}" wx:key>
+  <view class="cu-item" wx:for="{{tools}}" wx:key='id'>
     <navigator open-type="navigate" url="{{'/pages/' + item.name + '/' + item.name + '?id=' + item.name}}">
       <view class="cuIcon-{{item.icon}} text-{{item.color}}">
       </view>
@@ -58,8 +60,8 @@
 </view>
 
 <view class="cu-list grid col-3">
-  <view class="cu-item" wx:for="{{banzurecord}}" wx:key>
-    <navigator open-type="navigate" url="{{'/pages/' + item.name + '/' + item.name + '?id=' + item.name}}">
+  <view class="cu-item" wx:for="{{banzurecord}}" wx:key='id'>
+    <navigator open-type="navigate" url="{{jsmember?'/pages/' + item.name + '/' + item.name + '?id=' + item.name:'../index/index'}}">
       <view class="cuIcon-{{item.icon}} text-{{item.color}}">
       </view>
       <text>{{item.title}}</text>
@@ -67,6 +69,7 @@
   </view>
 </view>
 
+<!-- url="{{'/pages/' + item.name + '/' + item.name + '?id=' + item.name}}" -->
 
 <!-- <view class="container">
   <view class='nav-list margin-top-xl'>
