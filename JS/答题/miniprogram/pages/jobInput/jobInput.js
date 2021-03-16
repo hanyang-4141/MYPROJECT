@@ -1,11 +1,14 @@
 // pages/jobInput/jobInput.js
 const gongju = require('../../utils/tools.js')
+const db = wx.cloud.database()
+const myjobs = db.collection('jobs')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    update: false,
     jizuList: ['#1机组', '#2机组', '丰泰公用','#3机组', '#4机组', '科林公用'],    
     jizu: '',
     jizuIndex: '',     
@@ -135,15 +138,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var d = new Date()
-    // console.log(d.getMonth());
-    // console.log(gongju.formatTime(d));
+    console.log(options.id);
+    if(options.id){
+      console.log('id cunzai');
+      myjobs.where({
+        _id: options.id
+      }).get().then(res=>{
+        console.log(res.data[0]);
+        let tempMember = res.data[0].MemberScore
+        console.log(tempMember);
+        this.data.member.forEach(item=>{
+          console.log(item.name);
+          if(item.name in tempMember){
+            item.checked = true
+            item.score = tempMember[item.name]
+          }
+        })
+        this.setData({
+          id: options.id,
+          jizu:  res.data[0].jizu,
+          jizuIndex: this.data.jizuList.indexOf(res.data[0].jizu),
+          content: res.data[0].content,
+          startdate: res.data[0].startdate,
+          starttime: res.data[0].starttime,
+          JiaBan: res.data[0].JiaBan,
+          ZhongDa: res.data[0].ZhongDa,
+          YiLiu: res.data[0].YiLiu,
+          enddate: res.data[0].enddate,
+          endtime: res.data[0].endtime,
+          member: this.data.member,          
+          update: true
+        })
+      })
+    }else{
+      var d = new Date()    
     this.setData({
       startdate: gongju.formatDate(d),
       enddate: gongju.formatDate(d),
       starttime: gongju.formatTime(d) ,
       endtime: gongju.formatTime(d)
     })
+    }
+
+    
 
   },
   PickerChange(e) {    
@@ -201,13 +238,14 @@ Page({
       })
       return
     }
-    tempdata = e.detail.value
+
+    
     // tempdata['tags'] = [{'jiaban': 0},{'zhongda': 0},{'yiliu': 0},{'xiujiulifei': 0},{'jigai': 0},]
     // let tags = {}
     // tags['加班'] = e.detail.value.JiaBan
     // tags['重大'] = e.detail.value.ZhongDa
     // tags['遗留'] = e.detail.value.YiLiu
-    
+    tempdata = e.detail.value
     let MemberScore = {}
     this.data.member.forEach(item=>{
       if(item.checked == true){
@@ -217,16 +255,29 @@ Page({
     // tempdata['tags'] = tags
     tempdata['MemberScore'] = MemberScore
     console.log(tempdata);
-    const db = wx.cloud.database()
-    const myjobs = db.collection('jobs')
-    myjobs.add({
-      data: tempdata
-    }).then(res=>{
-      wx.redirectTo({
-        url: '../jobs/jobs',
+    
+    if(this.data.update){
+      myjobs.where({
+        _id: this.data.id
+      }).update({
+        data: tempdata
+      }).then(res=>{
+        wx.redirectTo({
+          url: '../jobs/jobs',
+        })
       })
-      console.log(res);
-    })
+    }else{
+      myjobs.add({
+        data: tempdata
+      }).then(res=>{
+        wx.redirectTo({
+          url: '../jobs/jobs',
+        })
+        console.log(res);
+      })
+    }
+
+    
     // return
     // wx.cloud.callFunction({
     //   name: "insertjobs",

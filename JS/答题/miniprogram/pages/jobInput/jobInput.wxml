@@ -66,15 +66,15 @@
   </view> -->
   <view class="cu-form-group">
 		<view class="title">加班</view>
-		<switch name='JiaBan' class="red radius sm" bindchange="JiaBanChange"></switch>
+		<switch name='JiaBan' class="red radius sm"  checked='{{JiaBan}}' bindchange="JiaBanChange"></switch>
   </view>
   <view class="cu-form-group">
 		<view class="title">重大</view>
-		<switch name='ZhongDa' class="red radius sm" bindchange="ZhongDaChange"></switch>
+		<switch name='ZhongDa' class="red radius sm" checked='{{ZhongDa}}' bindchange="ZhongDaChange"></switch>
   </view>
   <view class="cu-form-group">
 		<view class="title">遗留</view>
-		<switch name='YiLiu' class="red radius sm" bindchange="YiLiuChange"></switch>
+		<switch name='YiLiu' class="red radius sm" checked='{{YiLiu}}' bindchange="YiLiuChange"></switch>
   </view>  
   
 
