@@ -168,6 +168,38 @@ Page({
     wx.navigateTo({
       url: '../jobInput/jobInput?id=' + id,
     })
+  },
+
+  copy(){
+    console.log(this.data.jobsData);
+    let jobs = this.data.jobsData
+    let copylist = []
+    jobs.forEach((element, index) => {
+      
+      let templist = []
+      for(let key in element.MemberScore){
+        templist.push(key)
+      }
+      let tempstr = templist.join(' ')
+      console.log(index,element.content,tempstr);
+      let tempstr2 = index + 1 + '、' + element.content + '  ' + tempstr
+      copylist.push(tempstr2)
+      // copylist = copylist.join()
+    });
+    wx.setClipboardData({
+      data: copylist.join('\n'),
+      success:()=>{
+        wx.showToast({
+          title: '复制成功',
+          duration: 2000
+        })
+      // wx.getClipboardData({
+      //   success: (option) => {
+      //     console.log(option);
+      //   },
+      // })
+      }
+    })
   }
 
 })

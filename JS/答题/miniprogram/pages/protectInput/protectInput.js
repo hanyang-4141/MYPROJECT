@@ -27,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.id);
-    if(options.id != undefined && options.id != null ){
+    if(options.id){
       console.log('id cunzai');
       myprotects.where({
         _id: options.id

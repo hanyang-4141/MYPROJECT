@@ -11,7 +11,7 @@
     <view class="title">机组选择</view>
     <picker name="jizu" bindchange="PickerChange" value="{{jizu}}" range="{{jizuList}}">
       <view class="picker">
-        {{jizuIndex?jizuList[jizuIndex]:'请选择'}}
+        {{jizu?jizuList[jizuIndex]:'请选择'}}
       </view>
     </picker>
   </view>

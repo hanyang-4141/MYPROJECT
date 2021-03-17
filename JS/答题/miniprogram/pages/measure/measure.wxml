@@ -6,6 +6,54 @@
   <view class="title">传输信号选择器</view>
   <picker class="kind-picker" mode="selector" range="{{chuanshu_kind}}" bindchange="king_change">当前选择: {{chuanshu_kind[kind_index]}}</picker>
 </view>
+
+<view class="flex  ">
+  <view>
+    <view class="padding-xs">
+      <view class="cu-tag line-mauve">量程下限：</view>
+    </view>
+    <view class="padding-xs">
+      <view class="cu-tag line-mauve">量程上限：</view>
+    </view>
+  </view>
+
+  <view>
+    <view class="padding-xs">
+      <input class="cu-tag line-mauve" style='width:100rpx;'></input>
+    </view>
+    <view class="padding-xs">
+      <input class="cu-tag line-mauve" style='width:100rpx;'></input>
+    </view>
+  </view>
+  <view>
+    <view style='line-height:68px;'>------</view>
+    
+  </view>
+  <view>
+    <view class="padding-xs">
+      <view class="cu-tag line-mauve">系数K：</view>
+    </view>
+    <view class="padding-xs">
+      <view class="cu-tag line-mauve">系数B：</view>
+    </view>
+  </view>
+
+  <view>
+    <view class="padding-xs">
+      <input class="cu-tag line-mauve" style='width:100rpx;'></input>
+    </view>
+    <view class="padding-xs">
+      <input class="cu-tag line-mauve" style='width:100rpx;'></input>
+    </view>
+  </view>
+
+  <button class="" >计算</button>
+
+</view>
+
+
+
+
 <view class="jisuan">
   <view class="group">
     <text>{{kind_index < 3?"电流上限":"电压上限"}}</text>

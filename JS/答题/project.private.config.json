@@ -45,6 +45,12 @@
         {
           "name": "pages/protectInput/protectInput",
           "pathName": "pages/protectInput/protectInput",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/measure/measure",
+          "pathName": "pages/measure/measure",
           "scene": null
         }
       ]

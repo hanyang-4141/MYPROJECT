@@ -55,42 +55,42 @@ Page({
     },    
   ],
     member: [{
-      name: '张三三',
+      name: '胡毅',
       checked: false, 
       score: 0
     },
     {
-      name: '李四',
+      name: '尚卓毓',
       checked: false, 
       score: 0
     },
     {
-      name: '王五',
+      name: '周军',
       checked: false, 
       score: 0
     },
     {
-      name: '赵六六',
+      name: '乔智',
       checked: false, 
       score: 0
     },
     {
-      name: '张三',
+      name: '王志英',
       checked: false, 
       score: 0
     },
     {
-      name: '李四四',
+      name: '车璐',
       checked: false, 
       score: 0
     },
     {
-      name: '王五五',
+      name: '云雯',
       checked: false, 
       score: 0
     },
     {
-      name: '赵六',
+      name: '范舒婷',
       checked: false, 
       score: 0
     },

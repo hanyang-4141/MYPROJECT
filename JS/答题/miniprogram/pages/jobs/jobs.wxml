@@ -31,6 +31,17 @@
   </view>
 </view>
 
-<view class="margin text-center mynavigation" bindtap="to_jobinput">
-  <view class="cu-tag   round  my-text-size  cuIcon-roundadd"></view>
+<view class="margin text-center mynavigation" >
+  <!-- <view class="cu-tag   round  my-text-size  cuIcon-roundadd"></view>
+  <view class="text-gray">新增</view>  -->
+
+  <view class="content  round">     
+      <text class="cuIcon-roundadd  text-green lg  text-xsl shoucang my-text-size" bindtap="to_jobinput"></text>
+      <view class="text-gray">新增</view> 
+  </view>
+
+  <view class="content  round">     
+      <text class="cuIcon-copy  text-green lg  text-xsl shoucang my-text-size" bindtap="copy"></text>
+      <view class="text-gray">复制</view> 
+  </view>
 </view>
